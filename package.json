@@ -17,6 +17,7 @@
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
     "gulp-watch": "^4.3.11",
     "lodash": "^4.17.2",
     "promise": "^7.1.1",
