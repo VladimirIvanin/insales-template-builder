@@ -1,0 +1,26 @@
+{
+  "name": "insales-base-template",
+  "version": "1.0.0",
+  "description": "Базовый шаблон для InSales",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:VladimirIvanin/base-template.git"
+  },
+  "author": "Vladimir Ivanin",
+  "license": "MIT",
+  "dependencies": {
+    "create-file": "^1.0.1",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-watch": "^4.3.11",
+    "lodash": "^4.17.2",
+    "promise": "^7.1.1",
+    "require-dir": "^0.3.0",
+    "write": "^0.3.2"
+  }
+}

@@ -1,0 +1,4 @@
+/node_modules
+/theme/devufile.json
+/theme/*.zip
+npm-debug.log*
