@@ -1,0 +1,44 @@
+.collection {}
+
+.collection-description {
+
+  &.at-top {
+    padding-bottom: $vertical-gutter;
+    border-bottom: 2px solid $gray-lighter;
+  }
+}
+
+.open-filter {
+  margin-right: 0.3rem;
+}
+
+// toolbar
+.collection-toolbar {
+  //margin-top: $vertical-gutter;
+  //margin-bottom: $vertical-gutter;
+
+  @include display-flex();
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+  @include align-items(center);
+
+  margin-left: auto;
+
+  &.is-top {
+  }
+
+  &.is-bottom {
+    border-top: 2px solid $gray-lighter;
+  }
+}
+
+// Product list
+.products-list {
+  margin-top: $vertical-gutter;
+  margin-bottom: $vertical-gutter;
+
+  &.in-tab {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

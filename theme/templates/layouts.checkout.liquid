@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='ru' xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+  <meta content='noindex, nofollow' name='robots'>
+  <title>{% yield 'title' %}</title>
+
+  {% include "styles" %}
+
+  {{ 'checkout' | global_javascript_tag }}
+</head>
+<body class="adaptive fhg-body">
+  {% include "top_panel" %}
+
+  <div class="page-wrapper fhg-content">
+    <div class="container page-inner ">
+      {% include "header" %}
+
+      <div class="page-content checkout-v1-wrapper">
+
+        <div class='wrapper body fc'>
+          {% if client %}
+            <div class='userbar fc'>
+              <div class='links fl'>
+                {% if linklists.account-menu %}
+                  {% for link in linklists.account-menu.links %}<a href='{{ link.url }}'>
+                  {{ link.title }}
+                  </a>|{% endfor %}
+                {% else %}
+                  <a href='/'>
+                  <span class='b'>Вернуться в магазин</span>
+                  </a>|<a href='/client_account/contacts'>
+                  <span>Контактные данные</span>
+                  </a>|<a href='/client_account/addresses'>
+                  <span>Адрес доставки</span>
+                  </a>|<a href='/client_account/orders'>
+                  <span class='b'>Заказы и скидки</span>
+                  </a>|<a href='/client_account/feedback'>
+                  <span>Обратная связь</span>
+                  </a>
+                {% endif %}
+              </div>
+              <div class='profile fr'>
+                {{ client.full_name }}
+                <b></b>
+                (<a href='/client_account/exit'>Выход</a>)
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="decorated-title-wrapper">
+            <div class="decorated-title">
+              <div class="page-header-wrapper">
+                <h1 class="page-header">{% yield 'title' %}</h1>
+              </div>
+            </div>
+          </div>
+
+          {% yield 'flash_messages' %}
+
+          <div id='top_info'>{% yield 'top_info' %}</div>
+
+          {% yield %}
+          {% yield 'sidebar' %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% include "footer" %}
+
+  {% include "modals" %}
+
+  {% include "scripts" %}
+
+
+</body>
+</html>

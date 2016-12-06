@@ -1,0 +1,46 @@
+{% if block_lists.benefits.blocks.size > 0 %}
+
+<div class="index-block benefits-wrapper">
+
+<div class="benefits">
+  <div class="decorated-title-wrapper">
+    <div class="decorated-title">
+      {{ messages.block_list_benefits }}
+    </div>
+  </div>
+
+  <div class="row flex-center">
+
+  {% for benefit in block_lists.benefits.blocks %}
+
+    {% if benefit.link != '' %}
+      <a href="{{ benefit.link }}" class="benefit benefit-link cell-12-sm">
+    {% else %}
+      <span class="benefit cell-12-sm">
+    {% endif %}
+
+      <div class="benefit-inner">
+        <div class="benefit-image">
+          <div class="image-container is-square">
+            <img src="{{ benefit.image }}" title="{{ benefit.title }}" alt="{{ benefit.title }}" />
+          </div>
+
+        </div>
+        <div class="benefit-title">{{ benefit.title | editable }}</div>
+      </div>
+
+    {% if benefit.link != '' %}
+      </a>
+    {% else %}
+      </span>
+    {% endif %}
+
+  {% endfor %}
+
+  </div>
+</div>
+</div>
+
+{% endif %}
+
+{% assign tag = null %}

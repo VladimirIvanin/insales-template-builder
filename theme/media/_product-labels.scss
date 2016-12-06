@@ -1,0 +1,35 @@
+/** product-labels */
+.product-labels {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	text-align: right;
+}
+
+.label {
+	display: inline-block;
+	margin: 0.5rem;
+	padding: 0.5rem;
+	position: relative;
+	z-index: 1;
+	background-color: #eeeeee;
+	border-radius: 2px;
+	font-size: 85%;
+	font-weight: normal;
+	color: #333333;
+}
+
+.label.label-discount {
+	background-color: #dc4646;
+	color: #fff;
+}
+
+.label.is-preorder {
+	background-color: #5bc0de;
+	color: #fff;
+}
+
+.label.not-available {
+	background-color: #f0ad4e;
+}

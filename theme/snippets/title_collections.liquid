@@ -1,0 +1,71 @@
+{% assign products_sets_count = 4 %}
+{% assign products_sets_total = 0 %}
+{% assign products_sets_show  = false %}
+
+{% assign product_cell_classes = 'cell-3 cell-4-md cell-6-sm cell-12-mc' %}
+
+
+{% comment %}Подготовка данных{% endcomment %}
+{% assign collections_handles = '' %}
+{% assign tabs_titles = '' %}
+
+{% for i in (1..products_sets_count) %}
+  {% capture handle %}products_set_{{ i }}_handle{% endcapture %}
+  {% capture name %}products_set_{{ i }}_name{% endcapture %}
+  {% unless settings[handle] == '' %}
+    {% assign products_sets_show = true %}
+    {% assign products_sets_total = products_sets_total | plus: 1 %}
+
+    {% assign collections_handles = collections_handles | append: '|' | append: settings[handle] %}
+    {% assign tabs_titles = tabs_titles | append: '|' | append: settings[name] %}
+  {% endunless %}
+{% endfor %}
+
+{% unless products_sets_show %}
+  {% assign collections_handles = 'frontpage|popular' %}
+  {% assign tabs_titles = collections.frontpage.title | append: '|' | append: collections.popular.title %}
+{% endunless %}
+
+{% assign collections_handles = collections_handles | split: '|' %}
+{% assign tabs_titles = tabs_titles | split: '|' %}
+{% comment %}-- Подготовка{% endcomment %}
+
+
+<div class="index-block title-collections">
+  <div class="tabs-menu-wrapper">
+    <ul class="tabs-menu collections-tabs">
+      {% for tab in tabs_titles %}
+        {% assign _index = forloop.index | minus: 1 %}
+
+        <li class="tabs-menu-item {% if forloop.first %}active{% endif %}">
+          <a class="tabs-menu-link" href="#{{ collections_handles[_index] }}" data-toggle="tabs">{{ tab }}</a>
+        </li>
+
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="tabs-list collections-list">
+    {% for handle in collections_handles %}
+
+      <div class="tab-block {% if forloop.first %}active{% endif %}" id="{{ handle }}">
+        <div class="products-list in-tab row">
+          {% for product in collections[handle].products limit: 4 %}
+            <div class="title-collections-product {{ product_cell_classes }}">
+              {% include 'product_card' %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="tab-block-toolbar text-right">
+          <a href="{{ collections[handle].url }}" class="button">
+            {{ messages.button_more }}
+          </a>
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% assign product_cell_classes = null %}

@@ -1,0 +1,38 @@
+{% unless product_limit %}
+  {% assign product_limit = 100 %}
+{% endunless %}
+
+{% if slider_products.size > 0 %}
+
+  <div class="{{ slider_class }} slider swiper-container js-{{ slider_class }}">
+
+    <div class="slider-header swiper-header decorated-title-wrapper">
+      <h2 class="decorated-title">{{ slider_heading }}</h2>
+
+      <div class="swiper-controls">
+        <button type="button" class="button swiper-button-prev">
+          <i class="fa fa-angle-left"></i>
+        </button>
+        <button type="button" class="button swiper-button-next">
+          <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="swiper-wrapper">
+
+      {% for product in slider_products limit:product_limit %}
+        <div class="{{ slider_class }} swiper-slide">
+          {% include 'product_card' with slider_class %}
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+{% endif %}
+
+{% assign product_limit = null %}
+{% assign slider_products = null %}
+{% assign slider_class = null %}
+{% assign slider_heading = null %}

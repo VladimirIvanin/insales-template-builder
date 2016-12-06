@@ -1,0 +1,10 @@
+#= require article
+#= require blog
+#= require cart
+#= require collection
+#= require compare
+#= require index
+#= require layout
+#= require page
+#= require product
+#= require search

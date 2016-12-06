@@ -1,0 +1,48 @@
+<div class="hide">
+
+<form id="feedback-form" class="form" action="/feedback" method="post">
+
+  <div class="form-row is-required">
+    <label class="form-label">{{ messages.field_name }}</label>
+    <input name="name" type="text" class="form-field text-field" />
+  </div>
+
+  <div class="form-row">
+    <label class="form-label">{{ messages.field_phone }}</label>
+    <input name="phone" type="text" class="form-field text-field js-phone-mask" />
+  </div>
+
+  <input type="hidden" name="subject" value="{{ messages.preorder }}">
+  <input type="hidden" name="from" value="{{ account.email }}">
+  <input type="hidden" name="content" value="{{ messages.preorder }} - <a href='{{ product.url }}'>{{ product.title }}</a>">
+
+  {% if language.not_default? %}
+    <input type="hidden" name="lang" value="{{ language.locale }}"/>
+  {% endif %}
+</form>
+
+
+<div id="left-panel">
+  <div class="sidebar-block">
+    <div class="sidebar-block-header">
+      {{ messages.label_catalog }}
+    </div>
+
+    {% include "menu", class: 'left-main-menu', handle: 'all', type: 'collection' %}
+  </div>
+
+  <div class="sidebar-block">
+    <div class="sidebar-block-header"></div>
+    {% include "menu", class: 'left-menu', handle: 'main-menu', type: linklists %}
+  </div>
+</div>
+
+<div id="mobile-filter">
+  {% include "collection_filters", header: messages.label_filter, form_submit: false %}
+</div>
+
+<div id="mobile-search">
+  {% include "search_widget" with "is-mobile" %}
+</div>
+
+</div>

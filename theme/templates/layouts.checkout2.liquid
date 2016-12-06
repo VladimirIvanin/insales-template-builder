@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class='' lang='ru' xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+  <meta content='noindex, nofollow' name='robots'>
+  <meta content='width=device-width, initial-scale=1.0 user-scalable=no' name='viewport'>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <title>{% yield 'title' %}</title>
+  {{ 'checkout2' | global_stylesheet_tag }}
+  {% assign custom_checkout_css = 'custom_checkout2.css' | asset_url_if_exists %}
+  {% if custom_checkout_css %}
+  <link href='{{ custom_checkout_css }}' rel='stylesheet'>
+  {% endif %}
+  {% include "styles" %}
+</head>
+<body class='adaptive fhg-body'>
+  {% include "top_panel" %}
+
+  <div class="page-wrapper fhg-content">
+    <div class="container page-inner ">
+      {% include "header" %}
+
+      <div class='checkout-v2-wrapper co-section--checkout_content'>
+        <div class='co-section--checkout_order co-section--checkout_order_sided'>
+
+          <div class='co-section--checkout_header co-checkout-block--padded'>
+            <div class="decorated-title-wrapper co-checkout-title">
+              <h1 class='decorated-title co-title co-title--h1'>
+              {% yield 'title' %}
+              </h1>
+            </div>
+            {% yield 'breadcrumbs' %}
+          </div>
+          {% yield 'sidebar' %}
+          {% yield %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "footer" %}
+
+  {% include "modals" %}
+
+  {% include "scripts" %}
+</body>
+</html>

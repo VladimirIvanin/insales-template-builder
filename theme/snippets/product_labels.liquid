@@ -1,0 +1,25 @@
+{% if product.properties.label or product.variants.first.old_price %}
+  <div class="product-labels labels-list">
+    {% if product.properties.label %}
+      {% for characteristic in product.properties.label.characteristics %}
+        <span class="label label-{{ characteristic.handle }}">{{ characteristic.name }}</span>
+      {% endfor %}
+    {% endif %}
+
+    {% assign max = 0 %}
+    {% for variant in product.variants %}
+      {% if variant.old_price and variant.price < variant.old_price %}
+        {% assign discount = variant.price | divided_by: variant.old_price | times: -100 | plus: 100 | round: 0 %}
+        {% if max < discount %}{% assign max = discount %}{% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if max != 0 %}
+      <span class="label label-discount">
+        {% if product.old_price_varies? %}
+          {{ messages.label_to | downcase }}
+        {% endif %}
+        {{ discount }}%
+      </span>
+    {% endif %}
+  </div>
+{% endif %}

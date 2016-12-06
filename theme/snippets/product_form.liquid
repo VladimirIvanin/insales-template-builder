@@ -1,0 +1,89 @@
+<form class="product-form" action="{{ cart_url }}" data-product-id="{{ product.id }}">
+
+  <div class="option-selectors">
+    {% if product.show_variants? %}
+      <select class="hidden" name="variant_id" data-product-variants>
+        {% for variant in product.variants %}
+          <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+        {% endfor %}
+      </select>
+    {% else %}
+      <input type="hidden" name="variant_id" value="{{ product.variants.first.id }}">
+    {% endif %}
+  </div>
+
+  <div class="product-sku-wrapper js-product-sku-wrapper">
+    <span>Артикул:</span>
+    <span class="js-product-sku">{{ product.variants.first.sku }}</span>
+  </div>
+
+  <div class="product-prices on-page">
+    <div class="price js-product-price on-page">{{ product.price | money }}</div>
+    <div class="old-price js-product-old-price on-page">{{ product.old_price | money }}</div>
+  </div>
+
+  <div class="product-control on-page" data-compare="{{ product.id }}">
+
+    <div class="counter" data-quantity>
+      <button type="button" data-quantity-change="-1" class="counter-button button count-down">
+        <i class="icon fa fa-minus"></i>
+      </button>
+
+      <input type="text" value="1" min="1" max="1000" name="quantity" class="counter-input input-number input-field"/>
+
+      <button type="button" data-quantity-change="1" class="counter-button button count-up">
+        <i class="icon fa fa-plus"></i>
+      </button>
+    </div>
+
+    <div class="buy">
+
+      <div class="product-order-variant variant-shown js-variant-shown">
+        <button class="product-button button is-primary" type="submit" data-item-add>
+          <i class="icon buy-icon ion-ios-cart-outline"></i>
+          <span class="button-text">{{ messages.button_to_cart }}</span>
+        </button>
+      </div>
+
+      <div class="product-order-variant variant-hidden js-variant-hidden hide">
+        <p class="notice notice-info">{{ messages.product_not_available }}</p>
+      </div>
+
+      <div class="product-order-variant variant-preorder js-variant-preorder hide">
+        <button class="product-button button js-product-preorder" type="button">
+          <i class="icon feedback-icon ion-email"></i>
+          <span class="button-text">{{ messages.button_preorder }}</span>
+        </button>
+      </div>
+
+    </div>
+
+    {% if account.quick_checkout.enabled %}
+      <button type="button" class="product-button product-quick-checkout button" data-quick-checkout>{{ account.quick_checkout.button_title }}</button>
+    {% endif %}
+
+    {% unless settings.product_compare_hide %}
+      {% if account.enable_comparison? %}
+        <div class="compare-control text-center-xs">
+          <a href="#" title="Добавить в сравнение" class="compare-link compare-add button is-transparent" data-compare-add="{{ product.id }}">
+            <i class="compare-icon fa fa-bar-chart"></i>
+            <span class="link-text">{{ messages.button_add_comparison }}</span>
+          </a>
+          <a href="#" title="Удалить из сравнения" class="compare-link compare-delete button is-transparent hide" data-compare-delete="{{ product.id }}">
+            <i class="compare-icon fa fa-check"></i>
+            <span class="link-text">{{ messages.button_remove_comparison }}</span>
+          </a>
+        </div>
+      {% endif %}
+    {% endunless %}
+
+  </div>
+
+  {% unless settings.product_share_hide %}
+    <div class="product-share share">
+      <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+      <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+      <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,lj" data-counter=""></div>
+    </div>
+  {% endunless %}
+</form>

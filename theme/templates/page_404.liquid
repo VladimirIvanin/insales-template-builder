@@ -1,0 +1,17 @@
+<div class="decorated-title-wrapper">
+  <div class="decorated-title">
+    <div class="page-header">
+      <h1>404</h1>
+    </div>
+  </div>
+</div>
+
+{% if page.content != '' %}
+  <div class="page-content">
+
+    <div class="editor">
+      {{ messages.page_404 }}
+    </div>
+
+  </div>
+{% endif %}

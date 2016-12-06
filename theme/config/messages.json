@@ -1,0 +1,537 @@
+{
+  "ru": {
+    "cart_title": "Корзина",
+    "cart_is_empty": "Ваша корзина пуста",
+    "cart_order_sum": "Сумма заказа",
+
+    "search_title" : "Поиск",
+    "search_is_fail": "Ничего не найдено",
+    "search_is_empty": "Введите ключевые слова для поиска",
+
+    "comparison_title" : "Сравнение",
+    "comparison_is_empty": "Список сравнения пуст",
+
+    "created_by": "Сделано в InSales",
+    "insales_domain": "http://insales.ru",
+
+    "breadcrumb_home": "Главная",
+
+    "reviews": "Отзывы",
+    "reviews_are_empty": "Оставьте первый отзыв!",
+    "reviews_are_moderated": "Перед публикацией отзывы проходят модерацию",
+
+    "review" : "Отзыв",
+    "review_is_added": "Отзыв успешно отправлен",
+    "review_is_added_moderated": "Отзыв успешно отправлен.<br/> Он будет проверен администратором перед публикацией.",
+
+    "comments": "Комментарии",
+    "comments_are_empty": "Оставьте первый комментарий!",
+    "comments_are_moderated": "Перед публикацией комментарии проходят модерацию",
+
+    "comment" : "Комментарий",
+    "comment_add": "Добавить комментарий",
+    "comment_is_added": "Комментарий успешно отправлен",
+    "comment_is_added_moderated": "Комментарий успешно отправлен.<br/> Он будет проверен владельцем блога перед публикацией.",
+
+    "fields_are_required": "Все поля обязательны для заполнения",
+    "fields_are_incorrect": "Следующие поля заполнены неправильно",
+
+    "field_name": "Имя",
+    "field_email": "E-mail",
+    "field_comment": "Комментарий",
+    "field_phone": "Телефон",
+    "field_review": "Отзыв",
+    "field_message": "Сообщение",
+    "field_captcha": "Капча",
+    "field_rating": "Оценка",
+
+    "button_submit": "Отправить",
+    "button_checkout": "Оформить заказ",
+    "button_more": "Подробнее",
+    "button_close": "Закрыть",
+    "button_apply": "Применить",
+    "button_to_cart": "В корзину",
+    "button_preorder": "Предзаказ",
+    "button_add_comparison": "Добавить в сравнение",
+    "button_remove_comparison": "Удалить из сравнения",
+    "button_review": "Оставить отзыв",
+    "button_remove": "Удалить",
+    "button_reset_filters": "Сбросить фильтры",
+
+    "label_sort": "Сортировка",
+    "label_limit": "Показывать по",
+    "label_product": "Товар",
+    "label_photo": "Фото",
+    "label_description": "Описание",
+    "label_characteristics": "Характеристики",
+    "label_reviews": "Отзывы",
+    "label_article": "Артикул",
+    "label_title": "Наименование",
+    "label_price": "Цена",
+    "label_amount": "Кол-во",
+    "label_total": "Сумма",
+    "label_remove": "Удалить",
+    "label_preorder": "Заказ товара по почте",
+    "label_filter": "Фильтр",
+    "label_catalog": "Каталог",
+    "label_from": "От",
+    "label_to": "До",
+
+    "discount_placeholder": "Есть промо-код?",
+    "subtotal": "Итого",
+
+    "show_the_same": "Показать одинаковые",
+    "hide_the_same": "Скрыть одинаковые",
+
+    "related_products": "Сопутствующие товары",
+    "similar_products": "Похожие товары",
+
+    "product_not_available": "Товар отсутствует",
+    "product_not_available_extended": "Товар отсутствует на складе, свяжитесь с менеджером чтобы уточнить время доставки",
+
+    "collection_frontpage": "Товары на главной",
+    "collection_popular": "Популярные товары",
+
+    "collection_filters_is_empty": "По выбранным параметрам ничего не найдено. Попробуйте выбрать другие значения.",
+    "collection_is_empty": "В данном разделе пока нет товаров. Мы работаем над этим.",
+
+    "main_menu": "Главное меню",
+    "footer_menu": "Меню в футере",
+
+    "page_about": "О компании",
+    "page_delivery": "Доставка",
+    "page_payment": "Оплата",
+    "page_blog": "Блог",
+    "page_contacts": "Контакты",
+
+    "option_label": "Метка",
+    "option_label_new": "Новинка",
+    "option_label_sale": "Распродажа",
+
+    "block_template_benefit": "Преимущество",
+    "block_template_slide": "Слайд",
+    "block_template_social": "Соц.сеть",
+
+    "block_list_benefits": "Преимущества компании",
+    "block_benefit1": "Быстрая доставка до двери",
+    "block_benefit2": "Выгодные акции и бонусы",
+    "block_benefit3": "Гарантии качества продукции",
+
+    "block_list_slider": "Слайдер",
+    "block_slide1": "Быстрая доставка до двери",
+    "block_slide2": "Выгодные акции и бонусы",
+    "block_slide3": "Гарантии качества продукции",
+
+    "block_list_contacts": "Контакты",
+    "block_email": "E-mail",
+    "block_phone": "Телефон",
+
+    "block_list_social": "Соц.сети",
+
+    "site_name": "Название сайта",
+
+    "link": "Ссылка",
+    "image": "Изображение",
+
+    "show": "Показать",
+    "hide": "Скрыть",
+    "preorder": "Предзаказ",
+
+    "select": "выберите",
+
+    "sort_by_price": "по возрастанию цены",
+    "sort_by_price_desc": "по убыванию цены",
+    "sort_by_createdon": "сначала новые",
+    "sort_by_createdon_desc": "сначала старые",
+    "sort_by_title": "по названию",
+    "sort_by_title_desc": "по убыванию алфавита",
+
+    "after_products": "Показывать после товаров",
+    "before_products": "Показывать до товаров",
+
+    "from_settings": "Из настроек магазина",
+    "edited_block": "Редактируемый блок",
+
+    "snippet_promo_slider": "Слайдер",
+    "snippet_benefits": "Преимущества компании",
+    "snippet_title_collections": "Подборки товаров",
+    "snippet_title_categories": "Спец.категории",
+    "snippet_news_feed": "Новостная лента",
+    "snippet_title_content": "Контент страницы",
+
+    "s_heading_colors_and_fonts": "Цвета и шрифт",
+
+    "s_subheading_primary_colors": "Основные цвета",
+    "s_color_background_primary": "Цвет фона",
+    "s_color_text_primary": "Цвет текста",
+    "s_color_link_primary": "Цвет ссылок",
+    "s_color_link_primary_hover": "Ссылки при наведении",
+    "s_color_border_primary": "Цвет границ",
+
+    "s_subheading_adjective_colors": "Дополнительные цвета",
+    "s_color_background_secondary": "Цвет фона",
+    "s_color_text_secondary": "Цвет текста",
+    "s_color_link_secondary": "Цвет ссылок",
+    "s_color_link_secondary_hover": "Ссылки при наведении",
+    "s_color_border_secondary": "Цвет границ",
+
+    "s_subheading_background_substrate": "Фоновая подложка",
+    "s_body_background_color": "Цвет фона",
+    "s_body_background_use": "Использовать изображение",
+    "s_body_background_image": "Изображение",
+
+    "s_subheading_fonts": "Шрифты",
+    "s_font_family_primary": "Шрифт",
+    "s_font_size_primary": "Размер шрифта",
+
+    "s_heading_header_and_logotype": "Шапка и логотип",
+
+    "s_subheading_logotype": "Логотип",
+    "s_logotype_type" : "Использовать",
+    "s_logotype_image" : "Загрузить логотип",
+    "s_logotype_font_family" : "Шрифт логотипа",
+    "s_logotype_font_size" : "Размер шрифта логотипа",
+
+    "s_subheading_contacts": "Контакты",
+    "s_phone" : "Телефон",
+    "s_email" : "E-mail",
+
+    "s_subheading_favicon": "Иконка (favicon)",
+    "s_favicon": "Изображение (.png)",
+
+    "s_heading_footer": "Футер сайта",
+    "s_social_media_hide": "Скрыть соц.ссылки",
+
+    "s_heading_frontpage": "Главная страница",
+
+    "s_subheading_sections": "Порядок секций",
+    "s_title_section_1": "Первая секция",
+    "s_title_section_2": "Вторая секция",
+    "s_title_section_3": "Третья секция",
+    "s_title_section_4": "Четвертая секция",
+    "s_title_section_5": "Пятая секция",
+    "s_title_section_6": "Шестая секция",
+
+    "s_subheading_slider": "Слайдер",
+    "s_promo_slider_auto": "Автоматически листать",
+    "s_promo_slider_auto_time": "Задержка между листанием",
+
+    "s_subheading_special_products": "Подборки товаров",
+    "s_products_set_1_name": "Название первой вкладки",
+    "s_products_set_1_handle": "Пермалинк первой категории",
+    "s_products_set_2_name": "Название второй вкладки",
+    "s_products_set_2_handle": "Пермалинк второй категории",
+    "s_products_set_3_name": "Название третьей вкладки",
+    "s_products_set_3_handle": "Пермалинк третьей категории",
+    "s_products_set_4_name": "Название четвертой вкладки",
+    "s_products_set_4_handle": "Пермалинк четвертой категории",
+
+    "s_subheading_special_categories": "Спец.категории",
+    "s_special_category_1_name": "Название категории 1",
+    "s_special_category_1_handle": "Пермалинк категории 1",
+    "s_special_category_2_name": "Название категории 2",
+    "s_special_category_2_handle": "Пермалинк категории 2",
+    "s_special_category_3_name": "Название категории 3",
+    "s_special_category_3_handle": "Пермалинк категории 3",
+    "s_special_category_4_name": "Название категории 4",
+    "s_special_category_4_handle": "Пермалинк категории 4",
+
+    "s_heading_collection": "Страница каталога товаров",
+
+    "s_cards_background_hide": "Отключить фон карточек",
+    "s_cards_crop_off": "Отключить обрезание фото",
+    "s_cards_introtext_hide": "Скрыть описание карточки",
+    "s_category_description_position": "Описание категории",
+
+    "s_heading_product": "Страница товара",
+
+    "s_subheading_buy_button": "Кнопка \"купить\"",
+    "s_product_not_available": "Если нулевой остаток",
+
+    "s_subheading_adjective_settings": "Доп.настройки",
+    "s_product_share_hide": "Скрыть блок \"Поделиться\"",
+    "s_product_compare_hide": "Скрыть сравнение товаров",
+    "s_product_not_available_hide": "Скрыть уведомление об отсутствии",
+
+    "s_heading_blog": "Блог и статьи",
+    "s_article_author_hide": "Скрыть автора статьи",
+    "s_article_image_hide": "Скрыть фото статьи",
+
+    "product_added_to_cart": "Товар добавлен в корзину",
+    "product_removed_from_cart": "Товар удален из корзины",
+    "product_added_to_comparison": "Товар добавлен в сравнение",
+    "product_removed_from_comparison": "Товар удален из сравнения",
+    "maximum_number_of_comparable": "Достигнуто максимальное количество сравниваемых товаров",
+    "comparison_is_empty": "Список сравнения пуст",
+    "image_not_uploaded": "Изображение не загружено",
+
+    "page_404": "<h2>Здравствуйте!</h2><p>Добро пожаловать на «страницу 404» нашего сайта.</p><p>К сожалению, введенный Вами адрес недоступен. Этому может быть несколько объяснений:</p><ul><li>Страница удалена (из-за утраты актуальности информации)</li><li>Страница перенесена в другое место</li><li>Возможно, при вводе адреса была пропущена какая-то буква (на самом деле, у нас самих так часто получается)</li></ul>"
+  },
+  "en" : {
+    "cart_title": "Cart",
+    "cart_is_empty": "Cart is empty",
+    "cart_order_sum": "Order sum",
+
+    "search_title" : "Search",
+    "search_is_fail": "Nothing found",
+    "search_is_empty": "Enter search keywords",
+
+    "comparison_title" : "Comparison",
+
+    "created_by": "Created by InSales",
+    "insales_domain": "http://insales.com",
+
+    "breadcrumb_home": "Home",
+
+    "reviews": "Reviews",
+    "reviews_are_empty": "Be the first to review!",
+    "reviews_are_moderated": "Before publishing review are moderated",
+
+    "review" : "Review",
+    "review_is_added": "Reviews submitted successfully",
+    "review_is_added_moderated": "Comments submitted successfully.<br/> It will be checked before publishing the blog owner.",
+
+    "comments": "Comments",
+    "comments_are_empty": "Be the first to comment!",
+    "comments_are_moderated": "Before publishing comments are moderated",
+
+    "comment" : "Comment",
+    "comment_add": "Add a comment",
+    "comment_is_added": "Comments submitted successfully",
+    "comment_is_added_moderated": "Comments submitted successfully.<br/> It will be checked before publishing the blog owner.",
+
+    "fields_are_required": "All fields are required",
+    "fields_are_incorrect": "The following fields are filled in correctly",
+
+    "field_name": "Name",
+    "field_email": "E-mail",
+    "field_comment": "Comment",
+    "field_phone": "Phone",
+    "field_review": "Review",
+    "field_message": "Message",
+    "field_captcha": "Captcha",
+    "field_rating": "Rating",
+
+    "button_submit": "Submit",
+    "button_checkout": "Checkout",
+    "button_more": "More",
+    "button_close": "Close",
+    "button_apply": "Apply",
+    "button_to_cart": "Add to cart",
+    "button_preorder": "Preorder",
+    "button_add_comparison": "Add to comparison",
+    "button_remove_comparison": "Remove from comparison",
+    "button_review": "Leave a review",
+    "button_remove": "Remove",
+    "button_reset_filters": "Reset filters",
+
+    "label_sort": "Sort by",
+    "label_limit": "Limit by",
+    "label_product": "Product",
+    "label_photo": "Photo",
+    "label_description": "Description",
+    "label_characteristics": "Characteristics",
+    "label_reviews": "Reviews",
+    "label_article": "Article",
+    "label_title": "Title",
+    "label_price": "Price",
+    "label_amount": "Amount",
+    "label_total": "Total",
+    "label_remove": "Remove",
+    "label_preorder": "Order by mail",
+    "label_filter": "Filter",
+    "label_catalog": "Catalog",
+    "label_from": "From",
+    "label_to": "To",
+
+    "discount_placeholder": "Have a promo code?",
+    "subtotal": "Subtotal",
+
+    "show_the_same": "Show the same",
+    "hide_the_same": "Hide the same",
+
+    "related_products": "Related products",
+    "similar_products": "Similar products",
+
+    "product_not_available": "Product not available",
+    "product_not_available_extended": "This product is not in stock, please contact the manager to specify the time of delivery",
+
+    "collection_frontpage": "Frontpage",
+    "collection_popular": "Popular",
+
+    "collection_filters_is_empty": "According to the selected parameters found nothing. Try to select other values.",
+    "collection_is_empty": "This section is empty. We are working on it.",
+
+    "main_menu": "Main menu",
+    "footer_menu": "Footer menu",
+
+    "page_about": "About",
+    "page_delivery": "Delivery",
+    "page_payment": "Payment",
+    "page_blog": "Blog",
+    "page_contacts": "Contacts",
+
+    "option_label": "Label",
+    "option_label_new": "New",
+    "option_label_sale": "Sale",
+
+    "block_template_benefit": "Benefit",
+    "block_template_slide": "Slide",
+    "block_template_social": "Social group",
+
+    "block_list_benefits": "Benefits",
+    "block_benefit1": "Fast delivery to the door",
+    "block_benefit2": "Advantageous promotions and bonuses",
+    "block_benefit3": "Product Quality Assurance",
+
+    "block_list_slider": "Slider",
+    "block_slide1": "Fast delivery to the door",
+    "block_slide2": "Advantageous promotions and bonuses",
+    "block_slide3": "Product Quality Assurance",
+
+    "block_list_contacts": "Contacts",
+    "block_email": "E-mail",
+    "block_phone": "Phone",
+
+    "block_list_social": "Social groups",
+
+    "site_name": "Site name",
+
+    "link": "Link",
+    "image": "Image",
+
+    "show": "Show",
+    "hide": "Hide",
+    "preorder": "Preorder",
+
+    "select": "select",
+
+    "sort_by_price": "ascending price",
+    "sort_by_price_desc": "descending price",
+    "sort_by_createdon": "newest first",
+    "sort_by_createdon_desc": "oldest first",
+    "sort_by_title": "by pagetitle",
+    "sort_by_title_desc": "descending alphabet",
+
+    "after_products": "Show after the goods",
+    "before_products": "Show before the goods",
+
+    "from_settings": "From store settings",
+    "edited_block": "Editable block",
+
+    "snippet_promo_slider": "Slider",
+    "snippet_benefits": "Benefits",
+    "snippet_title_collections": "Selections of goods",
+    "snippet_title_categories": "Special categories",
+    "snippet_news_feed": "News feed",
+    "snippet_title_content": "Page description",
+
+    "s_heading_colors_and_fonts": "Fonts and colors",
+
+    "s_subheading_primary_colors": "Primary colors",
+    "s_color_background_primary": "Background color",
+    "s_color_text_primary": "Text color",
+    "s_color_link_primary": "Link color",
+    "s_color_link_primary_hover": "Link color hover",
+    "s_color_border_primary": "Border color",
+
+    "s_subheading_adjective_colors": "Adjective colors",
+    "s_color_background_secondary": "Background color",
+    "s_color_text_secondary": "Text color",
+    "s_color_link_secondary": "Link color",
+    "s_color_link_secondary_hover": "Link color hover",
+    "s_color_border_secondary": "Border color",
+
+    "s_subheading_background_substrate": "Background substrate",
+    "s_body_background_color": "Background color",
+    "s_body_background_use": "Use background image",
+    "s_body_background_image": "Image",
+
+    "s_subheading_fonts": "Fonts",
+    "s_font_family_primary": "Font",
+    "s_font_size_primary": "Font size",
+
+    "s_heading_header_and_logotype": "Header and logotype",
+
+    "s_subheading_logotype": "Logotype",
+    "s_logotype_type" : "Use logotype image",
+    "s_logotype_image" : "Download logotype",
+    "s_logotype_font_family" : "Logotype font",
+    "s_logotype_font_size" : "Logotype font size",
+
+    "s_subheading_contacts": "Contacts",
+    "s_phone" : "Phone",
+    "s_email" : "E-mail",
+
+    "s_subheading_favicon": "Favicon",
+    "s_favicon": "Image (.png)",
+
+    "s_heading_footer": "Footer",
+    "s_social_media_hide": "Hide social links",
+
+    "s_heading_frontpage": "Frontpage",
+
+    "s_subheading_sections": "The order of sections",
+    "s_title_section_1": "First section",
+    "s_title_section_2": "Second section",
+    "s_title_section_3": "Third section",
+    "s_title_section_4": "Fourth section",
+    "s_title_section_5": "Fifth section",
+    "s_title_section_6": "Sixth section",
+
+    "s_subheading_slider": "Slider",
+    "s_promo_slider_auto": "Autoplay",
+    "s_promo_slider_auto_time": "Animation delay",
+
+    "s_subheading_special_products": "Selections of goods",
+    "s_products_set_1_name": "The name of the first tab",
+    "s_products_set_1_handle": "The permalink of the first category",
+    "s_products_set_2_name": "The name of the second tab",
+    "s_products_set_2_handle": "The npermalinkof the second category",
+    "s_products_set_3_name": "The name of the third tab",
+    "s_products_set_3_handle": "The permalink of the third category",
+    "s_products_set_4_name": "The name of the fourth tab",
+    "s_products_set_4_handle": "The npermalink of the fourth category",
+
+    "s_subheading_special_categories": "Special categories",
+    "s_special_category_1_name": "The name of the first category",
+    "s_special_category_1_handle": "The permalink of the first category",
+    "s_special_category_2_name": "The name of the second category",
+    "s_special_category_2_handle": "The permalink of the second category",
+    "s_special_category_3_name": "The name of the third category",
+    "s_special_category_3_handle": "The permalink of the third category",
+    "s_special_category_4_name": "The name of the fourth category",
+    "s_special_category_4_handle": "The permalink of the fourth category",
+
+    "s_heading_collection": "Catalog page",
+
+    "s_cards_background_hide": "Disable background cards",
+    "s_cards_crop_off": "Disable circumcision photo",
+    "s_cards_introtext_hide": "Hide description cards",
+    "s_category_description_position": "Category description position",
+
+    "s_heading_product": "Product page",
+
+    "s_subheading_buy_button": "\"Buy\" button",
+    "s_product_not_available": "If product not available",
+
+    "s_subheading_adjective_settings": "Additional settings",
+    "s_product_share_hide": "Hide unit \"Share\"",
+    "s_product_compare_hide": "Hide compare products",
+    "s_product_not_available_hide": "Hide notification of absence",
+
+    "s_heading_blog": "Blog and articles",
+    "s_article_author_hide": "Hide article's author",
+    "s_article_image_hide": "Hide article's photo",
+
+    "product_added_to_cart": "Product added to cart",
+    "product_removed_from_cart": "Product is removed from the cart",
+    "product_added_to_comparison": "Product added to comparison",
+    "product_removed_from_comparison": "Product removed from comparison",
+    "maximum_number_of_comparable": "Has reached the maximum number of comparable goods",
+    "comparison_is_empty": "Comparison list is empty",
+    "image_not_uploaded": "Image not uploaded",
+
+    "page_404": "<h2>Hello!</h2><p>Welcome to 404 page.</p><p>Unfortunately, page doesn't exist. There could be several reasons for that:</p><ul><li>Page was deleted (due to outdated information)</li><li>Page was shifted to another place</li><li>Perhaps, you made a mistake while typing page address (actually it happens to us very often)</li></ul>"
+  }
+}

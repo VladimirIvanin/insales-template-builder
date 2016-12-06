@@ -1,0 +1,37 @@
+<div id="js-coupon-wrapper" class="">
+  <div class="discount-wrapper">
+    {% if cart.enable_coupon? %}
+
+      <div class="discount-form">
+        <input type="text" placeholder="{{ messages.discount_placeholder }}" class="discount-input input-field" name="cart[coupon]"
+               value="{{ cart.coupon }}"/>
+        <button type="submit" class="button discount-button button-primary" data-coupon-submit>OK</button>
+      </div>
+
+      {% if cart.invalid_coupon? %}
+        <span class="discounts-notice notice notice-error">
+          {{ cart.coupon_error }}
+        </span>
+      {% endif %}
+
+    {% endif %}
+
+    <div class="discount-comment-list js-discount-comment-list">
+      {% for discount in cart.discounts %}
+        <div class="discount-comment">
+          <span class="discount-description">{{ discount.description }}:</span>
+          <span class="discount-amount">{{ discount.amount | money }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script type="text/template" hidden data-template-id="cart-discounts">
+  <% _.forEach(discounts, function (discount) { %>
+    <div class="discount-comment">
+      <span class="discount-description"><%= discount.description %>:</span>
+      <span class="discount-amount"><%= Shop.money.format(discount.amount) %></span>
+    </div>
+  <% }); %>
+</script>
