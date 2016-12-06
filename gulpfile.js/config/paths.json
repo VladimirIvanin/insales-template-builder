@@ -1,0 +1,31 @@
+{
+  "components": {
+    "styles": "./components/*/*.*css",
+    "scripts": "./components/*/*.js",
+    "liquid": "./components/*/*.liquid"
+  },
+  "layouts": {
+    "styles": "./layouts/*/*.*css",
+    "scripts": "./layouts/*/*.js",
+    "liquid": "./layouts/*/*.liquid"
+  },
+  "plugins": {
+    "styles": "./plugins/*/*/*.*css",
+    "scripts": "./plugins/*/*/*.js"
+  },
+  "config": {
+    "configs": "./config/*.json"
+  },
+  "media": {
+    "paths": "./media/*/*.*"
+  },
+  "theme": {
+    "media": "./theme/media",
+    "config": "./theme/config",
+    "snippets": "./theme/snippets",
+    "templates": "./theme/templates"
+  },
+  "clear": {
+    "path": "./theme/*/*"
+  }
+}

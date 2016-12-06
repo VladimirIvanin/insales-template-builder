@@ -1,0 +1,37 @@
+{% unless settings.cards_crop_off %}
+  {% assign is_cover = 'is-cover' %}
+{% endunless %}
+
+
+<a href="{{ product.url }}" class="product-card product-link {{ product_card }}">
+  <div class="card-inner">
+    <div class="product-photo">
+
+      <div class="product-link image-container is-square {{ is_cover }}">
+        <img src="{{ product.first_image.large_url }}" alt="{{ product.images.first.title }}"
+             title="{{ product.first_image.title }}" class="product-image">
+      </div>
+
+      {% include "product_labels" %}
+
+      <div class="product-prices {% if product.old_price %}with-discount{% endif %} in-card">
+        <div class="price in-card">
+          {% if product.price_varies? %}
+            {{ messages.label_from | downcase }}
+          {% endif %}
+          {{ product.price_min | money }}
+        </div>
+      </div>
+    </div>
+
+    <div class="product-caption">
+      <div class="product-title in-card">
+        {{ product.title }}
+      </div>
+    </div>
+
+  </div>
+</a>
+
+{% assign is_cover = null %}
+{% assign label_from = null %}

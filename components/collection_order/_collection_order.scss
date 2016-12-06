@@ -1,0 +1,16 @@
+/** collection-order */
+
+.collection-order-wrapper {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.collection-order .label-field {
+	margin: 0.5rem 0.5rem;
+}

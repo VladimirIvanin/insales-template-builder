@@ -1,0 +1,34 @@
+{% comment %} Заголовок страницы {% endcomment %}
+<div class="page-header-wrapper">
+  <h1 class="page-header">
+    {% case template %}
+
+      {% when 'cart' %}
+        {{ messages.cart_title }}
+
+      {% when 'search' %}
+        {{ messages.search_title }}
+
+      {% when 'compare' %}
+        {{ messages.comparison_title }}
+
+      {% when 'index' %}
+        {{ page.title | editable }}
+
+      {% when 'collection' %}
+        {{ collection.title | editable }}
+
+      {% when 'product' %}
+        {{ product.title | editable }}
+
+      {% when 'blog' %}
+        {{ blog.title | editable }}
+
+      {% when 'article' %}
+        {{ article.title | editable }}
+
+        {% when 'page' %}
+          {{ page.title | editable }}
+    {% endcase %}
+  </h1>
+</div><!-- /.page_header -->

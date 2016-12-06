@@ -1,0 +1,111 @@
+{% include 'breadcrumb' %}
+
+<div class="row">
+
+  <div class="page-sidebar cell-3 cell-4-md hide-sm">
+
+    <div class="collection-menu-wrapper sidebar-block">
+      <div class="collection-menu-header sidebar-block-header">
+        {{ messages.label_catalog }}
+      </div>
+
+      {% include "menu", handle: collection.parent.handle, class: 'collection-menu', type: 'collection' %}
+    </div>
+
+    {% include "collection_filters", header: messages.label_filter, form_submit: true %}
+
+    <blocks::user />
+
+  </div>
+
+  <div class="page-content cell-9 cell-8-md cell-12-sm">
+
+    <div class="decorated-title-wrapper">
+      <div class="decorated-title">
+        {% include "page_header" %}
+      </div>
+
+      <div class="collection-toolbar">
+        <button type="button"
+          class="button hide show-sm open-filter js-open-filter is-primary"
+          data-type="panel"
+          data-target="#mobile-filter"
+          data-position="left"
+          data-onopen="initCollectionFilter"
+        >{{ messages.label_filter }}</button>
+
+        {% if collection.current_characteristics.size > 0 or price_min or collection.current_option_values.size > 0 %}
+        <a href="{{ collection.url }}" class="button open-filter is-primary hide show-sm">
+          <i class="fa fa-close"></i>
+        </a>
+        {% endif %}
+
+        {% include "collection_order", hide_page_size: true %}
+      </div>
+    </div>
+
+    {% paginate products by 12 %}
+
+      {% if settings.category_description_position == 'before_products' and paginate.current_page == 1 %}
+
+        {% if filter.description %}
+
+          <div class="collection-description 23234 at-top content editor">
+            {{ filter.description | editable }}
+          </div>
+
+        {% endif %}
+
+        {% if collection.description %}
+
+          <div class="collection-description 1111 at-top content editor">
+            {{ collection.description | editable }}
+          </div>
+
+        {% endif %}
+
+      {% endif %}
+
+      {% include "collection_products" %}
+
+      {% unless products.size < 12 %}
+        <div class="collection-toolbar is-bottom flex-middle">
+          {% include "collection_order", hide_sort: true %}
+
+          {% include "pagination" %}
+        </div>
+      {% endunless %}
+
+      {% if settings.category_description_position == 'after_products' and paginate.current_page == 1 %}
+
+        {% if filter.description %}
+
+          <div class="collection-description at-bottom content editor">
+            {{ filter.description | editable }}
+          </div>
+
+        {% endif %}
+
+        {% if collection.description %}
+
+          <div class="collection-description at-bottom content editor">
+            {{ collection.description | editable }}
+          </div>
+
+        {% endif %}
+      {% endif %}
+
+      {% if paginate.current_page == 1 %}
+
+        <div class="collection-description is-seo content editor">
+          {{ collection.seo_description | editable }}
+        </div>
+
+      {% endif %}
+
+    {% endpaginate %}
+
+    <slider::recently_view />
+
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<header class="header">
+  <div class="row flex-between flex-middle">
+
+    <div class="logotype header-block cell-6 cell-12-sm _flex-first-sm flex-center-md">
+      {% if settings.logotype_type == 'image' %}
+
+      <a title="{{ account.title }}" href="/" class="logotype-link">
+        <img src="{{ 'logotype.jpg' | asset_url }}" class="logotype-image" alt="{{ account.title }}" title="{{ account.title }}" />
+      </a>
+
+      {% else %}
+
+      <a title="{{ account.title }}" href="/" class="logotype-link">
+        <span class="logotype-text">{{ account.title | editable }}</span>
+      </a>
+
+      {% endif %}
+    </div>
+
+    <div class="cell-3 cell-12-sm">
+      <div class="phone header-block flex-center-sm">
+        {% case settings.phone %}
+          {% when 'from_settings' %}
+              <a href="tel:{{ account.phone }}" class="contact-link"><i class="icon fa fa-phone"></i> {{ account.phone | editable }}</a>
+          {% when 'edited_block' %}
+            {{ blocks.phone.content | editable }}
+        {% endcase %}
+      </div>
+
+      <div class="email header-block flex-center-xs hidden-sm">
+        {% case settings.email %}
+          {% when 'from_settings' %}
+            <a href="mailto:{{ account.email }}" class="contact-link"><i class="icon fa fa-envelope"></i> {{ account.email | editable }}</a>
+          {% when 'edited_block' %}
+            {{ blocks.email.content | editable }}
+        {% endcase %}
+      </div>
+    </div>
+
+
+    <div class="cell-3 header-block flex-end hidden-sm">
+      {% include "search_widget"%}
+    </div>
+  </div>
+
+</header>
+
+<div class="main-menu-wrapper hide-sm">
+  {% include "menu", class: 'main-menu', handle: 'all', type: 'collection' %}
+</div>

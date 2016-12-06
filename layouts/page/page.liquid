@@ -1,0 +1,15 @@
+{% include "breadcrumb" %}
+
+<div class="decorated-title-wrapper">
+  <div class="decorated-title">
+    {% include "page_header" %}
+  </div>
+</div>
+
+{% if page.content != '' %}
+  <div class="page-content page-{{ page.url }}">
+    <div class="editor">
+      {{ page.content | editable }}
+    </div>
+  </div>
+{% endif %}

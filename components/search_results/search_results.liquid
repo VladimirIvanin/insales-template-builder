@@ -1,0 +1,33 @@
+<div class="products-list row">
+
+  {% if search.performed? %}
+
+    {% if search.results != empty %}
+
+      {% for product in search.results %}
+        <div class="cell-3 cell-4-md cell-6-sm cell-12-xs">
+          {% include 'product_card' %}
+        </div>
+      {% endfor %}
+
+    {% else %}
+
+      <div class="cell-12">
+        <div class="notice notice-info">
+          {{ messages.search_is_fail }}
+        </div>
+      </div>
+
+    {% endif %}
+
+  {% else %}
+
+    <div class="cell-12">
+      <div class="notice notice-info">
+        {{ messages.search_is_empty }}
+      </div>
+    </div>
+
+  {% endif %}
+
+</div>

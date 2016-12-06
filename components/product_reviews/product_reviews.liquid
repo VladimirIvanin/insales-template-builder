@@ -1,0 +1,125 @@
+{% if account.reviews_enabled? %}
+  <div class="reviews-header">
+    <h2>{{ messages.reviews }} ({{ product.reviews_count }})</h2>
+  </div>
+
+  {% if product.reviews_count > 0 %}
+    <div class="reviews-list">
+      {% for review in product.reviews %}
+
+        <div class="reviews-item">
+          <div class="review-header"></div>
+          <div class="review-body">
+            <p class="text">
+              {{ review.content }}
+            </p>
+          </div>
+          <div class="review-footer">
+            <div class="date">
+              <i class="fa fa-calendar"></i>
+              {{ review.created_at | date: "%d.%m.%Y %H:%M" }}
+            </div>
+            <div class="author">
+              <i class="fa fa-user"></i> {{ review.author }}
+            </div>
+            <div class="star-rating-wrapper">
+              <div class="star-rating">
+                {% assign r = 5 %}
+                {% for i in (1..5) %}
+                  <span class="star-item {% if review.rating == r %}active{% endif %}"></span>
+                  {% assign r = r | minus: 1 %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div><!-- /.reviews-item -->
+
+      {% endfor %}
+    </div><!-- /.reviews-list -->
+  {% endif %}
+
+  <div class="reviews-wrapper">
+    <button type="button" class="button js-reviews-toggle">{{ messages.button_review }}</button>
+
+    <div class="reviews-form">
+      {% form review %}
+
+        {% if form.posted_successfully? %}
+          {% if account.reviews_moderated? %}
+            <div class="notice notice-success">
+              {{ messages.review_is_added_moderated }}
+            </div>
+          {% else %}
+            <div class="notice notice-success">
+              {{ messages.review_is_added }}
+            </div>
+          {% endif %}
+        {% endif %}
+
+        <div id="review_form" class="form">
+
+          <div class="form-row  is-required {% if review.errors contains 'author' %}with-error{% endif %}">
+            <label class="form-label">{{ messages.field_name }}</label>
+
+            <input name="review[author]" value="{{ review.author }}" type="text" class="form-field text-field"/>
+          </div>
+
+          <div class="form-row is-required {% if review.errors contains 'email' %}with-error{% endif %}">
+            <label class="form-label">{{ messages.field_email }}</label>
+
+            <input name="review[email]" value="{{ review.email }}" type="text" class="form-field text-field"/>
+          </div>
+
+          <div class="form-row is-required is-wide {% if review.errors contains 'content' %}with-error{% endif %}">
+            <label class="form-label">{{ messages.field_message }}</label>
+
+            <textarea name="review[content]" class="form-field text-field is-textarea">{{ review.content }}</textarea>
+          </div>
+
+          {% if review.captcha_enabled? %}
+            <div class="form-row is-required {% if review.errors contains 'captcha_solution' %}with-error{% endif %}">
+              <label class="form-label">{{ messages.field_captcha }}</label>
+
+              <div id="captcha_challenge" class="captcha-image">
+                {{ review | captcha_challenge }}
+              </div>
+
+              <input name="review[captcha_solution]" type="text" class="form-field text-field is-captcha"/>
+            </div>
+          {% endif %}
+
+          <div class="form-row">
+            <label class="form-label">{{ messages.field_rating }}</label>
+
+            <div class="star-rating-wrapper">
+              <div class="star-rating">
+                {% assign r = 5 %}
+                {% for r in (1..5) %}
+                  <input name="review[rating]" id="star{{ r }}" type="radio" name="reviewStars" class="star-radio"
+                        value="{{ r }}"/>
+                  <label title="{{ r }}" for="star{{ r }}" class="star-label"></label>
+                  {% assign r = r | minus: 1 %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="form-controls">
+            <button type="submit" class="button is-primary js-validate-form">{{ messages.button_submit }}</button>
+          </div>
+
+        </div><!-- /.review_form -->
+
+        {% if account.reviews_moderated? %}
+          <p class="notice notice-info">
+            <i class="fa fa-warning"></i>
+            {{ messages.reviews_are_moderated }}
+          </p>
+        {% endif %}
+
+      {% endform %}
+
+    </div>
+  </div>
+
+{% endif %}

@@ -1,0 +1,64 @@
+<div class="product-content">
+
+  <div class="tabs-menu-wrapper">
+    <ul class="tabs-menu product-tabs-list">
+
+      {% if product.description %}
+        <li class="tabs-menu-item">
+          <a href="#product-description" data-toggle="tabs" class="tabs-menu-link">Описание</a>
+        </li>
+      {% endif %}
+
+      {% if product.properties.size > 0 %}
+        <li class="tabs-menu-item">
+          <a href="#product-characteristics" data-toggle="tabs" class="tabs-menu-link">Характеристики</a>
+        </li>
+      {% endif %}
+
+      {% if account.reviews_enabled? %}
+        <li class="tabs-menu-item">
+          <a href="#product-comment" data-toggle="tabs" class="tabs-menu-link">Отзывы</a>
+        </li>
+      {% endif %}
+
+    </ul>
+  </div><!-- /.tabs-list -->
+
+  <div class="tabs-list product-tabs-list">
+
+    {% if product.description %}
+      <div id="product-description" class="tab-block active">
+        <div class="editor">
+          {{ product.description | editable }}
+        </div>
+      </div><!-- /#product-description -->
+    {% endif %}
+
+    {% if product.properties.size > 0 %}
+      <div id="product-characteristics" class="tab-block">
+        <div class="editor">
+          <table class="table table-bordered table-striped table-hover">
+
+            {% for property in product.properties %}
+            {% for characteristic in property.characteristics %}
+            <tr>
+              <td>{{ property.name }}</td>
+              <td>{{ characteristic.title }}</td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+
+          </table>
+        </div>
+      </div><!-- /#product-characteristics -->
+    {% endif %}
+
+    {% if account.reviews_enabled? %}
+      <div id="product-comment" class="tab-block">
+        {% include 'product_reviews' %}
+      </div><!-- /#product-comment -->
+    {% endif %}
+
+  </div><!-- /.tabs-list -->
+
+</div>

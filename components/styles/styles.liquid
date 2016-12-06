@@ -1,0 +1,17 @@
+{% if settings.font_family_primary contains 'google:' %}
+  {% assign font_family_primary = settings.font_family_primary | replace_first: 'google:', '' %}
+  <link href="//fonts.googleapis.com/css?family={{ font_family_primary }}:300,400,700&subset=cyrillic,latin" rel="stylesheet" />
+{% endif %}
+
+{% if settings.logotype_type == 'text' %}
+  {% if settings.logotype_font_family contains 'google:' and settings.font_family_primary != settings.logotype_font_family %}
+    {% assign logotype_font_family = settings.logotype_font_family | replace_first: 'google:', '' %}
+    <link href="//fonts.googleapis.com/css?family={{ logotype_font_family }}:300,400,700&subset=cyrillic,latin" rel="stylesheet" />
+  {% endif %}
+{% endif %}
+
+<link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" crossorigin="anonymous" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+
+<link href="{{ 'plugins.css' | asset_url }}" rel="stylesheet" type="text/css" />
+<link href="{{ 'theme.css' | asset_url }}" rel="stylesheet" type="text/css" />

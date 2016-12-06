@@ -1,0 +1,56 @@
+<div class="top-panel">
+  <div class="container">
+    <div class="top-panel-inner row flex-between flex-middle">
+
+      <div class="top-menu-wrapper cell- hide-sm">
+        {% include "menu", class: 'top-menu', handle: 'main-menu', type: linklists %}
+      </div>
+
+      <div class="cell- hide show-sm">
+        <button type="button"
+          class="top-panel-open"
+          data-target="#left-panel"
+          data-type="panel"
+          data-position="left"
+          data-onopen="initLeftMenu"
+        >
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <button type="button"
+          class="top-panel-open"
+          data-target="#mobile-search"
+          data-type="panel"
+          data-position="top mobile-search"
+        >
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+
+      <div class="compares-widget cell- ">
+        <a href="/compares" class="compares-widget-link">
+          <i class="fa fa-bar-chart"></i>
+          <span class="hide-sm">{{ messages.comparison_title }}:</span>
+          <span class="compares-widget-count js-compares-widget-count"></span>
+        </a>
+      </div>
+
+      <div class="shopcart-widget cell- text-right">
+        <a href="{{ cart_url }}" title="Корзина" class="shopcart-link">
+          <span class="shopcart-icon">
+            <i class="fa fa-shopping-cart"></i>
+          </span>
+
+          <span class="shopcart-widget-count js-shopcart-widget-count hide show-sm"></span>
+
+          <span class="hide-sm">
+            {{ messages.cart_title }}:
+
+            <span class="shopcart-widget-amount js-shopcart-widget-amount"></span>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+/** article */
+.article-preview-wrapper {
+	margin-top: 1rem;
+}
+
+.article-preview-wrapper + .article-preview-wrapper {
+	margin-top: 3rem;
+}
+
+.article-preview {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-align: flex-start;
+	-webkit-align-items: flex-start;
+	-ms-flex-align: flex-start;
+	align-items: flex-start;
+	-webkit-align-content: stretch;
+	-ms-flex-line-pack: stretch;
+	align-content: stretch;
+	margin-left: -1rem;
+	margin-right: -1rem;
+}
+
+.article-preview > * {
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
