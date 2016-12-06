@@ -7,12 +7,52 @@ var Promise = require('promise');
 var _ = require('lodash');
 var paths = require('../config/paths.json');
 var contents = require('../help/contents.js');
+var replace = require('gulp-replace');
+
 var styles = [];
 var scripts = [];
+var conponents = [];
 
 gulp.task('deploy:components', ['deploy:components:styles', 'deploy:components:scripts', 'deploy:components:liquid'], function () {
 
 })
+
+
+gulp.task('deploy:components:list', ['deploy:components:get_list'], function () {
+  console.log(conponents)
+});
+
+gulp.task('deploy:components:get_list', function () {
+  return new Promise(function (resolve, reject) {
+
+  gulp.src(paths.components.liquid)
+      .pipe(replace(/{% include .* %}/g, function (matchInclude) {
+        var includes = replaceQuotes(matchInclude);
+        var values = includes.split('"');
+        conponents.push(values[1])
+      }))
+
+  gulp.src(paths.layouts.liquid)
+      .pipe(replace(/{% include .* %}/g, function (matchInclude) {
+        var includes = replaceQuotes(matchInclude);
+        var values = includes.split('"');
+        conponents.push(values[1])
+      }))
+
+
+      setTimeout(function(){
+        conponents = _.uniq(conponents);
+        resolve()
+      }, 4000)
+  })
+})
+
+function replaceQuotes(AInputText) {
+  var AReplaceText = '"';
+  var VRegExp = new RegExp(/[']/g);
+  var VResult = AInputText.replace(VRegExp, AReplaceText);
+  return VResult;
+}
 
 gulp.task('deploy:components:styles', function (cb) {
     gulp.src(paths.components.styles)
