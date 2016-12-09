@@ -1,11 +1,12 @@
 {
   "components": {
-    "styles": "./components/*/*.*css",
+    "styles": "./components/*/css/*.css",
+    "scss": "./components/*/scss/*.css",
     "scripts": "./components/*/*.js",
     "liquid": "./components/*/*.liquid"
   },
   "layouts": {
-    "styles": "./layouts/*/*.*css",
+    "styles": "./layouts/*/**.*css",
     "scripts": "./layouts/*/*.js",
     "liquid": "./layouts/*/*.liquid"
   },

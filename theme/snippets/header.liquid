@@ -1,0 +1,10 @@
+<header class="main-header container">
+  <div class="row flex-center">
+    <a href="/" class="logotype-link">
+      logotype
+    </a>
+  </div>
+  <div class="row flex-center">
+    {% include "menu", menu_class: 'main-menu', source_type: 'collection', source_handle: 'all', show_icon: false, level_limit: 1 %}
+  </div>
+</header>
