@@ -7,20 +7,14 @@
   {% include "styles" %}
 </head>
 
-<body class="adaptive fhg-body">
-  {% include "top_panel" %}
+<body>
+  {% include "header" %}
 
-  <div class="page-wrapper fhg-content">
-    <div class="container page-inner ">
-      {% include "header" %}
-
-      {{ content_for_layout }}
-    </div>
+  <div class="container page-inner ">
+    {{ content_for_layout }}
   </div>
 
   {% include "footer" %}
-
-  {% include "modals" %}
 
   {% include "scripts" %}
 </body>

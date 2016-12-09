@@ -8,7 +8,6 @@ var paths = require('../config/paths.json');
 gulp.task('deploy:media', function (cb) {
     gulp.src(paths.media.paths)
       .pipe(rename(function (_path) {
-        styles.push(_path.basename);
         _path.dirname = "";
       }))
       .pipe(gulp.dest(paths.theme.media))

@@ -1,9 +1,0 @@
-.blog {
-
-}
-
-.blog-toolbar {
-  @include display-flex();
-  @include justify-content(space-between);
-  border-top: 2px solid $gray-lighter;
-}

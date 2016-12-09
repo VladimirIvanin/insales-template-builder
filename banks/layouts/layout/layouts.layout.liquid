@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% include "head" %}
+
+  {% include "styles" %}
+</head>
+
+<body class="adaptive fhg-body">
+  {% include "top_panel" %}
+
+  <div class="page-wrapper fhg-content">
+    <div class="container page-inner ">
+      {% include "header" %}
+
+      {{ content_for_layout }}
+    </div>
+  </div>
+
+  {% include "footer" %}
+
+  {% include "modals" %}
+
+  {% include "scripts" %}
+</body>
+</html>

@@ -1,4 +1,5 @@
 /node_modules
+/theme/assets
 /theme/devufile.json
 /theme/*.zip
 npm-debug.log*
