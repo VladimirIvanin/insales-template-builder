@@ -1,0 +1,60 @@
+<div class="product-info">
+  
+  <h1 class="product-title">
+    {{ product.title }}
+  </h1>
+
+  <div class="product-sku">
+    {% if product.variants.first.sku %}
+    арт. {{ product.variants.first.sku }}
+    {% endif %}
+  </div>
+
+  <div class="product-prices">
+    {% if product.old_price %}
+      <div class="product-old_price">
+        <span>{{ product.old_price | money }}</span>
+      </div>
+    {% endif %}
+    <div class="product-price">
+      <span>{{product.price | money }}</span>
+    </div>
+  </div>
+
+  {% if product.short_description %}
+  <div class="product-short_description">
+    {{ product.short_description }}
+  </div>
+  {% endif %}
+
+  <form class="" action="{{ cart_url }}" method="post" data-product-id="{{ product.id }}">
+  {% if product.show_variants? %}
+    <select name="variant_id" data-product-variants>
+      {% for variant in product.variants %}
+        <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+      {% endfor %}
+    </select>
+  {% else %}
+    <input type="hidden" name="variant_id" value="{{product.variants.first.id}}" >
+  {% endif %}
+
+  <div data-quantity class="product-quantity">
+    <input class="product-quantity-input" type="text" name="quantity" value="1" />
+    <div class="item-quantity-controls">
+      <span data-quantity-change="1" class="item-quantity-control unselectable">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </span>
+      <span data-quantity-change="-1" class="item-quantity-control unselectable">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="buy">
+    <button type="submit" data-item-add class="button button-buy in-product">
+      В корзину
+    </button>
+  </div>
+
+  </form>
+</div>

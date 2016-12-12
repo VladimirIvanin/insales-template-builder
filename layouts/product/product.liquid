@@ -1,0 +1,14 @@
+<div class="container">
+  {% include "breadcrumb" %}
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="cell-4">
+      <img src="{{ product.first_image.large_url }}">
+    </div>
+    <div class="cell-8">
+      {% include "product_info" %}
+    </div>
+  </div>
+</div>

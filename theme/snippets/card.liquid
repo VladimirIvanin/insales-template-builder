@@ -1,0 +1,68 @@
+{% assign labels_list = '' %}
+{% if product.properties.stiker %}
+  {% for characteristic in product.properties.stiker.characteristics %}
+    {% assign labels_list = labels_list | append: '<div class="stiker stiker-'| append: characteristic.handle | append: '">' | append: characteristic.title | append: '</div>' %}
+  {% endfor %}
+{% endif %}
+
+{% if product.old_price %}
+  {% if product.old_price > product.price %}
+    {% assign discount = product.price | divided_by: product.old_price | times: -100 | plus: 100 | round: 0 %}
+  {% endif %}
+{% endif %}
+
+<form class="card {{ card_prefix }}" action="{{ cart_url }}" method="post" data-product-id="{{ product.id }}">
+  <div class="card-info">
+    <div class="card-image">
+      {{ labels_list }}
+      {% if discount > 0 %}
+        <div class="stiker stiker-sale">
+           скидка %
+        </div>
+      {% endif %}
+        <a href="{{ product.url }}" class="image-inner">
+          <div class="image-wraps">
+            <span class="image-container is-square">
+              <img src="{{ product.images.first.compact_url }}">
+            </span>
+          </div>
+        </a>
+    </div>
+    <div class="card-prices">
+        {% if product.old_price %}
+        <div class="card-old_price">
+          {{product.old_price | money}}
+        </div>
+        {% endif %}
+        <div class="card-price">
+          {{product.price | money}}
+        </div>
+    </div>
+    <div class="card-title">
+      <a href="{{ product.url }}">
+        {{ product.title }}
+      </a>
+    </div>
+  </div>
+  <div class="card-action">
+
+      <div data-quantity class="hidden">
+        <input type="hidden" name="quantity" value="1" />
+      </div>
+      <input type="hidden" name="variant_id" value="{{product.variants.first.id}}" >
+
+      {% if product.variants.size > 1 %}
+        <a href="{{ product.url }}" class="button button-buy">
+          Подробнее
+        </a>
+        {% else %}
+        <a href="{{ product.url }}" class="button button-buy" data-item-add>
+          в корзину
+        </a>
+      {% endif %}
+
+  </div>
+</form>
+{% assign labels_list = null %}
+{% assign discount = null %}
+{% assign prefix_products = null %}
