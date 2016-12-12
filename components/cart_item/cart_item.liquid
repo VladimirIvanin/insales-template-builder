@@ -1,0 +1,55 @@
+<div class="row cart-item" data-item-accessory="{{ item.order_line_id }}" data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}">
+  <div class="cell-2 item-image">
+    <a class="item-img" href="{{item.product.url}}?variant_id={{item.variant.id}}">
+      <img  src="{{ item.product.first_image.medium_url }}">
+    </a>
+  </div>
+  <div class="cell-3 row flex-middle item-info">
+    <div class="item-info-inner">
+      <div class="item-title">
+        <a href="{{item.product.url}}?variant_id={{item.variant.id}}">
+          {{ item.product.title }}
+        </a>
+      </div>
+      <div class="item-variant">
+        {% for option_value in item.variant.option_values %}
+        <div class="item-option_name">
+          <span>{{ option_value.option_name.title }}</span> - <span>{{ option_value.title }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="cell-2 row flex-middle flex-start">
+    <div class="item-money">
+      {{ item.sale_price | money }}
+    </div>
+  </div>
+  <div class="cell-2 row flex-middle flex-start" data-quantity>
+    <div class="item-quantity">
+      <input type="text" name="cart[quantity][{{ item.id }}]" value="{{ item.quantity }}" class="item-quantity-input in-cart">
+      <div class="item-quantity-controls">
+        <span data-quantity-change="1" class="item-quantity-control unselectable">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </span>
+        <span data-quantity-change="-1" class="item-quantity-control unselectable">
+          <i class="fa fa-minus" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="cell-2 row flex-middle flex-start">
+    <div class="item-total_price js-item-total_price">
+      {{ item.total_price | money }}
+    </div>
+  </div>
+  <div class="cell-1 row flex-middle flex-end">
+    <div class="item-remove">
+      <button class="item-delete text-center" type="button" data-item-delete="{{ item.id }}">
+        <span>
+          &times;
+        </span>
+      </button>
+    </div>
+  </div>
+</div>

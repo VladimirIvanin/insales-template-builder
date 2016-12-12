@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>
+    Поиск
+  </h1>
+  {% paginate search.results by 12 %}
+
+    {% include "search_results" %}
+
+    <div class="search-results-toolbar is-bottom flex-end">
+      {% include "pagination" %}
+    </div>
+  {% endpaginate %}
+</div>

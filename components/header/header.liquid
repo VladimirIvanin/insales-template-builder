@@ -13,7 +13,7 @@
     <div class="cell-3 text-right">
       <div class="cart-widget">
         <a href="/cart_items" class="cart-widget-link">
-          Корзина
+          Корзина {% if cart.items_count > 0 %}({{ cart.items_count }}){% endif %}
         </a>
       </div>
     </div>
