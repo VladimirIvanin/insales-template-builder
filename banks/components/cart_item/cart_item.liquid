@@ -1,53 +1,55 @@
-<div class="cart-item" data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}">
-  <div class="cart-item-inner row flex-middle">
-
-    <div class="item-image-wrapper cell-2 cell-3-sm">
-      <div class="item-image-inner">
-        <a href="{{ item.product.url }}" title='{{ item.title }}' class="item-image-link image-container is-square">
-          <img title='{{ item.title }}' alt='{{ item.title }}' src="{{ item.product.first_image.medium_url }}"
-               class="item-image">
+<div class="row cart-item" data-item-accessory="{{ item.order_line_id }}" data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}">
+  <div class="cell-2 item-image">
+    <a class="item-img" href="{{item.product.url}}?variant_id={{item.variant.id}}">
+      <img  src="{{ item.product.first_image.medium_url }}">
+    </a>
+  </div>
+  <div class="cell-3 row flex-middle item-info">
+    <div class="item-info-inner">
+      <div class="item-title">
+        <a href="{{item.product.url}}?variant_id={{item.variant.id}}">
+          {{ item.product.title }}
         </a>
       </div>
-    </div>
-
-    <div class="item-caption cell-3 cell-9-md">
-      <div class="item-title">
-        <a href="{{ item.product.url }}">{{ item.title }}</a>
-      </div>
-      {% if item.sku %}
-        <div class="item-article hide-xs">{{ messages.label_article }}{{ item.sku }}</div>
-      {% endif %}
-    </div>
-
-    <div class="item-prices in-item cell-2 cell-3-md cell-7-xs">
-      <div class="item-price js-item-price">
-        {{ item.sale_price | money }}
+      <div class="item-variant">
+        {% for option_value in item.variant.option_values %}
+        <div class="item-option_name">
+          <span>{{ option_value.option_name.title }}</span> - <span>{{ option_value.title }}</span>
+        </div>
+        {% endfor %}
       </div>
     </div>
-
-    <div class="item-counter cell-2 cell-3-md cell-5-xs flex-end-xs" data-quantity>
-      <div class="counter">
-        <button type="button" data-quantity-change="-1" class="counter-button button button-number count-down">
-          <i class="icon fa fa-minus"></i>
-        </button>
-
-        <input type="text" value="{{ item.quantity }}" min="1" max="1000" name="cart[quantity][{{ item.id }}]" class="counter-input input-number input-field"/>
-
-        <button type="button" data-quantity-change="1" class="counter-button button button-number count-up">
-          <i class="icon fa fa-plus"></i>
-        </button>
+  </div>
+  <div class="cell-2 row flex-middle flex-start">
+    <div class="item-money">
+      {{ item.sale_price | money }}
+    </div>
+  </div>
+  <div class="cell-2 row flex-middle flex-start" data-quantity>
+    <div class="item-quantity">
+      <input type="text" name="cart[quantity][{{ item.id }}]" value="{{ item.quantity }}" class="item-quantity-input in-cart">
+      <div class="item-quantity-controls">
+        <span data-quantity-change="1" class="item-quantity-control unselectable">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </span>
+        <span data-quantity-change="-1" class="item-quantity-control unselectable">
+          <i class="fa fa-minus" aria-hidden="true"></i>
+        </span>
       </div>
     </div>
-
-    <div class="item-total in-item js-item-total-price cell-2 cell-4-md cell-9-xs">
+  </div>
+  <div class="cell-2 row flex-middle flex-start">
+    <div class="item-total_price js-item-total_price">
       {{ item.total_price | money }}
     </div>
-
-    <div class="cell-1 cell-2-md cell-3-xs flex-end">
-      <button type="submit" class="item-delete button is-transparent" data-item-delete="{{ item.id }}">
-        <i class="fa fa-remove"></i>
+  </div>
+  <div class="cell-1 row flex-middle flex-end">
+    <div class="item-remove">
+      <button class="item-delete text-center" type="button" data-item-delete="{{ item.id }}">
+        <span>
+          &times;
+        </span>
       </button>
     </div>
   </div>
-
-</div><!-- /.cart-item -->
+</div>

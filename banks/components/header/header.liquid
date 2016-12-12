@@ -1,32 +1,24 @@
-<header class="header">
-  <div class="row flex-between flex-middle">
-
-    <div class="logotype header-block cell-6 cell-12-sm _flex-first-sm flex-center-md">
-
-      <a title="{{ account.title }}" href="/" class="logotype-link">
-        <span class="logotype-text">{{ account.title | editable }}</span>
+<header class="main-header container">
+  <div class="row flex-middle">
+    <div class="cell-3">
+      <div class="phone in-header">
+        {{ account.phone }}
+      </div>
+    </div>
+    <div class="cell-6 text-center">
+      <a href="/" class="logotype-link">
+        logotype
       </a>
-
     </div>
-
-    <div class="cell-3 cell-12-sm">
-      <div class="phone header-block flex-center-sm">
-        <a href="tel:{{ account.phone }}" class="contact-link"><i class="icon fa fa-phone"></i> {{ account.phone | editable }}</a>
+    <div class="cell-3 text-right">
+      <div class="cart-widget">
+        <a href="/cart_items" class="cart-widget-link">
+          Корзина {% if cart.items_count > 0 %}({{ cart.items_count }}){% endif %}
+        </a>
       </div>
-
-      <div class="email header-block flex-center-xs hidden-sm">
-        <a href="mailto:{{ account.email }}" class="contact-link"><i class="icon fa fa-envelope"></i> {{ account.email | editable }}</a>
-      </div>
-    </div>
-
-
-    <div class="cell-3 header-block flex-end hidden-sm">
-      {% include "search_widget"%}
     </div>
   </div>
-
+  <div class="row flex-center">
+    {% include "menu", menu_class: 'main-menu', source_type: 'collection', source_handle: 'all', show_icon: false, level_limit: 1 %}
+  </div>
 </header>
-
-<div class="main-menu-wrapper hide-sm">
-  {% include "menu", class: 'main-menu', handle: 'all', type: 'collection' %}
-</div>

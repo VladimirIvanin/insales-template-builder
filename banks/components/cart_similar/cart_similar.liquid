@@ -1,0 +1,45 @@
+{% assign slider_show = false %}
+{% assign products_ids_list = '' %}
+{% for item in cart.items %}
+  {% if item.product.related_products.size > 0 %}
+    {% for product in item.product.related_products %}
+    {% assign let_prod_id = product.id | append: ',' %}
+      {% unless products_ids_list contains let_prod_id %}
+        {% assign slider_show = true %}
+        {% break %}
+      {% endunless %}
+      {% capture products_ids_list %}{{products_ids_list}} {{product.id}},{% endcapture %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% if slider_show %}
+<div class="container similar_products--block in-cart">
+  <div class="page-title is-decor">
+    Не забудте купить
+  </div>
+
+<div class="similar_products-slider swiper-container js-products-slider">
+
+  <div class="swiper-wrapper similar_products-wrapper">
+    <!-- Slides -->
+    {% assign products_ids_list = '' %}
+    {% for item in cart.items %}
+      {% if item.product.related_products.size > 0 %}
+        {% for product in item.product.related_products %}
+        {% assign let_prod_id = product.id | append: ',' %}
+          {% unless products_ids_list contains let_prod_id %}
+            <div class="swiper-slide similar_products-slide">
+              {% include "card" %}
+            </div>
+          {% endunless %}
+          {% capture products_ids_list %}{{products_ids_list}} {{product.id}},{% endcapture %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+</div>
+{% endif %}
+
+{% assign slider_show = null %}

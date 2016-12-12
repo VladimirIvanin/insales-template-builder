@@ -1,23 +1,13 @@
-<div class="page-content">
-  {% include "breadcrumb" %}
+<div class="container">
+  <h1>
+    Поиск
+  </h1>
+  {% paginate search.results by 12 %}
 
-  <div class="decorated-title-wrapper">
-    <div class="decorated-title">
-      {% include "page_header" %}
+    {% include "search_results" %}
+
+    <div class="search-results-toolbar is-bottom flex-end">
+      {% include "pagination" %}
     </div>
-
-    {% include "search_widget" with "on-page" %}
-  </div>
-
-  <div class="result-list">
-
-    {% paginate search.results by 12 %}
-
-      {% include "search_results" %}
-
-      <div class="search-results-toolbar is-bottom flex-end">
-        {% include "pagination" %}
-      </div>
-    {% endpaginate %}
-  </div>
+  {% endpaginate %}
 </div>

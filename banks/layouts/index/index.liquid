@@ -1,5 +1,4 @@
-{% include "promo_slider" %}
-{% include "benefits" %}
-{% include "title_collections" %}
-{% include "title_categories" %}
-{% include "title_content" %}
+<div class="container">
+  {% include "products_slider", products_handle: 'frontpage', products_title: collections.frontpage.tile, products_prefix: 'is-frontpage' %}
+{{ page.content }}
+</div>
