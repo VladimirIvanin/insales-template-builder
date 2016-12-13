@@ -11,6 +11,7 @@ function initCollectionFilter() {
   });
 
   $('.js-filter-range-slider').rangeSlider();
+  $('.js-filter-range-slider-price').rangeSlider();
 }
 
 function initCollectionMenu () {
