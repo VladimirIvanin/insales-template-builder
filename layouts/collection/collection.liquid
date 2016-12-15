@@ -12,6 +12,9 @@
           {{ collection.description }}
         </div>
       {% endif %}
+      <div class="container">
+        {% include "collection_order" %}
+      </div>
       {% paginate products by 8 %}
       <div class="container">
         <div class="row">
