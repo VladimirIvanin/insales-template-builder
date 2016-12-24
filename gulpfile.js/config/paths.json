@@ -1,12 +1,13 @@
 {
   "components": {
-    "styles": "./components/*/css/*.css",
-    "scss": "./components/*/scss/*.css",
+    "styles": "./components/*/css/*.*css",
+    "scss": "./components/*/scss/*.*css",
     "scripts": "./components/*/*.js",
     "liquid": "./components/*/*.liquid"
   },
   "layouts": {
     "styles": "./layouts/*/**.*css",
+    "scss": "./layouts/*/**.*css",
     "scripts": "./layouts/*/*.js",
     "liquid": "./layouts/*/*.liquid"
   },
@@ -28,5 +29,9 @@
   },
   "clear": {
     "path": "./theme/*/*"
+  },
+  "bundles": {
+    "css": "./bundles/css",
+    "js": "./bundles/js"
   }
 }

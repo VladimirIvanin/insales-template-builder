@@ -1,0 +1,21 @@
+{
+  "styles": "scss",
+  "build": {
+    "css": {
+      "theme": {
+        "concat": true
+      },
+      "layouts": {
+        "concat": true
+      }
+    },
+    "js": {
+      "theme": {
+        "concat": true
+      },
+      "layouts": {
+        "concat": true
+      }
+    }
+  }
+}
