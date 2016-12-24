@@ -1,60 +1,15 @@
-/** breadcrumb */
-@charset "UTF-8";
-
-.breadcrumb-wrapper {
-	margin-top: 1rem;
-	margin-bottom: 2rem;
+.benefit-img {
+  max-width: 200px;
+  margin: 10px auto;
 }
 
-.breadcrumb {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-wrap: wrap;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;
-	width: 100%;
+.main-menu {
+  display: block;
+  text-align: center;
+}
+.main-menu-item {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
 }
 
-.breadcrumb > .breadcrumb-item {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-flex: 1;
-	position: relative;
-}
-
-.breadcrumb .breadcrumb-link {
-	display: inline-block;
-}
-
-.breadcrumb .breadcrumb-item + .breadcrumb-item:before {
-	font-family: "FontAwesome";
-	content: "";
-	padding-right: .4rem;
-	padding-left: .4rem;
-}
-
-.breadcrumb .breadcrumb-link {
-	font-weight: 300;
-	text-decoration: none;
-}
-
-.breadcrumb .breadcrumb-link:not(.current-page) {
-	color: #4285f4;
-	text-decoration: none;
-}
-
-.breadcrumb .breadcrumb-link:not(.current-page):hover {
-	color: #6fc7f2;
-	text-decoration: none;
-}

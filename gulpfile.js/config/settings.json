@@ -1,5 +1,5 @@
 {
-  "styles": "scss",
+  "styles": "css",
   "build": {
     "css": {
       "theme": {
