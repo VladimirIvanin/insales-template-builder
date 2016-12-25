@@ -1,11 +1,13 @@
 var gulp = require('gulp');
+var path = require('path');
+var _ = require('lodash');
 var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var rename = require("gulp-rename");
 var paths = require('../config/paths.json');
 var settings = require('../config/settings.json');
 
-gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:media'],function () {
+gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:bundles:css', 'theme:watch:bundles:js', 'theme:watch:media'],function () {
 });
 
 gulp.task('theme:watch:components', function () {
@@ -111,4 +113,28 @@ gulp.task('theme:watch:media', function () {
           _path.dirname = "";
         }))
         .pipe(gulp.dest(paths.theme.media));
+});
+
+gulp.task('theme:watch:bundles:css', function () {
+  var _css = path.normalize( paths.bundles.css + '/*/*.*css' );
+  return watch(_css, function (vinyl) {
+    var _bundlePath = path.normalize( vinyl.dirname + '/*.*css' );
+    var _bundleName = _.last( _.split(vinyl.dirname, path.sep) ) + '.scss';
+
+    gulp.src(_bundlePath)
+      .pipe(concat(_bundleName))
+      .pipe(gulp.dest(paths.theme.media))
+    });
+});
+
+gulp.task('theme:watch:bundles:js', function () {
+  var _js = path.normalize( paths.bundles.js + '/*/*.*js' );
+  return watch(_js, function (vinyl) {
+    var _bundlePath = path.normalize( vinyl.dirname + '/*.*js' );
+    var _bundleName = _.last( _.split(vinyl.dirname, path.sep) ) + '.js';
+
+    gulp.src(_bundlePath)
+      .pipe(concat(_bundleName))
+      .pipe(gulp.dest(paths.theme.media))
+    });
 });

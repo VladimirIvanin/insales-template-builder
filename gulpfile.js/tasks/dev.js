@@ -1,5 +1,5 @@
 var gulp = require('gulp');
 
-gulp.task('default', ['theme:clean', 'deploy:media', 'deploy:components:styles', 'deploy:components:scripts', 'deploy:components:liquid', 'deploy:layouts:styles', 'deploy:layouts:scripts', 'deploy:layouts:liquid', 'deploy:config', 'deploy:plugins', 'theme:watch'], function () {
+gulp.task('default', ['theme:deploy', 'theme:watch'], function () {
 
 })
