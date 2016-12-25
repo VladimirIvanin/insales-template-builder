@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var path = require('path');
 var _ = require('lodash');
+var autoprefixer = require('gulp-autoprefixer');
 var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var rename = require("gulp-rename");
@@ -16,11 +17,19 @@ gulp.task('theme:watch:components', function () {
     if (isConcatStyles) {
       watch(paths.components.styles, function () {
         gulp.src(paths.components.styles)
+          .pipe(autoprefixer({
+              browsers: ['last 20 versions'],
+              cascade: false
+          }))
           .pipe(concat('theme.scss'))
           .pipe(gulp.dest(paths.theme.media))
       })
     }else{
       watch(paths.components.styles, { ignoreInitial: true })
+        .pipe(autoprefixer({
+            browsers: ['last 20 versions'],
+            cascade: false
+        }))
         .pipe(rename(function (_path) {
           _path.dirname = "";
         }))
@@ -55,11 +64,19 @@ gulp.task('theme:watch:layouts', function () {
   if (isConcatStyles) {
     watch(paths.layouts.styles, function () {
       gulp.src(paths.layouts.styles)
+        .pipe(autoprefixer({
+            browsers: ['last 20 versions'],
+            cascade: false
+        }))
         .pipe(concat('layouts.scss'))
         .pipe(gulp.dest(paths.theme.media))
     })
   }else{
     watch(paths.layouts.styles, { ignoreInitial: true })
+        .pipe(autoprefixer({
+            browsers: ['last 20 versions'],
+            cascade: false
+        }))
         .pipe(rename(function (_path) {
           _path.dirname = "";
         }))
@@ -122,6 +139,10 @@ gulp.task('theme:watch:bundles:css', function () {
     var _bundleName = _.last( _.split(vinyl.dirname, path.sep) ) + '.scss';
 
     gulp.src(_bundlePath)
+      .pipe(autoprefixer({
+          browsers: ['last 20 versions'],
+          cascade: false
+      }))
       .pipe(concat(_bundleName))
       .pipe(gulp.dest(paths.theme.media))
     });
