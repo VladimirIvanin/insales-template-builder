@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var fs = require('fs');
+var autoprefixer = require('gulp-autoprefixer');
 var _ = require('lodash');
 var watch = require('gulp-watch');
 var path = require('path');
@@ -15,6 +16,10 @@ gulp.task('bundle:css', function(cb) {
       var name = item + '.scss';
 
       gulp.src(_path)
+        .pipe(autoprefixer({
+            browsers: ['last 20 versions'],
+            cascade: false
+        }))
         .pipe(concat(name))
         .pipe(gulp.dest(paths.theme.media))
     })
