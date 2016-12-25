@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var fs = require('fs');
 var path = require('path');
+var autoprefixer = require('gulp-autoprefixer');
 var writeFile = require('write');
 var rename = require("gulp-rename");
 var concat = require('gulp-concat');
@@ -30,10 +31,18 @@ gulp.task('deploy:components:styles', function (cb) {
 
   if (isConcat) {
     gulp.src(paths.components.styles)
+      .pipe(autoprefixer({
+          browsers: ['last 20 versions'],
+          cascade: false
+      }))
       .pipe(concat('theme.scss'))
       .pipe(gulp.dest(paths.theme.media))
   }else{
     gulp.src(paths.components.styles)
+    .pipe(autoprefixer({
+        browsers: ['last 20 versions'],
+        cascade: false
+    }))
     .pipe(rename(function (_path) {
       styles.push(_path.basename);
       _path.dirname = "";
