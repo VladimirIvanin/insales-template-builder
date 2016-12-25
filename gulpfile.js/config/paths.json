@@ -30,6 +30,10 @@
   "clear": {
     "path": "./theme/*/*"
   },
+  "fonts": {
+    "path": ["./fonts/**/*.*", "!./fonts/*/*.*css"],
+    "style": "./fonts/**/*.*css"
+  },
   "bundles": {
     "css": "./bundles/css",
     "js": "./bundles/js"
