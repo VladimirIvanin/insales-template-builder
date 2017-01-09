@@ -10,7 +10,7 @@ var paths = require('../config/paths.json');
 
 
 gulp.task('bundle:css', function(cb) {
-  fs.readdir(paths.bundles.css, 'a+', function(err, list) {
+  fs.readdir(paths.bundles.css, function(err, list) {
     _.forEach(list, function (item) {
       var _path = path.normalize( paths.bundles.css + '/' + item + '/**.*css' );
       var name = item + '.scss';
@@ -23,11 +23,12 @@ gulp.task('bundle:css', function(cb) {
         .pipe(concat(name))
         .pipe(gulp.dest(paths.theme.media))
     })
+    cb();
   });
 })
 
 gulp.task('bundle:js', function(cb) {
-  fs.readdir(paths.bundles.js, 'a+', function(err, list) {
+  fs.readdir(paths.bundles.js, function(err, list) {
     _.forEach(list, function (item) {
       var _path = path.normalize( paths.bundles.js + '/' + item + '/**.js' );
       var name = item + '.js';
@@ -36,5 +37,6 @@ gulp.task('bundle:js', function(cb) {
         .pipe(concat(name))
         .pipe(gulp.dest(paths.theme.media))
     })
+    cb();
   });
 })

@@ -21,7 +21,6 @@ if (settings.styles === "scss") {
 }
 
 gulp.task('deploy:components', ['deploy:components:styles', 'deploy:components:scripts', 'deploy:components:liquid'], function () {
-
 })
 
 
@@ -37,6 +36,9 @@ gulp.task('deploy:components:styles', function (cb) {
       }))
       .pipe(concat('theme.scss'))
       .pipe(gulp.dest(paths.theme.media))
+      .on('end', function() {
+        cb();
+      });
   }else{
     gulp.src(paths.components.styles)
     .pipe(autoprefixer({
@@ -67,6 +69,9 @@ gulp.task('deploy:components:scripts', function (cb) {
     gulp.src(paths.components.scripts)
       .pipe(concat('theme.js'))
       .pipe(gulp.dest(paths.theme.media))
+      .on('end', function() {
+        cb();
+      });
   }else{
     gulp.src(paths.components.scripts)
       .pipe(rename(function (_path) {

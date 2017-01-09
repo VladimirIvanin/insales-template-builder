@@ -22,6 +22,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^3.0.0",
     "gulp-watch": "^4.3.11",
+    "insales-uploader": "^0.21.12",
     "lodash": "^4.17.2",
     "promise": "^7.1.1",
     "require-dir": "^0.3.0",

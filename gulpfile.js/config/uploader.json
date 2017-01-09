@@ -1,0 +1,27 @@
+{
+  "use": false,
+  "account": {
+    "id": "0123456798",
+    "token": "0123456798",
+    "url": "shop-41324.myinsales.ru",
+    "http": true
+  },
+  "theme": {
+    "id": "123456",
+    "root": "my-shop",
+    "update": true,
+    "startBackup": true
+  },
+  "tools":{
+    "debugMode": false,
+    "openBrowser": {
+      "start": true,
+      "app": "firefox"
+    },
+    "browserSync": {
+      "start": false,
+      "uploadRestart": false,
+      "browser": "firefox"
+    }
+  }
+}

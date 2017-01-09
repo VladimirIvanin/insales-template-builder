@@ -7,9 +7,22 @@ var concat = require('gulp-concat');
 var rename = require("gulp-rename");
 var paths = require('../config/paths.json');
 var settings = require('../config/settings.json');
+var uploader = require('../config/uploader.json');
 
-gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:bundles:css', 'theme:watch:bundles:js', 'theme:watch:media'],function () {
+// Insales Uploader
+var InsalesUploader = require('insales-uploader');
+var InsalesUp = new InsalesUploader(uploader)
+
+gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:bundles:css', 'theme:watch:bundles:js', 'theme:watch:media', 'uploader:watch'],function () {
 });
+
+gulp.task('uploader:watch', function () {
+  setTimeout(function () {
+    if (uploader.use) {
+      InsalesUp.stream()
+    }
+  }, 2000)
+})
 
 gulp.task('theme:watch:components', function () {
     var isConcatStyles = settings.build.css.theme.concat;
