@@ -13,7 +13,7 @@ var uploader = require('../config/uploader.json');
 var InsalesUploader = require('insales-uploader');
 var InsalesUp = new InsalesUploader(uploader)
 
-gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:bundles:css', 'theme:watch:bundles:js', 'theme:watch:media', 'uploader:watch'],function () {
+gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:bundles:css', 'theme:watch:bundles:js', 'theme:watch:media', 'theme:watch:fonts', 'uploader:watch'],function () {
 });
 
 gulp.task('uploader:watch', function () {
@@ -23,6 +23,21 @@ gulp.task('uploader:watch', function () {
     }
   }, 2000)
 })
+
+gulp.task('theme:watch:fonts', function () {
+
+    watch(paths.fonts.style, function () {
+      gulp.src(paths.fonts.style)
+        .pipe(concat('fonts.scss'))
+        .pipe(gulp.dest(paths.theme.media))
+    })
+
+    watch(paths.fonts.path, { ignoreInitial: true })
+        .pipe(rename(function (_path) {
+          _path.dirname = "";
+        }))
+        .pipe(gulp.dest(paths.theme.media))
+});
 
 gulp.task('theme:watch:components', function () {
     var isConcatStyles = settings.build.css.theme.concat;
