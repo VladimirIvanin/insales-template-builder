@@ -8,7 +8,7 @@
   },
   "theme": {
     "id": "123456",
-    "root": "my-shop",
+    "root": "./theme/",
     "update": true,
     "startBackup": true
   },
