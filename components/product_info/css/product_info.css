@@ -5,3 +5,10 @@
 .product-buy {
   margin: 1rem 0;
 }
+.item-quantity-control {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
