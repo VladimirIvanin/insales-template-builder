@@ -9,7 +9,7 @@ var contents = require('../help/contents.js');
 var styles = [];
 var scripts = [];
 
-gulp.task('deploy:plugins', ['deploy:plugins:styles', 'deploy:plugins:scripts'], function () {
+gulp.task('deploy:plugins', ['deploy:plugins:styles', 'deploy:plugins:scripts', 'deploy:plugins:media'], function () {
 
 })
 
@@ -27,6 +27,17 @@ gulp.task('deploy:plugins:styles', function (cb) {
             console.log('Ошибка при генерации стилей');
           }
         });
+        cb();
+      });
+});
+
+gulp.task('deploy:plugins:media', function (cb) {
+    gulp.src(paths.plugins.media)
+      .pipe(rename(function (_path) {
+        _path.dirname = "";
+      }))
+      .pipe(gulp.dest(paths.theme.media))
+      .on('end', function() {
         cb();
       });
 });

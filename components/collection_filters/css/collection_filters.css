@@ -1,0 +1,39 @@
+/** collection_filters */
+.filter-items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.filter-label {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  padding-left: 20px;
+}
+.checkbox-field {
+  display: none;
+}
+
+.filter-checkbox {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  border: 1px solid #3A4145;
+  left: 0;
+  top: 10px;
+}
+.checkbox-field + .filter-checkbox:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 8px;
+  height: 8px;
+  background-color: #3A4145;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.checkbox-field:checked + .filter-checkbox:after {
+  opacity: 1;
+}

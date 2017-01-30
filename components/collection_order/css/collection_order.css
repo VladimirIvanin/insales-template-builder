@@ -1,0 +1,14 @@
+/** collection-order */
+.collection-order.is-page-size .label-field {
+  vertical-align: middle;
+}
+.collection-order.is-page-size .select-field {
+  vertical-align: middle;
+}
+.collection-order-wrapper {
+  padding-bottom: 2rem;
+}
+.collection-order {
+  line-height: 1;
+  font-size: 1.6rem;
+}

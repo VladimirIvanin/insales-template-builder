@@ -13,7 +13,8 @@
   },
   "plugins": {
     "styles": "./plugins/*/*/*.*css",
-    "scripts": "./plugins/*/*/*.js"
+    "scripts": "./plugins/*/*/*.js",
+    "media": ["!./plugins/*/*/*.js", "!./plugins/*/*/*.*css", "./plugins/*/*/*.*"]
   },
   "config": {
     "configs": "./config/*.json"

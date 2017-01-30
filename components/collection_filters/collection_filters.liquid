@@ -130,12 +130,12 @@
 
           {% unless property.is_numeric? %}
 
-            <ul class="filter-items-list row row-padded">
+            <ul class="filter-items-list">
               {% for characteristic in property.characteristics %}
-                <li class="filter-item cell-6">
-                  <input class="filter-field checkbox-field" type="checkbox" value="{{ characteristic.id }}"
-                  {% if characteristic.current? %}checked{% endif %} name="characteristics[]"/>
+                <li class="filter-item">
                   <label class="filter-label checkbox-label">
+                    <input class="filter-field checkbox-field" type="checkbox" value="{{ characteristic.id }}"
+                    {% if characteristic.current? %}checked{% endif %} name="characteristics[]"/>
                     <span class="filter-checkbox"></span>
                     <span>{{ characteristic.title }}</span>
                   </label>
@@ -197,13 +197,13 @@
       </div>
 
       <div class="filter-items-wrapper">
-        <ul class="filter-items-list row row-padded">
+        <ul class="filter-items-list">
 
           {% for value in option.values %}
-            <li class="filter-item cell-6">
-              <input class="filter-field checkbox-field" type="checkbox" value="{{ value.id }}"
-              {% if value.selected %}checked{% endif %} name="options[{{ option.id }}][]"/>
+            <li class="filter-item">
               <label class="filter-label checkbox-label">
+                <input class="filter-field checkbox-field" type="checkbox" value="{{ value.id }}"
+                {% if value.selected %}checked{% endif %} name="options[{{ option.id }}][]"/>
                 <span class="filter-checkbox"></span>
                 <span>{{ value.title }}</span>
               </label>

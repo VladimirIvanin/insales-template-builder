@@ -6,9 +6,10 @@
   {% assign page_size_class = 'hidden' %}
 {% endif %}
 
-<form class="collection-order-wrapper {{ collection_order }}" action="{{ collection.url }}" method="get">
+<form class="collection-order-wrapper row flex-middle {{ collection_order }}" action="{{ collection.url }}" method="get">
 
-  <div class="collection-order is-order {{ collection_order }} {{ sort_class }}">
+
+  <div class="collection-order is-order cell-4 {{ collection_order }} {{ sort_class }}">
 
     <label class="label-field hide">{{ messages.label_sort }}</label>
 
@@ -22,7 +23,7 @@
 
   </div>
 
-  <div class="collection-order is-page-size {{ collection_order }} {{ page_size_class }}">
+  <div class="collection-order is-page-size cell-4 {{ collection_order }} {{ page_size_class }}">
 
     <label class="label-field">{{ messages.label_limit }}</label>
 
