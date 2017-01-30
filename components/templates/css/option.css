@@ -1,0 +1,19 @@
+/** option */
+.option-value.is-span {
+  border: 1px solid #ccc;
+  background: none;
+  line-height: 1.5;
+  min-width: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  min-height: 25px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+.option-value.is-active.is-span {
+  border-color: #000;
+}
+.option-selector {
+  margin: 1rem 0;
+}

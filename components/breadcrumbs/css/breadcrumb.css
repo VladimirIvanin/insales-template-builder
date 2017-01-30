@@ -8,3 +8,6 @@
   display: inline-block;
   vertical-align: baseline;
 }
+.breadcrumb-item:not(:last-child):after {
+  content: '>';
+}

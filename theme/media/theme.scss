@@ -13,6 +13,9 @@
   display: inline-block;
   vertical-align: baseline;
 }
+.breadcrumb-item:not(:last-child):after {
+  content: '>';
+}
 
 /** category-menu */
 .category-menu {
@@ -162,4 +165,32 @@
 .pagination .pagination-item:hover .pagination-link, .pagination .pagination-item .pagination-link:hover {
 	border-color: #6fc7f2;
 	color: #6fc7f2;
+}
+
+.product-quantity-input {
+  width: 50px;
+  text-align: center;
+}
+.product-buy {
+  margin: 1rem 0;
+}
+
+/** option */
+.option-value.is-span {
+  border: 1px solid #ccc;
+  background: none;
+  line-height: 1.5;
+  min-width: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  min-height: 25px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+.option-value.is-active.is-span {
+  border-color: #000;
+}
+.option-selector {
+  margin: 1rem 0;
 }
