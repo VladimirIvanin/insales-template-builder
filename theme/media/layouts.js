@@ -24,6 +24,10 @@ function initCollectionMenu () {
 
 
 $(function () {
+  $('.js-filter-trigger').on('change', function (event) {
+    $(this).parents('form:first')
+    .submit();
+  });
   $(document)
     .on('click', 'label', function (event) {
       var $form = $(this).parents('form:first');

@@ -1,30 +1,58 @@
 <div class="container">
   <div class="row">
     <div class="cell-3">
-      {% include "collection_filters" %}
+      {% include "category_menu" %}
+
+      {% if collection.products.size > 0 %}
+        {% include "collection_filters" %}
+      {% endif %}
+
     </div>
+
     <div class="cell-9">
       <h1 class="collection-title">
         {{ collection.title }}
       </h1>
+
       {% if collection.description %}
         <div class="collection-description">
           {{ collection.description }}
         </div>
       {% endif %}
-      <div class="container">
+
+      {% if collection.products.size > 0 %}
         {% include "collection_order" %}
-      </div>
+      {% endif %}
+
       {% paginate products by 8 %}
-      <div class="container">
+      <div class="collection-wrapper">
         <div class="row">
           {% for product in collection.products %}
             <div class="cell-3">
               {% include "card", card_prefix: 'in-collection' %}
             </div>
           {% endfor %}
+
+          <div class="cell-12">
+            {% if collection.products.size == 0 %}
+            <div class="collection-notice" data-collection-notice="">
+              {% if collection.current_characteristics.size > 0 or price_min or price_max or collection.current_option_values.size > 0 %}
+              <div class="notice notice--warning">
+                Простите, но по выбранным параметрам мы ничего не нашли. Попробуйте выбрать <a href="{{ collection.url }}">другие значения</a>.
+              </div>
+              {% else %}
+              <div class="notice notice--warning">
+                Простите, в данном разделе пока нет товаров. Мы работаем над этим.
+              </div>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+
         </div>
+
         {% include "pagination" %}
+
       </div>
       {% endpaginate %}
     </div>

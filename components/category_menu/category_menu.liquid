@@ -1,0 +1,15 @@
+{% if collection.subcollections.size > 0 %}
+  <div class="category-menu-wrapper">
+    <ul class="category-menu">
+
+      {% for link in collection.subcollections %}
+        <li class="category-menu-item">
+          <a href="{{ link.url }}" title="{{ link.title }}" class="category-menu-link">
+            <span class="category-menu-link-text"> {{ link.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+
+    </ul>
+  </div>
+{% endif %}

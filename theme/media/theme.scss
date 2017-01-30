@@ -3,6 +3,27 @@
   margin: 10px auto;
 }
 
+/** breadcrumb */
+.breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+.breadcrumb-item {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+/** category-menu */
+.category-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.category-menu-item {
+  display: block;
+}
+
 /** collection_filters */
 .filter-items-list {
   list-style: none;
