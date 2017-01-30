@@ -16,14 +16,6 @@ var InsalesUp = new InsalesUploader(uploader)
 gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:bundles:css', 'theme:watch:bundles:js', 'theme:watch:media', 'theme:watch:fonts', 'uploader:watch'],function () {
 });
 
-gulp.task('uploader:watch', function () {
-  setTimeout(function () {
-    if (uploader.use) {
-      InsalesUp.stream()
-    }
-  }, 2000)
-})
-
 gulp.task('theme:watch:fonts', function () {
 
     watch(paths.fonts.style, function () {
