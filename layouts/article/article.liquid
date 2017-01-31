@@ -1,6 +1,61 @@
 <div class="container">
-  <h1 class="article-title">{{ article.title }}</h1>
-  <div class="article-content">
-    {{ article.content }}
+    <div class="article-header">
+    <h1 class="article-title">
+      {{ article.title }}
+    </h1>
+    {% unless settings.article_author_hide %}
+      <span class="author"><i class="fa fa-user"></i> {{ article.author | strip_html }}</span>
+    {% endunless %}
+
+    {% if blog.comments_enabled? %}
+      <span class="comments-count">
+        <i class="fa fa-comments"></i>
+        <a href="#comments-block"> {{ messages.comments }} <b>({{ article.comments_count }})</b></a>
+      </span>
+    {% endif %}
+
+    <span class="date"><i class="fa fa-calendar"></i> {{ article.created_at | date: "%d.%m.%Y" }}</span>
+
   </div>
+
+  <div class="article-body editor">
+    {{ article.content | editable }}
+  </div>
+
+  {% unless article.tags == empty %}
+  <div class="article-tags">
+    <ul class="tags-list list is-small">
+      {% for tag in article.tags %}
+        <li class="tag-item">
+          <a href="{{ tag.url }}" class="tag is-primary" title="{{ tag.title }}">{{ tag.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endunless %}
+
+  {% if article.related_products.size > 0 %}
+
+    <div class="article-related related-products">
+
+      <div class="block-header is-small">
+        <h2>{{ messages.related_products }}</h2>
+      </div>
+
+      <div class="row">
+
+        {% for product in article.related_products limit:3 %}
+
+          <div class="product-card related-product cell-xl-4 cell-lg-4 cell-md-6 cell-xs-12">
+            {% include 'card' %}
+          </div><!-- /.product-card -->
+
+        {% endfor %}
+
+      </div>
+
+    </div><!-- /.related-products -->
+
+  {% endif %}
+
 </div>
