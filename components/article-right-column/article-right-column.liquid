@@ -1,0 +1,29 @@
+<div class="row">
+
+  {% for blog in blogs limit:3 %}
+
+    {% if blog.articles.size > 0 %}
+      <div class="last-articles cell-12">
+
+        <div class="aside-header">
+          <h2>
+            <a href="{{ blog.url }}" title="{{ blog.title | strip_html }}">{{ blog.title }}</a>
+          </h2>
+        </div>
+
+        <ul class="articles-list list-vertical">
+          {% for article in blog.articles limit: 5 %}
+            <li class="list-item">
+              <a class="list-link" href='{{ article.url }}' title='{{ article.title }}'>
+                {{ article.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+
+      </div><!-- /.last-articles -->
+    {% endif %}
+
+  {% endfor %}
+
+</div>

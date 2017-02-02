@@ -1,0 +1,143 @@
+.star-rating-wrapper {
+  *zoom: 1;
+}
+
+.star-rating-wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.star-rating {
+  float: left;
+  *zoom: 1;
+}
+
+.star-rating:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.star-rating .star-radio {
+  display: none;
+}
+
+.star-rating .star-radio:hover ~ .star-label:after, .star-rating .star-radio:checked ~ .star-label:after {
+  content: "";
+}
+
+.star-rating .star-radio:hover ~ .star-label:after {
+  color: gold !important;
+}
+
+.star-rating .star-radio:checked ~ .star-label:after {
+  color: #f28c00;
+}
+
+.star-rating .star-label {
+  cursor: pointer;
+  float: right;
+  font-size: 1.4rem;
+}
+
+.star-rating .star-label:after {
+  color: goldenrod;
+  content: "";
+  display: inline-block;
+  font-family: "FontAwesome";
+}
+
+.star-rating .star-label:hover:after {
+  color: gold;
+}
+
+.star-rating .star-label:hover ~ .star-label:after {
+  color: gold !important;
+}
+
+.star-rating .star-label.active ~ .star-label:after, .star-rating .star-label.active:after {
+  content: "";
+}
+
+.star-rating .star-item {
+  color: goldenrod;
+  float: right;
+  overflow: hidden;
+}
+
+.star-rating .star-item:after {
+  content: "";
+  display: inline-block;
+  font-family: "FontAwesome";
+}
+
+.star-rating .star-item.active:after {
+  color: #f28c00;
+  content: "";
+}
+
+.star-rating .star-item.active ~ .star-item:after {
+  color: #f28c00;
+  content: "";
+}
+
+.form-field.text-field {
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.form-field.text-field.is-textarea {
+  width: 100%;
+}
+
+.reviews-form {
+  display: none;
+  margin-bottom: 20px;
+}
+.reviews-toggle-wrapper {
+  margin-bottom: 20px;
+}
+.form-field.text-field.is-captcha {
+  margin-top: 10px;
+}
+.reviews-wrapper {
+  max-width: 600px;
+}
+.reviews-item {
+  padding: 5px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+#comment_form {
+  max-width: 600px;
+}
+[name="comment[captcha_solution]"] {
+  margin-bottom: 10px;
+}
+.comments-item {
+  margin-bottom: 1rem;
+}
+
+.comments-list {
+  margin-bottom: 3rem;
+}
+
+.author {
+  margin-right: 10px;
+}
+
+.comment-body {
+  padding: 10px 0;
+}

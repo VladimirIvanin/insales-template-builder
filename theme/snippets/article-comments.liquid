@@ -1,0 +1,152 @@
+{% if article.comments_enabled? %}
+  <div id="comments-block">
+
+    {% unless article.comments == empty %}
+
+    <div class="comments-header">
+      <h2>{{ messages.comments }} ({{ article.comments_count }})</h2>
+    </div><!-- /.comments-header -->
+
+    <div class="comments-list">
+      {% for comment in article.comments %}
+
+        <div class="comments-item">
+          <div class="comment-header">
+              <span class="author">
+                <i class="fa fa-user"></i>
+                {{ comment.author }}
+              </span>
+              <span class="date">
+                <i class="fa fa-calendar"></i>
+                {{ comment.created_at | date: "%d.%m.%Y" }}
+              </span>
+          </div>
+          <div class="comment-body">
+            {{ comment.content | newline_to_br }}
+          </div>
+        </div><!-- /.comments-item -->
+
+      {% endfor %}
+    </div><!-- /.comments-list -->
+
+    {% endunless %}
+
+    {% if comment.errors.size > 0 %}
+      <div class="notice notice-error">
+
+        <p>{{ messages.fields_are_incorrect }}:</p>
+
+        <ul>
+
+          {% if comment.errors contains 'author' %}
+            <li>{{ messages.field_name }}</li>{% endif %}
+
+          {% if comment.errors contains 'email' %}
+            <li>{{ messages.field_email }}</li>{% endif %}
+
+          {% if comment.errors contains 'content' %}
+            <li>{{ messages.field_comment }}</li>{% endif %}
+
+          {% if comment.errors contains 'captcha_solution' %}
+            <li>{{ messages.field_captcha }}</li>{% endif %}
+
+        </ul>
+
+      </div><!-- /.notice -->
+    {% endif %}
+
+    <div id="comment_form" class="form">
+
+      <div class="form-header">
+        <h3>{{ messages.comment_add }}:</h3>
+      </div><!-- /.form-header -->
+
+      {% form comment %}
+
+      {% if form.posted_successfully? %}
+        {% if blog.moderated? %}
+          <div class="notice notice-success">{{ messages.comment_is_added_moderated }}</div>
+        {% else %}
+          <div class="notice notice-success">{{ messages.comment_is_added }}</div>
+        {% endif %}
+      {% endif %}
+      <div class="row">
+        <div class="cell-6">
+          <div class="form-row author-row row {% if comment.errors contains 'author' %}is-error{% endif %}">
+            <div class="cell-12">
+              <label class="form-label">{{ messages.field_name }} <span class="text-error">*</span></label>
+            </div>
+            <div class="cell-12">
+              <input type="text" name="comment[author]" value="{{ comment.author }}"
+              class="form-field text-field {% if comment.errors contains 'author' %} text-danger {% endif %}"/>
+            </div>
+          </div><!-- /.author-row -->
+        </div>
+
+        <div class="cell-6">
+
+          <div class="form-row email-row row {% if comment.errors contains 'email' %}is-error{% endif %}">
+            <div class="cell-12">
+              <label class="form-label">{{ messages.field_email }} <span class="text-error">*</span></label>
+            </div>
+            <div class="cell-12">
+              <input type="email" name="comment[email]" value="{{ comment.email }}"
+              class="form-field text-field {% if comment.errors contains 'email' %} text-danger{% endif %}"/>
+            </div>
+          </div><!-- /.email-row -->
+        </div>
+
+        <div class="cell-12">
+          <div class="form-row content-row row {% if comment.errors contains 'content' %}is-error{% endif %}">
+            <div class="cell-12">
+              <label class="form-label">{{ messages.field_comment }} <span class="text-error">*</span></label>
+            </div>
+            <div class="cell-12">
+              <textarea name="comment[content]" rows="5" class="form-field text-field is-textarea">{{ comment.content }}</textarea>
+            </div>
+          </div><!-- /.content-row -->
+
+          {% if comment.captcha_enabled? %}
+          <div class="form-row captcha-row row {% if comment.errors contains 'captcha_solution' %}is-error{% endif %}">
+            <div class="cell-12">
+              <label class="form-label">{{ messages.field_captcha }} <span class="text-error">*</span></label>
+            </div>
+            <div class="cell-12">
+              <input type="text" name="comment[captcha_solution]"
+              class="form-field text-field {% if comment.errors contains 'captcha_solution' %} text-danger{% endif %}"/>
+
+              <div id="captcha_challenge" class="captcha-image">
+                {{ comment | captcha_challenge }}
+              </div>
+            </div>
+          </div><!-- /.captcha-row -->
+          {% endif %}
+
+          {% if blog.moderated? %}
+          <div class="form-row messages-row row">
+            <div class="cell-12">
+              <p class="text-info small">
+                <i class="fa fa-info"></i> {{ messages.comments_are_moderated }}
+              </p>
+            </div>
+          </div><!-- /.messages-row -->
+          {% endif %}
+
+          <div class="form-row form-control-row row">
+            <div class="cell-12">
+              <button type="submit" class="button is-primary button-buy in-product">
+                <span class="button-text">{{ messages.button_submit }}</span>
+              </button>
+            </div>
+          </div><!-- /.form-control-row -->
+
+        </div>
+      </div>
+
+
+      {% endform %}
+
+    </div><!-- /#comment_form -->
+
+  </div><!-- /#comments-block -->
+{% endif %}

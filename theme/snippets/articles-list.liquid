@@ -1,0 +1,10 @@
+{% paginate articles by 9 %}
+<div class="row">
+    {% for article in articles %}
+    <div class="cell-6 blog-item">
+      {% include "article_preview", article_prefix: 'in-blog' %}
+    </div>
+    {% endfor %}
+  {% include "pagination" %}
+</div>
+{% endpaginate %}

@@ -4,5 +4,5 @@
 #= require alertify.min
 #= require ion.rangeSlider.min
 #= require plugin.ionRange.adapter
-#= require plugin.tabs
 #= require swiper.min
+#= require plugin.tabs
