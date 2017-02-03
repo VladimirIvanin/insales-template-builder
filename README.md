@@ -1,4 +1,4 @@
-# Базовый шаблон для InSales
+# Сборщик шаблонов для InSales
 
 ## gulp tasks
 
