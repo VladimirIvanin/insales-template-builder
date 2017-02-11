@@ -1,5 +1,18 @@
 # Сборщик шаблонов для InSales
 
+## Установка
+
+```
+npm i
+```
+
+## Настройка
+
+Настройка сборщика находится тут `/gulpfile.js/config`
+
+Для работы [InSales uploader](https://github.com/VladimirIvanin/insales-uploader) нужно изменить файл `/gulpfile.js/config/uploader.json`, заполнить параметры для доступа к магазину и выставить свойство `use` в `true`.
+
+
 ## gulp tasks
 
 | Имя задачи   | Назначение                                       |
@@ -7,6 +20,7 @@
 | default      | Собирает тему и запускает отслеживание изменений |
 | theme:deploy | Собирает тему                                    |
 | theme:watch  | Отслеживание изменений в компонентах, лэйаутах   |
+| uploader:watch| Запуск InSales uploader                         |
 
 ## Назначение директорий
 
