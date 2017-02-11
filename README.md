@@ -13,7 +13,9 @@ npm i
 Для работы [InSales uploader](https://github.com/VladimirIvanin/insales-uploader) нужно изменить файл `/gulpfile.js/config/uploader.json`, заполнить параметры для доступа к магазину и выставить свойство `use` в `true`.
 
 
-## gulp tasks
+## Gulp tasks
+
+`gulp theme:watch` и `gulp uploader:watch` нужно запускать в отдельных терминалах.
 
 | Имя задачи   | Назначение                                       |
 |--------------|--------------------------------------------------|
