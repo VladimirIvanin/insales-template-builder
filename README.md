@@ -19,3 +19,5 @@
 | media          | Медиа файлы для шаблона                       |
 | plugins        | Js/css плагины                                |
 | theme          | Директория темы                               |
+| bundles        | Бандлы (css/js)                               |
+| fonts          | Шрифты                                        |
