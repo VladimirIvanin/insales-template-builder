@@ -26,16 +26,14 @@
     </div>
   </div>
   <div class="cell-2 row flex-middle flex-start" data-quantity>
-    <div class="item-quantity">
+    <div class="item-quantity text-center">
+      <span data-quantity-change="-1" class="item-quantity-control unselectable">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </span>
       <input type="text" name="cart[quantity][{{ item.id }}]" value="{{ item.quantity }}" class="item-quantity-input in-cart">
-      <div class="item-quantity-controls">
-        <span data-quantity-change="1" class="item-quantity-control unselectable">
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        </span>
-        <span data-quantity-change="-1" class="item-quantity-control unselectable">
-          <i class="fa fa-minus" aria-hidden="true"></i>
-        </span>
-      </div>
+      <span data-quantity-change="1" class="item-quantity-control unselectable">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </span>
     </div>
   </div>
   <div class="cell-2 row flex-middle flex-start">

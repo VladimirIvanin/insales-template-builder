@@ -1,29 +1,27 @@
-<div class="breadcrumb-wrapper">
+<div class="breadcrumb-wrapper is-{{ template }}">
 
   <ul class="breadcrumb">
 
     <li class="breadcrumb-item home">
-      <a class="breadcrumb-link" title='{{ messages.breadcrumb_home }}' href="/"><i class="fa fa-home" ></i></a>
+      <a class="breadcrumb-link" title='{{ messages.breadcrumb_home }}' href="/">Главная</a>
     </li>
 
-    {% case template %}
-
-      {% when 'page' %}
+      {% if template contains 'page.' or template == 'page' %}
         <li class="breadcrumb-item">
           <span class="breadcrumb-link current-page">{{ page.title }}</span>
         </li>
 
-      {% when 'search' %}
+      {% elsif template contains 'search.' or template == 'search' %}
         <li class="breadcrumb-item">
           <span class="breadcrumb-link current-page">{{ messages.search_title }}</span>
         </li>
 
-      {% when 'blog' %}
+      {% elsif template contains 'blog.' or template == 'blog' %}
         <li class="breadcrumb-item">
           <span class="breadcrumb-link current-page">{{ blog.title }}</span>
         </li>
 
-      {% when 'article' %}
+      {% elsif template contains 'article.' or template == 'article' %}
         <li class="breadcrumb-item">
           <a class="breadcrumb-link" title='{{ blog.title }}' href="{{ blog.url }}">{{ blog.title }}</a>
         </li>
@@ -32,17 +30,17 @@
           <span class="breadcrumb-link current-page">{{ article.title }}</span>
         </li>
 
-      {% when 'cart' %}
+      {% elsif template contains 'cart.' or template == 'cart' %}
         <li class="breadcrumb-item">
           <span class="breadcrumb-link current-page">{{ messages.cart_title }}</span>
         </li>
 
-      {% when 'compare' %}
+      {% elsif template contains 'compare.' or template == 'compare' %}
         <li class="breadcrumb-item">
           <span class="breadcrumb-link current-page">{{ messages.comparison_title }}</span>
         </li>
 
-      {% when 'collection' %}
+      {% elsif template contains 'collection.' or template == 'collection' %}
         {% if current_collections.size > 0 %}
 
           {% for collection in current_collections %}
@@ -61,7 +59,7 @@
 
         {% endif %}
 
-      {% when 'product' %}
+      {% elsif template contains 'product.' or template == 'product' %}
         {% comment %}
           исключаем варик, что мы перешли в товар из корня каталога
         {% endcomment %}
@@ -94,7 +92,7 @@
           <span class="breadcrumb-link current-page">{{ product.title }}</span>
         </li>
 
-    {% endcase %}
+    {% endif %}
 
   </ul>
 

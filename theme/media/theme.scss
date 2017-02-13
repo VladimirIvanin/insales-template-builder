@@ -143,28 +143,6 @@
   padding: 10px 0;
 }
 
-.list-link {
-  text-decoration: none;
-}
-
-.aside-header a {
-  text-decoration: none;
-}
-
-.aside-header h2 {
-  margin-bottom: 10px;
-}
-
-.last-articles {
-  margin-bottom: 20px;
-}
-
-.list-item {}
-
-.articles-list .list-item {
-  margin-bottom: 10px;
-}
-
 
 .article_preview {
   height: 100%;
@@ -194,11 +172,6 @@
   }
 }
 
-.benefit-img {
-  max-width: 200px;
-  margin: 10px auto;
-}
-
 /** breadcrumb */
 .breadcrumb {
   list-style: none;
@@ -211,6 +184,64 @@
 }
 .breadcrumb-item:not(:last-child):after {
   content: '>';
+}
+
+.list-link {
+  text-decoration: none;
+}
+
+.aside-header a {
+  text-decoration: none;
+}
+
+.aside-header h2 {
+  margin-bottom: 10px;
+}
+
+.last-articles {
+  margin-bottom: 20px;
+}
+
+.list-item {}
+
+.articles-list .list-item {
+  margin-bottom: 10px;
+}
+
+.item-quantity-input.in-cart {
+  width: 50px;
+  text-align: center;
+}
+.item-delete {
+  border: none;
+  background: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/** category-menu */
+.category-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.category-menu-item {
+  display: block;
+}
+
+/** collection-order */
+.collection-order.is-page-size .label-field {
+  vertical-align: middle;
+}
+.collection-order.is-page-size .select-field {
+  vertical-align: middle;
+}
+.collection-order-wrapper {
+  padding-bottom: 2rem;
+}
+.collection-order {
+  line-height: 1;
+  font-size: 1.6rem;
 }
 
 /** collection_filters */
@@ -252,31 +283,6 @@
 }
 .checkbox-field:checked + .filter-checkbox:after {
   opacity: 1;
-}
-
-/** category-menu */
-.category-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.category-menu-item {
-  display: block;
-}
-
-/** collection-order */
-.collection-order.is-page-size .label-field {
-  vertical-align: middle;
-}
-.collection-order.is-page-size .select-field {
-  vertical-align: middle;
-}
-.collection-order-wrapper {
-  padding-bottom: 2rem;
-}
-.collection-order {
-  line-height: 1;
-  font-size: 1.6rem;
 }
 
 .main-menu {
@@ -396,6 +402,11 @@
 .pagination .pagination-item:hover .pagination-link, .pagination .pagination-item .pagination-link:hover {
 	border-color: #6fc7f2;
 	color: #6fc7f2;
+}
+
+.products-slider-wrapper {
+  position: relative;
+  padding: 0 50px;
 }
 
 .product-quantity-input {

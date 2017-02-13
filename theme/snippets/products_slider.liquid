@@ -27,13 +27,15 @@
     </h3>
     {% endif %}
 
-    <div class="products-slider swiper-container js-products-slider {{products_prefix}}">
-      <div class="swiper-wrapper">
-      {% for product in products_array %}
-        <div class="swiper-slide {{products_prefix}}">
-          {% include "card", card_prefix: products_prefix %}
+    <div class="products-slider-wrapper">
+      <div class="products-slider swiper-container js-products-slider {{products_prefix}}">
+        <div class="swiper-wrapper">
+          {% for product in products_array %}
+          <div class="swiper-slide {{products_prefix}}">
+            {% include "card", card_prefix: products_prefix %}
+          </div>
+          {% endfor %}
         </div>
-      {% endfor %}
       </div>
       <div class="products-control">
         <div class="swiper-button-prev products-control-prev">
