@@ -12,6 +12,30 @@
 <!-- rss feed-->
 <link rel="alternate" type="application/rss+xml" title="Блог" href="/blogs/blog.atom" />
 
+{% case template %}
+  {% when 'product' %}
+    <meta property="og:title" content="{{ product.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ account.url }}{{ product.url }}" />
+    {% if product.first_image.thumb_url contains 'http' %}
+      <meta property="og:image" content="{{ product.first_image.compact_url }}" />
+    {% else %}
+      <meta property="og:image" content="{{ account.url }}{{ product.first_image.compact_url }}" />
+    {% endif %}
+  {% when 'index' %}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ account.url }}" />
+    <meta property="og:title" content="{{ account.title }}" />
+    {% if settings.logotype_type == 'image' %}
+      <meta property="og:image" content="{{ 'logotype.jpg' | asset_url }}" />
+    {% endif %}
+  {% when 'article' %}
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:image" content="{{ article.image.compact_url }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ article.url }}" />
+{% endcase %}
+
 <!-- fixes -->
 <!--[if IE]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
