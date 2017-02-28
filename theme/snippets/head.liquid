@@ -12,6 +12,30 @@
 <!-- rss feed-->
 <link rel="alternate" type="application/rss+xml" title="Блог" href="/blogs/blog.atom" />
 
+{% if template contains 'product.' or template == 'product' %}
+    <meta property="og:title" content="{{ product.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ account.url }}{{ product.url }}" />
+    {% if product.first_image.thumb_url contains 'http' %}
+      <meta property="og:image" content="{{ product.first_image.large_url }}" />
+    {% else %}
+      <meta property="og:image" content="{{ account.url }}{{ product.first_image.large_url }}" />
+    {% endif %}
+  {% elsif template contains 'index.' or template == 'index' %}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ account.url }}" />
+    <meta property="og:title" content="{{ account.title }}" />
+    {% assign path_logotype = "logotype.png" | asset_url_if_exists %}
+    {% if path_logotype %}
+      <meta property="og:image" content="{{ path_logotype }}" />
+    {% endif %}
+  {% elsif template contains 'article.' or template == 'article' %}
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:image" content="{{ article.image.compact_url }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ article.url }}" />
+{% endif %}
+
 <!-- fixes -->
 <!--[if IE]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
