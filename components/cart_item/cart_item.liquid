@@ -1,7 +1,7 @@
 <div class="row cart-item" data-item-accessory="{{ item.order_line_id }}" data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}">
   <div class="cell-2 item-image">
     <a class="item-img" href="{{item.product.url}}?variant_id={{item.variant.id}}">
-      <img  src="{{ item.product.first_image.medium_url }}">
+      <img  src="{{ item.variant.first_image.medium_url }}">
     </a>
   </div>
   <div class="cell-3 row flex-middle item-info">
