@@ -8,6 +8,10 @@ var rename = require("gulp-rename");
 var paths = require('../config/paths.json');
 var settings = require('../config/settings.json');
 var uploader = require('../config/uploader.json');
+var contents = require('../help/contents.js');
+var writeFile = require('write');
+var glob = require("glob");
+var gutil = require('gulp-util');
 
 // Insales Uploader
 var InsalesUploader = require('insales-uploader');
@@ -34,9 +38,14 @@ gulp.task('theme:watch:fonts', function () {
 gulp.task('theme:watch:components', function () {
     var isConcatStyles = settings.build.css.theme.concat;
     var isConcatScripts = settings.build.js.theme.concat;
+    var styles = paths.components.styles;
+
+    if (settings.styles === 'scss') {
+      styles = paths.components.scss;
+    }
     if (isConcatStyles) {
-      watch(paths.components.styles, function () {
-        gulp.src(paths.components.styles)
+      watch(styles, function () {
+        gulp.src(styles)
           .pipe(autoprefixer({
               browsers: ['last 20 versions'],
               cascade: false
@@ -45,7 +54,7 @@ gulp.task('theme:watch:components', function () {
           .pipe(gulp.dest(paths.theme.media))
       })
     }else{
-      watch(paths.components.styles, { ignoreInitial: true })
+      watch(styles, { ignoreInitial: true })
         .pipe(autoprefixer({
             browsers: ['last 20 versions'],
             cascade: false
@@ -80,10 +89,14 @@ gulp.task('theme:watch:components', function () {
 gulp.task('theme:watch:layouts', function () {
   var isConcatStyles = settings.build.css.layouts.concat;
   var isConcatScripts = settings.build.js.layouts.concat;
+  var styles = paths.layouts.styles;
+  if (settings.styles === 'scss') {
+    styles = paths.layouts.scss;
+  }
 
   if (isConcatStyles) {
-    watch(paths.layouts.styles, function () {
-      gulp.src(paths.layouts.styles)
+    watch(styles, function () {
+      gulp.src(styles)
         .pipe(autoprefixer({
             browsers: ['last 20 versions'],
             cascade: false
@@ -92,7 +105,7 @@ gulp.task('theme:watch:layouts', function () {
         .pipe(gulp.dest(paths.theme.media))
     })
   }else{
-    watch(paths.layouts.styles, { ignoreInitial: true })
+    watch(styles, { ignoreInitial: true })
         .pipe(autoprefixer({
             browsers: ['last 20 versions'],
             cascade: false
@@ -123,17 +136,50 @@ gulp.task('theme:watch:layouts', function () {
 });
 
 gulp.task('theme:watch:plugins', function () {
-    watch(paths.plugins.styles, { ignoreInitial: true })
-        .pipe(rename(function (_path) {
-          _path.dirname = "";
-        }))
-        .pipe(gulp.dest(paths.theme.media));
+    watch(paths.plugins.styles, { ignoreInitial: true }, function () {
+      glob(paths.plugins.styles, {}, function (er, files) {
+        var styles = [];
+        _.forEach(files, function (_file) {
+          var _fileParse = path.parse(_file);
+          styles.push( _fileParse.base )
+        })
 
-    watch(paths.plugins.scripts, { ignoreInitial: true })
+        var contentStyle = contents.getStylesFile(styles);
+        setTimeout(function () {
+          writeFile(paths.theme.media + '/plugins.scss', contentStyle, function (err) {
+            if (err) {
+              console.log('Ошибка при генерации стилей');
+            }
+          });
+        }, 500)
+      })
+
+    })
         .pipe(rename(function (_path) {
           _path.dirname = "";
         }))
-        .pipe(gulp.dest(paths.theme.media));
+        .pipe(gulp.dest(paths.theme.media))
+
+
+    watch(paths.plugins.scripts, { ignoreInitial: true }, function () {
+      glob(paths.plugins.scripts, {}, function (er, files) {
+        var scripts = [];
+        _.forEach(files, function (_file) {
+          var _fileParse = path.parse(_file);
+          scripts.push( _fileParse.base )
+        })
+
+        var contentScripts = contents.getScriptFile(scripts);
+        writeFile(paths.theme.media + '/plugins.js', contentScripts, function (err) {
+          if (err) {
+            console.log('Ошибка при генерации стилей');
+          }
+        });
+      });
+    }).pipe(rename(function (_path) {
+          _path.dirname = "";
+        }))
+        .pipe(gulp.dest(paths.theme.media))
 });
 
 gulp.task('theme:watch:config', function () {
@@ -154,11 +200,19 @@ gulp.task('theme:watch:media', function () {
 
 gulp.task('theme:watch:bundles:css', function () {
   var _css = path.normalize( paths.bundles.css + '/*/*.*css' );
+
   return watch(_css, function (vinyl) {
     var _bundlePath = path.normalize( vinyl.dirname + '/*.*css' );
     var _bundleName = _.last( _.split(vinyl.dirname, path.sep) ) + '.scss';
 
-    gulp.src(_bundlePath)
+    var _src = [];
+    if (settings.styles === 'scss') {
+      _src.push(paths.scss.variables_default);
+      _src.push(paths.scss.variables);
+    }
+    _src.push( _bundlePath );
+
+    gulp.src(_src)
       .pipe(autoprefixer({
           browsers: ['last 20 versions'],
           cascade: false

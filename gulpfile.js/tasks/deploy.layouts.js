@@ -24,9 +24,13 @@ gulp.task('deploy:layouts', ['deploy:layouts:styles', 'deploy:layouts:scripts', 
 
 gulp.task('deploy:layouts:styles', function (cb) {
   var isConcat = settings.build.css.layouts.concat;
+  var styles = paths.layouts.styles;
+  if (settings.styles === 'scss') {
+    styles = paths.layouts.scss;
+  }
 
   if (isConcat) {
-    gulp.src(paths.layouts.styles)
+    gulp.src(styles)
       .pipe(autoprefixer({
           browsers: ['last 20 versions'],
           cascade: false
@@ -34,7 +38,7 @@ gulp.task('deploy:layouts:styles', function (cb) {
       .pipe(concat('layouts.scss'))
       .pipe(gulp.dest(paths.theme.media))
   }else{
-    gulp.src(paths.layouts.styles)
+    gulp.src(styles)
       .pipe(autoprefixer({
           browsers: ['last 20 versions'],
           cascade: false

@@ -7,7 +7,7 @@ var watch = require('gulp-watch');
 var path = require('path');
 var sass = require('gulp-sass');
 var paths = require('../config/paths.json');
-
+var settings = require('../config/settings.json');
 
 gulp.task('bundle:css', function(cb) {
   fs.readdir(paths.bundles.css, function(err, list) {
@@ -15,7 +15,14 @@ gulp.task('bundle:css', function(cb) {
       var _path = path.normalize( paths.bundles.css + '/' + item + '/**.*css' );
       var name = item + '.scss';
 
-      gulp.src(_path)
+      var _src = [];
+      if (settings.styles === 'scss') {
+        _src.push(paths.scss.variables_default);
+        _src.push(paths.scss.variables);
+      }
+      _src.push( _path );
+
+      gulp.src(_src)
         .pipe(autoprefixer({
             browsers: ['last 20 versions'],
             cascade: false

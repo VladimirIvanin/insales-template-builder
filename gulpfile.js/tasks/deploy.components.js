@@ -27,9 +27,13 @@ gulp.task('deploy:components', ['deploy:components:styles', 'deploy:components:s
 
 gulp.task('deploy:components:styles', function (cb) {
   var isConcat = settings.build.css.theme.concat;
+  var styles = paths.components.styles;
+  if (settings.styles === 'scss') {
+    styles = paths.components.scss;
+  }
 
   if (isConcat) {
-    gulp.src(paths.components.styles)
+    gulp.src(styles)
       .pipe(autoprefixer({
           browsers: ['last 20 versions'],
           cascade: false
@@ -40,7 +44,7 @@ gulp.task('deploy:components:styles', function (cb) {
         cb();
       });
   }else{
-    gulp.src(paths.components.styles)
+    gulp.src(styles)
     .pipe(autoprefixer({
         browsers: ['last 20 versions'],
         cascade: false

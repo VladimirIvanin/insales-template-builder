@@ -1,9 +1,7 @@
-.blog-item {
-  margin-bottom: 1rem;
-}
-.blog-articles {
-  padding-left: 0;
-}
+/* настройки */
+
+/* настройки */
+$color: #fff;
 
 .article-title {
   font-size: 2.5rem;
@@ -13,6 +11,13 @@
 }
 .article-products {
   padding: 1rem 0;
+}
+
+.blog-item {
+  margin-bottom: 1rem;
+}
+.blog-articles {
+  padding-left: 0;
 }
 
 body {

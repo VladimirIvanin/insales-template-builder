@@ -64,7 +64,11 @@
                   </div>
                       <div class="discount-prices prices">
                         <span class="prices-current">
-                          - {{ discount.amount | money }}
+                          {% if discount.percent %}
+                            - {{ discount.percent }} %
+                            {% else %}
+                            - {{ discount.amount | money }}
+                          {% endif %}
                         </span>
                       </div>
 
