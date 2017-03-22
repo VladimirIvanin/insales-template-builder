@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var fs = require('fs');
 var autoprefixer = require('gulp-autoprefixer');
+var postcss = require('gulp-postcss');
+var syntax = require('postcss-scss');
 var _ = require('lodash');
 var watch = require('gulp-watch');
 var path = require('path');
@@ -10,6 +12,13 @@ var paths = require('../config/paths.json');
 var settings = require('../config/settings.json');
 
 gulp.task('bundle:css', function(cb) {
+  var plugins = [
+      autoprefixer({
+          browsers: ['last 20 versions'],
+          cascade: false
+      }),
+  ];
+
   fs.readdir(paths.bundles.css, function(err, list) {
     _.forEach(list, function (item) {
       var _path = path.normalize( paths.bundles.css + '/' + item + '/**.*css' );
@@ -23,9 +32,9 @@ gulp.task('bundle:css', function(cb) {
       _src.push( _path );
 
       gulp.src(_src)
-        .pipe(autoprefixer({
-            browsers: ['last 20 versions'],
-            cascade: false
+        .pipe(postcss({
+          plugins: plugins,
+          options: { syntax: syntax }
         }))
         .pipe(concat(name))
         .pipe(gulp.dest(paths.theme.media))

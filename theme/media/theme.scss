@@ -1,7 +1,8 @@
-/* настройки */
+// настройки поумолчанию
+$color: #000;
 
-/* настройки */
-$color: #fff;
+// настройки
+$color: #4a4a4a;
 
 .star-rating-wrapper {
   *zoom: 1;
@@ -89,7 +90,6 @@ $color: #fff;
 
 .form-field.text-field {
   border: none;
-  -webkit-box-shadow: none;
   box-shadow: none;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
@@ -268,7 +268,6 @@ $color: #fff;
   height: 8px;
   background-color: #3A4145;
   opacity: 0;
-  -webkit-transition: opacity 200ms;
   transition: opacity 200ms;
 }
 .checkbox-field:checked + .filter-checkbox:after {

@@ -19,6 +19,7 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^6.4.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^3.0.0",
@@ -26,8 +27,11 @@
     "gulp-watch": "^4.3.11",
     "insales-uploader": "^0.21.12",
     "lodash": "^4.17.2",
+    "postcss-load-config": "^1.2.0",
+    "postcss-scss": "^0.4.1",
     "promise": "^7.1.1",
     "require-dir": "^0.3.0",
+    "sugarss": "^0.2.0",
     "write": "^0.3.2"
   }
 }

@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var fs = require('fs');
 var path = require('path');
 var autoprefixer = require('gulp-autoprefixer');
+var postcss = require('gulp-postcss');
+var syntax = require('postcss-scss');
 var writeFile = require('write');
 var rename = require("gulp-rename");
 var concat = require('gulp-concat');
@@ -26,6 +28,13 @@ gulp.task('deploy:components', ['deploy:components:styles', 'deploy:components:s
 
 
 gulp.task('deploy:components:styles', function (cb) {
+  var plugins = [
+      autoprefixer({
+          browsers: ['last 20 versions'],
+          cascade: false
+      })
+  ];
+
   var isConcat = settings.build.css.theme.concat;
   var styles = paths.components.styles;
   if (settings.styles === 'scss') {
@@ -34,24 +43,24 @@ gulp.task('deploy:components:styles', function (cb) {
 
   if (isConcat) {
     gulp.src(styles)
-      .pipe(autoprefixer({
-          browsers: ['last 20 versions'],
-          cascade: false
-      }))
       .pipe(concat('theme.scss'))
+      .pipe(postcss({
+        plugins: plugins,
+        options: { syntax: syntax }
+      }))
       .pipe(gulp.dest(paths.theme.media))
       .on('end', function() {
         cb();
       });
   }else{
     gulp.src(styles)
-    .pipe(autoprefixer({
-        browsers: ['last 20 versions'],
-        cascade: false
-    }))
     .pipe(rename(function (_path) {
       styles.push(_path.basename);
       _path.dirname = "";
+    }))
+    .pipe(autoprefixer({
+        browsers: ['last 20 versions'],
+        cascade: false
     }))
     .pipe(gulp.dest(paths.theme.media))
     .on('end', function() {

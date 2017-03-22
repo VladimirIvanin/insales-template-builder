@@ -1,7 +1,10 @@
 var gulp = require('gulp');
 var path = require('path');
 var _ = require('lodash');
+var fs = require('fs');
 var autoprefixer = require('gulp-autoprefixer');
+var postcss = require('gulp-postcss');
+var syntax = require('postcss-scss');
 var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var rename = require("gulp-rename");
@@ -17,7 +20,7 @@ var gutil = require('gulp-util');
 var InsalesUploader = require('insales-uploader');
 var InsalesUp = new InsalesUploader(uploader)
 
-gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:bundles:css', 'theme:watch:bundles:js', 'theme:watch:media', 'theme:watch:fonts', 'uploader:watch'],function () {
+gulp.task('theme:watch', ['theme:watch:components', 'theme:watch:layouts', 'theme:watch:plugins', 'theme:watch:config', 'theme:watch:bundles:css', 'theme:watch:bundles_variable:css', 'theme:watch:bundles:js', 'theme:watch:media', 'theme:watch:fonts', 'uploader:watch'],function () {
 });
 
 gulp.task('theme:watch:fonts', function () {
@@ -36,6 +39,12 @@ gulp.task('theme:watch:fonts', function () {
 });
 
 gulp.task('theme:watch:components', function () {
+    var plugins = [
+        autoprefixer({
+            browsers: ['last 20 versions'],
+            cascade: false
+        }),
+    ];
     var isConcatStyles = settings.build.css.theme.concat;
     var isConcatScripts = settings.build.js.theme.concat;
     var styles = paths.components.styles;
@@ -46,18 +55,18 @@ gulp.task('theme:watch:components', function () {
     if (isConcatStyles) {
       watch(styles, function () {
         gulp.src(styles)
-          .pipe(autoprefixer({
-              browsers: ['last 20 versions'],
-              cascade: false
+          .pipe(postcss({
+            plugins: plugins,
+            options: { syntax: syntax }
           }))
           .pipe(concat('theme.scss'))
           .pipe(gulp.dest(paths.theme.media))
       })
     }else{
       watch(styles, { ignoreInitial: true })
-        .pipe(autoprefixer({
-            browsers: ['last 20 versions'],
-            cascade: false
+        .pipe(postcss({
+          plugins: plugins,
+          options: { syntax: syntax }
         }))
         .pipe(rename(function (_path) {
           _path.dirname = "";
@@ -87,6 +96,13 @@ gulp.task('theme:watch:components', function () {
 });
 
 gulp.task('theme:watch:layouts', function () {
+  var plugins = [
+      autoprefixer({
+          browsers: ['last 20 versions'],
+          cascade: false
+      }),
+  ];
+
   var isConcatStyles = settings.build.css.layouts.concat;
   var isConcatScripts = settings.build.js.layouts.concat;
   var styles = paths.layouts.styles;
@@ -97,18 +113,18 @@ gulp.task('theme:watch:layouts', function () {
   if (isConcatStyles) {
     watch(styles, function () {
       gulp.src(styles)
-        .pipe(autoprefixer({
-            browsers: ['last 20 versions'],
-            cascade: false
+        .pipe(postcss({
+          plugins: plugins,
+          options: { syntax: syntax }
         }))
         .pipe(concat('layouts.scss'))
         .pipe(gulp.dest(paths.theme.media))
     })
   }else{
     watch(styles, { ignoreInitial: true })
-        .pipe(autoprefixer({
-            browsers: ['last 20 versions'],
-            cascade: false
+        .pipe(postcss({
+          plugins: plugins,
+          options: { syntax: syntax }
         }))
         .pipe(rename(function (_path) {
           _path.dirname = "";
@@ -199,7 +215,15 @@ gulp.task('theme:watch:media', function () {
 });
 
 gulp.task('theme:watch:bundles:css', function () {
-  var _css = path.normalize( paths.bundles.css + '/*/*.*css' );
+  var plugins = [
+      autoprefixer({
+          browsers: ['last 20 versions'],
+          cascade: false
+      }),
+  ];
+
+  var _css = []
+  _css.push( path.normalize( paths.bundles.css + '/*/*.*css' ) );
 
   return watch(_css, function (vinyl) {
     var _bundlePath = path.normalize( vinyl.dirname + '/*.*css' );
@@ -213,12 +237,53 @@ gulp.task('theme:watch:bundles:css', function () {
     _src.push( _bundlePath );
 
     gulp.src(_src)
-      .pipe(autoprefixer({
-          browsers: ['last 20 versions'],
-          cascade: false
+      .pipe(postcss({
+        plugins: plugins,
+        options: { syntax: syntax }
       }))
       .pipe(concat(_bundleName))
       .pipe(gulp.dest(paths.theme.media))
+    });
+});
+
+gulp.task('theme:watch:bundles_variable:css', function () {
+  var plugins = [
+      autoprefixer({
+          browsers: ['last 20 versions'],
+          cascade: false
+      }),
+  ];
+
+  var _css = []
+
+  if (settings.styles === 'scss') {
+    _css.push(paths.scss.variables_default);
+    _css.push(paths.scss.variables);
+  }
+
+  return watch(_css, function (vinyl) {
+    fs.readdir(paths.bundles.css, function(err, list) {
+      _.forEach(list, function (item) {
+        var _path = path.normalize( paths.bundles.css + '/' + item + '/**.*css' );
+        var name = item + '.scss';
+
+        var _src = [];
+        if (settings.styles === 'scss') {
+          _src.push(paths.scss.variables_default);
+          _src.push(paths.scss.variables);
+        }
+        _src.push( _path );
+
+        gulp.src(_src)
+          .pipe(postcss({
+            plugins: plugins,
+            options: { syntax: syntax }
+          }))
+          .pipe(concat(name))
+          .pipe(gulp.dest(paths.theme.media))
+      })
+
+    });
     });
 });
 
