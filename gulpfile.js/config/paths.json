@@ -1,13 +1,13 @@
 {
   "components": {
     "styles": "./components/*/css/*.*css",
-    "scss": ["./scss/variables_default.scss", "./scss/variables.scss", "./components/*/scss/*.*css"],
+    "scss": ["./scss/variables.scss", "./scss/variables_default.scss", "./components/*/scss/*.*css"],
     "scripts": "./components/*/*.js",
     "liquid": "./components/*/*.liquid"
   },
   "layouts": {
     "styles": "./layouts/*/**.*css",
-    "scss": ["./scss/variables_default.scss", "./scss/variables.scss", "./layouts/*/**.*css"],
+    "scss": ["./scss/variables.scss", "./scss/variables_default.scss", "./layouts/*/**.*css"],
     "scripts": "./layouts/*/*.js",
     "liquid": "./layouts/*/*.liquid"
   },
