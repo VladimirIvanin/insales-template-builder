@@ -1,4 +1,3 @@
-$(document).ready(function() {
   Products.setConfig({
     initOption: true,
     filtered: false,
@@ -14,6 +13,7 @@ $(document).ready(function() {
       'default': 'option-select'
     }
   });
+$(document).ready(function() {
 
   EventBus.subscribe('update_variant:insales:product', function (variantData) {
     updateVariantInfo(variantData, {
