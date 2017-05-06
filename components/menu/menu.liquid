@@ -26,7 +26,7 @@
         {% if level_difference > 0 %}
           {% for i in (1..level_difference) %}
             </ul>
-		  </li>
+            </li>
           {% endfor %}
         {% endif %}
         <li class="{{ menu_class }}-item menu-item level-{{ node_level }} {{ current }}">
@@ -47,8 +47,8 @@
         {% if forloop.last %}
           {% assign prev_link_level = node_level | minus: 1 %}
           {% for i in (1..prev_link_level) %}
-              </ul>
-          </li>
+            </ul>
+            </li>
           {% endfor %}
         {% endif %}
       {% endif %}
