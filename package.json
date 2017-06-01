@@ -17,6 +17,7 @@
     "del": "^2.2.2",
     "glob": "^7.1.1",
     "gulp": "^3.9.1",
+    "autoprefixer": "^7.1.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^6.4.0",
