@@ -1,26 +1,26 @@
 {
   "components": {
-    "styles": "./components/*/css/*.*css",
-    "scss": ["./scss/variables.scss", "./scss/variables_default.scss", "./components/*/scss/*.*css"],
-    "scripts": "./components/*/*.js",
-    "liquid": "./components/*/*.liquid"
+    "styles": "./project/components/*/css/*.*css",
+    "scss": ["./project/scss/variables.scss", "./project/scss/variables_default.scss", "./project/components/*/scss/*.*css"],
+    "scripts": "./project/components/*/*.js",
+    "liquid": "./project/components/*/*.liquid"
   },
   "layouts": {
-    "styles": "./layouts/*/**.*css",
-    "scss": ["./scss/variables.scss", "./scss/variables_default.scss", "./layouts/*/**.*css"],
-    "scripts": "./layouts/*/*.js",
-    "liquid": "./layouts/*/*.liquid"
+    "styles": "./project/layouts/*/**.*css",
+    "scss": ["./project/scss/variables.scss", "./project/scss/variables_default.scss", "./project/layouts/*/**.*css"],
+    "scripts": "./project/layouts/*/*.js",
+    "liquid": "./project/layouts/*/*.liquid"
   },
   "plugins": {
-    "styles": "./plugins/*/*/*.*css",
-    "scripts": "./plugins/*/*/*.js",
-    "media": ["!./plugins/*/*/*.js", "!./plugins/*/*/*.*css", "./plugins/*/*/*.*"]
+    "styles": "./project/plugins/*/*/*.*css",
+    "scripts": "./project/plugins/*/*/*.js",
+    "media": ["!./project/plugins/*/*/*.js", "!./project/plugins/*/*/*.*css", "./project/plugins/*/*/*.*"]
   },
   "config": {
-    "configs": "./config/*.json"
+    "configs": "./project/config/*.json"
   },
   "media": {
-    "paths": "./media/*/*.*"
+    "paths": "./project/media/*/*.*"
   },
   "theme": {
     "media": "./theme/media",
@@ -32,15 +32,15 @@
     "path": "./theme/*/*"
   },
   "fonts": {
-    "path": ["./fonts/**/*.*", "!./fonts/*/*.*css"],
-    "style": "./fonts/**/*.*css"
+    "path": ["./project/fonts/**/*.*", "!./project/fonts/*/*.*css"],
+    "style": "./project/fonts/**/*.*css"
   },
   "bundles": {
-    "css": "./bundles/css",
-    "js": "./bundles/js"
+    "css": "./project/bundles/css",
+    "js": "./project/bundles/js"
   },
   "scss": {
-    "variables_default": "./scss/variables_default.scss",
-    "variables": "./scss/variables.scss"
+    "variables_default": "./project/scss/variables_default.scss",
+    "variables": "./project/scss/variables.scss"
   }
 }
