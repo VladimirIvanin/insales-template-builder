@@ -1,6 +1,8 @@
 var gulp = require('gulp');
-var Promise = require('promise');
+var runSequence = require('run-sequence');
 
-gulp.task('default', function () {
-  return Promise.all( [gulp.start('theme:deploy'), gulp.start('theme:watch')] )
+gulp.task('default', function (callback) {
+  runSequence('theme:deploy',
+              'theme:watch',
+              callback);
 })

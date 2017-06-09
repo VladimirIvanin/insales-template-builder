@@ -9,7 +9,7 @@ gulp.task('uploader:watch', function () {
     if (uploader.use) {
       InsalesUp.stream()
     }
-  }, 3500)
+  }, 1000)
 })
 
 gulp.task('uploader:download', function () {
@@ -41,5 +41,5 @@ gulp.task('uploader:upload', function () {
     if (uploader.use) {
       InsalesUp.upload({ update: false })
     }
-  }, 2000)
+  }, 1000)
 })

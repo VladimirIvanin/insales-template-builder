@@ -13,11 +13,11 @@
   "author": "Vladimir Ivanin",
   "license": "MIT",
   "dependencies": {
+    "autoprefixer": "^7.1.1",
     "create-file": "^1.0.1",
     "del": "^2.2.2",
     "glob": "^7.1.1",
     "gulp": "^3.9.1",
-    "autoprefixer": "^7.1.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^6.4.0",
@@ -32,6 +32,7 @@
     "postcss-scss": "^0.4.1",
     "promise": "^7.1.1",
     "require-dir": "^0.3.0",
+    "run-sequence": "^1.2.2",
     "stylefmt": "^6.0.0",
     "sugarss": "^0.2.0",
     "write": "^0.3.2"

@@ -46,6 +46,9 @@ gulp.task('deploy:layouts:styles', function (cb) {
       }))
       .pipe(concat('layouts.scss'))
       .pipe(gulp.dest(paths.theme.media))
+      .on('end', function() {
+        cb();
+      })
   }else{
     gulp.src(styles)
       .pipe(postcss({
@@ -87,6 +90,9 @@ gulp.task('deploy:layouts:scripts', function (cb) {
     gulp.src(paths.layouts.scripts)
       .pipe(concat('layouts.js'))
       .pipe(gulp.dest(paths.theme.media))
+      .on('end', function() {
+        cb();
+      })
   }else{
     gulp.src(paths.layouts.scripts)
       .pipe(rename(function (_path) {

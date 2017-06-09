@@ -26,6 +26,7 @@
         {% if level_difference > 0 %}
           {% for i in (1..level_difference) %}
             </ul>
+            </li>
           {% endfor %}
         {% endif %}
         <li class="{{ menu_class }}-item menu-item level-{{ node_level }} {{ current }}">
@@ -38,13 +39,16 @@
           {% if show_next_level %}
             <button class="{{ menu_class }}-marker menu-marker menu-marker level-{{ node_level }}" type="button"></button>
             <ul class="{{ menu_class }} menu level-{{ node_level | plus: 1 }}">
+            {% else %}
+            </li>
           {% endif %}
-        </li>
+        
         {% assign prev_link_level = node_level %}
         {% if forloop.last %}
           {% assign prev_link_level = node_level | minus: 1 %}
           {% for i in (1..prev_link_level) %}
             </ul>
+            </li>
           {% endfor %}
         {% endif %}
       {% endif %}
