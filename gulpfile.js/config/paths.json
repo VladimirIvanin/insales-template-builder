@@ -1,5 +1,6 @@
 {
   "components": {
+    "root": "./project/components/",
     "styles": "./project/components/*/css/*.*css",
     "scss": ["./project/scss/variables.scss", "./project/scss/variables_default.scss", "./project/components/*/scss/*.*css"],
     "scripts": "./project/components/*/*.js",
