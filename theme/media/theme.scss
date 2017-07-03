@@ -1,9 +1,7 @@
-// настройки
-$color: #4a4a4a;
-
-// настройки поумолчанию
-$color: #000 !default;
-
+@import "function";
+@import "mixins";
+@import "variables_default";
+@import "variables";
 .star-rating-wrapper {
   *zoom: 1;
 }
@@ -181,6 +179,7 @@ $color: #000 !default;
   margin-bottom: 10px;
 }
 
+
 .article_preview {
   height: 100%;
   position: relative;
@@ -325,6 +324,7 @@ $color: #000 !default;
   position: relative;
   vertical-align: middle;
 }
+
 
 .mfp-bg {
   background: rgba(11, 11, 11, 0.3);

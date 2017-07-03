@@ -1,9 +1,7 @@
-// настройки
-$color: #4a4a4a;
-
-// настройки поумолчанию
-$color: #000 !default;
-
+@import "function";
+@import "mixins";
+@import "variables_default";
+@import "variables";
 .article-title {
   font-size: 2.5rem;
 }

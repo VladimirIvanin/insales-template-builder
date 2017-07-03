@@ -1,9 +1,7 @@
-// настройки поумолчанию
-$color: #000 !default;
-
-// настройки
-$color: #4a4a4a;
-
+@import "function";
+@import "mixins";
+@import "variables_default";
+@import "variables";
 // image
 .image-container {
   display: inline-block;

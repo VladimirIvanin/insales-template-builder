@@ -11,13 +11,14 @@ var Promise = require('promise');
 var _ = require('lodash');
 var paths = require('../config/paths.json');
 var settings = require('../config/settings.json');
+var gap = require('gulp-append-prepend');
 
 var contents = require('../help/contents.js');
 var styles = [];
 var scripts = [];
-
-if (settings.styles === "scss") {
-  paths.layouts.styles = paths.layouts.scss;
+var variablesInclude = '';
+if (settings.styles === 'scss') {
+  variablesInclude = contents.getVariables();
 }
 
 gulp.task('deploy:layouts', ['deploy:layouts:styles', 'deploy:layouts:scripts', 'deploy:layouts:liquid'], function () {
@@ -34,9 +35,6 @@ gulp.task('deploy:layouts:styles', function (cb) {
 
   var isConcat = settings.build.css.layouts.concat;
   var styles = paths.layouts.styles;
-  if (settings.styles === 'scss') {
-    styles = paths.layouts.scss;
-  }
 
   if (isConcat) {
     gulp.src(styles)
@@ -45,6 +43,7 @@ gulp.task('deploy:layouts:styles', function (cb) {
         options: { syntax: syntax }
       }))
       .pipe(concat('layouts.scss'))
+      .pipe(gap.prependText(variablesInclude))
       .pipe(gulp.dest(paths.theme.media))
       .on('end', function() {
         cb();
@@ -59,6 +58,7 @@ gulp.task('deploy:layouts:styles', function (cb) {
         styles.push(_path.basename);
         _path.dirname = "";
       }))
+      .pipe(gap.prependText(variablesInclude))
       .pipe(gulp.dest(paths.theme.media))
       .on('end', function() {
         var contentStyle = contents.getStylesFile(styles);

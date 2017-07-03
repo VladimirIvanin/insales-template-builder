@@ -15,6 +15,12 @@ var contents = require('../help/contents.js');
 var writeFile = require('write');
 var glob = require("glob");
 var gutil = require('gulp-util');
+var gap = require('gulp-append-prepend');
+
+var variablesInclude = '';
+if (settings.styles === 'scss') {
+  variablesInclude = contents.getVariables();
+}
 
 // Insales Uploader
 var InsalesUploader = require('insales-uploader');
@@ -49,9 +55,6 @@ gulp.task('theme:watch:components', function () {
     var isConcatScripts = settings.build.js.theme.concat;
     var styles = paths.components.styles;
 
-    if (settings.styles === 'scss') {
-      styles = paths.components.scss;
-    }
     if (isConcatStyles) {
       watch(styles, function () {
         gulp.src(styles)
@@ -60,6 +63,7 @@ gulp.task('theme:watch:components', function () {
             options: { syntax: syntax }
           }))
           .pipe(concat('theme.scss'))
+          .pipe(gap.prependText(variablesInclude))
           .pipe(gulp.dest(paths.theme.media))
       })
     }else{
@@ -71,6 +75,7 @@ gulp.task('theme:watch:components', function () {
         .pipe(rename(function (_path) {
           _path.dirname = "";
         }))
+        .pipe(gap.prependText(variablesInclude))
         .pipe(gulp.dest(paths.theme.media));
     }
 
@@ -106,9 +111,6 @@ gulp.task('theme:watch:layouts', function () {
   var isConcatStyles = settings.build.css.layouts.concat;
   var isConcatScripts = settings.build.js.layouts.concat;
   var styles = paths.layouts.styles;
-  if (settings.styles === 'scss') {
-    styles = paths.layouts.scss;
-  }
 
   if (isConcatStyles) {
     watch(styles, function () {
@@ -118,6 +120,7 @@ gulp.task('theme:watch:layouts', function () {
           options: { syntax: syntax }
         }))
         .pipe(concat('layouts.scss'))
+        .pipe(gap.prependText(variablesInclude))
         .pipe(gulp.dest(paths.theme.media))
     })
   }else{
@@ -129,6 +132,7 @@ gulp.task('theme:watch:layouts', function () {
         .pipe(rename(function (_path) {
           _path.dirname = "";
         }))
+        .pipe(gap.prependText(variablesInclude))
         .pipe(gulp.dest(paths.theme.media));
   }
   if (isConcatScripts) {
@@ -229,62 +233,29 @@ gulp.task('theme:watch:bundles:css', function () {
     var _bundlePath = path.normalize( vinyl.dirname + '/*.*css' );
     var _bundleName = _.last( _.split(vinyl.dirname, path.sep) ) + '.scss';
 
-    var _src = [];
-    if (settings.styles === 'scss') {
-      _src.push(paths.scss.variables_default);
-      _src.push(paths.scss.variables);
-    }
-    _src.push( _bundlePath );
-
-    gulp.src(_src)
+    gulp.src(_bundlePath)
       .pipe(postcss({
         plugins: plugins,
         options: { syntax: syntax }
       }))
       .pipe(concat(_bundleName))
+      .pipe(gap.prependText(variablesInclude))
       .pipe(gulp.dest(paths.theme.media))
     });
 });
 
 gulp.task('theme:watch:bundles_variable:css', function () {
-  var plugins = [
-      autoprefixer({
-          browsers: ['last 20 versions'],
-          cascade: false
-      }),
-  ];
+  var variablesScss = [];
 
-  var _css = []
+  _.forEach(paths.scss.all, function (_path) {
+    variablesScss.push(path.normalize( _path + '*.*' ) );
+  })
 
-  if (settings.styles === 'scss') {
-    _css.push(paths.scss.variables_default);
-    _css.push(paths.scss.variables);
-  }
-
-  return watch(_css, function (vinyl) {
-    fs.readdir(paths.bundles.css, function(err, list) {
-      _.forEach(list, function (item) {
-        var _path = path.normalize( paths.bundles.css + '/' + item + '/**.*css' );
-        var name = item + '.scss';
-
-        var _src = [];
-        if (settings.styles === 'scss') {
-          _src.push(paths.scss.variables_default);
-          _src.push(paths.scss.variables);
-        }
-        _src.push( _path );
-
-        gulp.src(_src)
-          .pipe(postcss({
-            plugins: plugins,
-            options: { syntax: syntax }
-          }))
-          .pipe(concat(name))
-          .pipe(gulp.dest(paths.theme.media))
-      })
-
-    });
-    });
+  watch(variablesScss, { ignoreInitial: true })
+      .pipe(rename(function (_path) {
+        _path.dirname = "";
+      }))
+      .pipe(gulp.dest(paths.theme.media));
 });
 
 gulp.task('theme:watch:bundles:js', function () {

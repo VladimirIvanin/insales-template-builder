@@ -39,7 +39,7 @@ npm i
 | theme          | Директория темы                               |
 | bundles        | Бандлы (css/js)                               |
 | fonts          | Шрифты                                        |
-| scss           | Переменные для scss                           |
+| scss_import    | Переменные для scss                           |
 
 ### Структура компонента
 

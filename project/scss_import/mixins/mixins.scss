@@ -1,0 +1,719 @@
+// UTILITIES
+
+// MEDIA QUERIES
+// @media screen and min-width
+@mixin media-min($breakpoint, $breakpoints: $grid-breakpoints) {
+
+  $breakpoint-value: null;
+
+  @if (map-get($breakpoints, $breakpoint)) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint) + 1;
+  } @else {
+    $breakpoint-value: $breakpoint;
+  }
+
+  @media screen and (min-width: $breakpoint-value) {
+    @content;
+  }
+}
+
+// @media screen and max-width
+@mixin media-max($breakpoint, $breakpoints: $grid-breakpoints) {
+
+  $breakpoint-value: null;
+
+  @if (map-get($breakpoints, $breakpoint)) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+  } @else {
+    $breakpoint-value: $breakpoint;
+  }
+
+  @media screen and (max-width: $breakpoint-value) {
+    @content;
+  }
+}
+
+// @media screen and min-width and max-width
+@mixin media-between($breakpoint-min, $breakpoint-max, $breakpoints: $grid-breakpoints) {
+
+  $breakpoint-value-min: null;
+  $breakpoint-value-max: null;
+
+  @if (map-get($breakpoints, $breakpoint-min)) {
+    $breakpoint-value-min: map-get($breakpoints, $breakpoint-min) + 1;
+  } @else {
+    $breakpoint-value-min: $breakpoint-min + 1;
+  }
+
+  @if (map-get($breakpoints, $breakpoint-max)) {
+    $breakpoint-value-max: map-get($breakpoints, $breakpoint-max);
+  } @else {
+    $breakpoint-value-max: $breakpoint-max;
+  }
+
+  @media screen and (min-width: $breakpoint-value-min) and (max-width: $breakpoint-value-max) {
+    @content;
+  }
+}
+
+// HTML ELEMENTS
+// Forms
+@mixin form() {
+
+  fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    font-size: ($font-size-primary * 1.5);
+    line-height: inherit;
+    color: $color-text-primary;
+    border: 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+
+  label {
+    display: inline-block;
+    max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
+  }
+
+  // Search inputs in iOS
+  //
+  // This overrides the extra rounded corners on search inputs in iOS so that our
+  // `.form-control` class can properly style them. Note that this cannot simply
+  // be added to `.form-control` as it's not specific enough. For details, see
+  // https://github.com/twbs/bootstrap/issues/11586.
+
+  input[type="search"] {
+    -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  }
+}
+
+// Input
+@mixin input() {
+  display: inline-block;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  background-image: none;
+  vertical-align: top;
+
+  @include placeholder;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+
+  &::-ms-expand {
+    border: 0;
+    background-color: transparent;
+  }
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    opacity: 1;
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+  }
+
+  max-width: 100%;
+}
+
+// Select
+@mixin select {
+  @include input();
+}
+
+// Button
+@mixin button() {
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  display: inline-block;
+  max-width: 100%;
+  text-align: center;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  text-decoration: none;
+  vertical-align: top;
+  white-space: nowrap;
+  padding: 0;
+
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+
+  &:active {
+    outline: 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+  }
+}
+
+// Textareas
+@mixin textarea() {
+  @include input();
+}
+
+// Tables
+@mixin table() {
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+  }
+
+  table col[class*="cell-"] {
+    position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
+    float: none;
+    display: table-column;
+  }
+
+  table {
+    td,
+    th {
+      &[class*="cell-"] {
+        position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
+        float: none;
+        display: table-cell;
+      }
+    }
+  }
+}
+
+// List
+@mixin list($type: 'horizontal', $className: 'list') {
+  $list-flex-wrap: wrap;
+  $list-align-items: center;
+
+  $item-flex: null;
+
+  @if type == 'horizontal' {
+  }
+
+  @if type == 'vertical' {
+    $item-flex: 1 1 100%;
+  }
+
+  @if type == 'table' {
+    $list-flex-wrap: nowrap;
+    $item-flex: 1 1 auto;
+  }
+
+  @include list-unstyled();
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-flex-wrap: $list-flex-wrap;
+      -ms-flex-wrap: $list-flex-wrap;
+          flex-wrap: $list-flex-wrap;
+
+  -webkit-box-align: $list-align-items;
+  -webkit-align-items: $list-align-items;
+      -ms-flex-align: $list-align-items;
+          align-items: $list-align-items;
+  width: 100%;
+
+  > .#{$className}-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-flex: 1;
+    -webkit-flex: $item-flex;
+      -ms-flex: $item-flex;
+          flex: $item-flex;
+    position: relative;
+  }
+
+  .#{$className}-link {
+    display: inline-block;
+  }
+}
+
+// Menu mixins
+@mixin menu($config) {
+  $direction: row;
+  $display: flex;
+
+  $is_drop: false;
+  $position: null;
+  $top: null;
+  $left: null;
+  $bottom: null;
+  $right: null;
+  $zindex: null;
+
+  $item-width: null;
+
+  @each $setting in $config {
+    @if $setting == vertical or $setting == column {
+      $direction: column;
+      $item-width: 100%;
+    }
+    @if $setting == drop {
+      $is_drop: true;
+      $position: absolute;
+      $display: none;
+      $zindex: z('dropdown');
+    }
+    @if $setting == bottom {
+      $top: 100%;
+    }
+    @if $setting == left {
+      $right: 100%;
+    }
+    @if $setting == right {
+      $left: 100%;
+    }
+    @if $setting == top {
+      $bottom: 100%;
+    }
+  }
+
+  @include list-unstyled();
+
+  //@include display-flex($display);
+  display: -webkit-#{ $display };
+  display: -webkit-#{ $display };
+  display: -ms-#{ $display }box;
+  display: #{ $display };
+
+  //@include flex-wrap(wrap);
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  //@include flex-direction($direction);
+  -webkit-flex-direction: $direction;
+      -ms-flex-direction: $direction;
+          flex-direction: $direction;
+  //@include align-items(center);
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  //@include flex-basis(100%);
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $zindex;
+
+  & > .menu-item {
+    width: $item-width;
+  }
+
+  @if $is_drop {
+    top: 100%;
+
+    .menu-item:hover > & {
+      //@include display-flex();
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  }
+}
+
+@mixin menu-item() {
+  //@include display-flex();
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  //@include flex-wrap(wrap);
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+
+  //@include justify-content(space-between);
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  //@include align-items(center);
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+
+  position: relative;
+}
+
+@mixin menu-link(
+  $color: $link-color,
+  $hover-color: $link-hover-color,
+  $current-color: $color,
+  $decoration: $link-decoration,
+  $hover-decoration: $link-hover-decoration,
+  $current-decoration: $link-decoration
+) {
+  display: inline-block;
+
+  color: $color;
+  text-decoration: $decoration;
+
+  .menu-item.is-current > & {
+    color: $current-color;
+    text-decoration: $current-decoration;
+  }
+
+  &:hover {
+    color: $hover-color;
+    text-decoration: $hover-decoration;
+  }
+}
+
+@mixin icon($icon: null) {
+  &:before {
+    font-family: $font-family-icon;
+    content: $icon;
+
+    @content;
+  }
+}
+// Unstyled ul/ol list
+@mixin list-unstyled() {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Link decoration - color, color on hover and text-decoration on hover
+@mixin link-decor(
+  $color: $link-color,
+  $hover-color: $link-hover-color,
+  $decoration: $link-decoration,
+  $hover-decoration: $link-hover-decoration
+) {
+  color: $color;
+  text-decoration: #{ $decoration };
+
+  &:hover {
+    color: $hover-color;
+    text-decoration: #{ $hover-decoration };
+  }
+}
+
+// Base notice
+@mixin notice() {
+  padding: $vertical-gutter $horizontal-gutter;
+  margin-bottom: $vertical-gutter;
+  border: 1px solid transparent;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h2, h3, h4 {
+    margin-top: 0;
+    color: inherit;
+  }
+
+  > p,
+  > ul {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  > p + p {
+    margin-top: 5px;
+  }
+}
+
+// Notice customize
+@mixin notice-variant($color, $opacity: 1) {
+  background-color: rgba(lighten($color, 10%), $opacity);
+  border-color: $color;
+  color: darken($color, 40%);
+
+  hr {
+    border-top-color: darken($color, 5%);
+  }
+
+  a {
+    color: darken($color, 50%);
+  }
+}
+
+// Clearfix
+@mixin clearfix{
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+// CSS MIXINS
+// Element size - width and height
+@mixin size($width: 0, $height: 0) {
+  @if ($width != 0 and $height == 0) {
+    $height: $width;
+  }
+  height: $height;
+  width: $width;
+}
+
+// Vertical margin
+@mixin margin-y($top: 0px, $bottom: 0px) {
+  @if ($top != 0 and $bottom == 0) {
+    $bottom: $top;
+  }
+  margin-bottom: $bottom;
+  margin-top: $top;
+}
+
+// Horizontal margin
+@mixin margin-x($left: 0px, $right: 0px) {
+  @if ($left != 0 and $right == 0) {
+    $right: $left;
+  }
+  margin-left: $left;
+  margin-right: $right;
+}
+
+// Vertical margin
+@mixin margin-y($top: 0px, $bottom: 0px) {
+  @if ($top != 0 and $bottom == 0) {
+    $bottom: $top;
+  }
+  margin-bottom: $bottom;
+  margin-top: $top;
+}
+
+// Horizontal margin
+@mixin margin-x($left: 0px, $right: 0px) {
+  @if ($left != 0 and $right == 0) {
+    $right: $left;
+  }
+  margin-left: $left;
+  margin-right: $right;
+}
+
+// Vertical padding
+@mixin padding-y($top: 0px, $bottom: 0px) {
+  @if ($top != 0 and $bottom == 0) {
+    $bottom: $top;
+  }
+  padding-bottom: $bottom;
+  padding-top: $top;
+}
+
+// Horizontal padding
+@mixin padding-x($left: 0px, $right: 0px) {
+  @if ($left != 0 and $right == 0) {
+    $right: $left;
+  }
+  padding-left: $left;
+  padding-right: $right;
+}
+
+// Placeholder text
+@mixin placeholder($color: #ccc ) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Internet Explorer 10+
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  // Safari and Chrome
+
+  &:focus {
+
+    &::-moz-placeholder {
+      color: $color;
+      opacity: 0; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+    }
+    &:-ms-input-placeholder {
+      color: $color;
+      opacity: 0;
+    }
+    // Internet Explorer 10+
+    &::-webkit-input-placeholder {
+      color: $color;
+      opacity: 0;
+    }
+    // Safari and Chrome
+  }
+}
+
+// Vertical align for inline elements
+@mixin vertical-align-middle() {
+
+  & > * {
+    vertical-align: middle;
+  }
+
+  &:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 0;
+  }
+}
+
+// Position center
+@mixin position-center ( $coordinates: 50% 50%, $position: absolute ) {
+
+  $top: nth( $coordinates, 1);
+  $left: nth( $coordinates, 2);
+
+  top: $top;
+  left: $left;
+  transform: translate( -$top, -$left );
+  position: $position;
+}
+
+// Overlay position
+@mixin position-overlay ( $position: absolute ){
+  position: $position;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// Transition
+@mixin cool-transition($properties, $delay: $transition-delay, $animation: $transition-animation) {
+
+  $result: null;
+
+  @each $property in $properties {
+    $result: join($result, #{$delay $animation $property}, comma);
+  }
+
+  transition: $result;
+}
+
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-wrap($wrap: 'wrap') {
+  -webkit-flex-wrap: $wrap;
+      -ms-flex-wrap: $wrap;
+          flex-wrap: $wrap;
+}
+
+@mixin justify-content($justify) {
+  -webkit-box-pack: $justify;
+  -webkit-justify-content: $justify;
+      -ms-flex-pack: $justify;
+          justify-content: $justify;
+}
+
+@mixin align-items($align) {
+  -webkit-box-align: $align;
+  -webkit-align-items: $align;
+       -ms-flex-align: $align;
+          align-items: $align;
+}
+
+@mixin align-content($align) {
+  -webkit-align-content: $align;
+        -ms-flex-line-pack: $align;
+            align-content: $align;
+}
+
+@mixin flex-basis($basis) {
+  -webkit-flex-basis: $basis;
+  -ms-flex-preferred-size: $basis;
+            flex-basis: $basis;
+}
+
+@mixin flex-grow ($grow) {
+  -webkit-box-flex: $grow;
+    -webkit-flex-grow: $grow;
+        -ms-flex-positive: $grow;
+            flex-grow: $grow;
+}
+
+@mixin flex-shrink ($srink) {
+  -webkit-flex-shrink: $srink;
+        -ms-flex-negative: $srink;
+            flex-shrink: $srink;
+}
+
+@mixin flex($flex) {
+  -webkit-box-flex: $flex;
+    -webkit-flex: $flex;
+        -ms-flex: $flex;
+            flex: $flex;
+}
+
+
+@mixin styled-select($arrow-image, $right) {
+  &::-ms-expand {
+    border: 0;
+    color: transparent;
+    background: {
+      color: transparent !important;
+      image: url($arrow-image) !important;
+      repeat: no-repeat;
+      position: center;
+    }
+  }
+  @supports (-moz-appearance: none) or (-webkit-appearance: none) or (appearance: none) {
+    @include appearance(none);
+    padding-right: $right + 0.25rem;
+    background: {
+      image: url($arrow-image) !important;
+      repeat: no-repeat;
+      position: right center;
+    };
+  }
+}

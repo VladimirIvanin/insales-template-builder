@@ -1,13 +1,11 @@
 {
   "components": {
-    "styles": "./project/components/*/css/*.*css",
-    "scss": ["./project/scss/variables.scss", "./project/scss/variables_default.scss", "./project/components/*/scss/*.*css"],
+    "styles": "./project/components/*/scss/*.*css",
     "scripts": "./project/components/*/*.js",
     "liquid": "./project/components/*/*.liquid"
   },
   "layouts": {
-    "styles": "./project/layouts/*/**.*css",
-    "scss": ["./project/scss/variables.scss", "./project/scss/variables_default.scss", "./project/layouts/*/**.*css"],
+    "styles":"./project/layouts/*/**.*css",
     "scripts": "./project/layouts/*/*.js",
     "liquid": "./project/layouts/*/*.liquid"
   },
@@ -40,7 +38,10 @@
     "js": "./project/bundles/js"
   },
   "scss": {
-    "variables_default": "./project/scss/variables_default.scss",
-    "variables": "./project/scss/variables.scss"
+    "function": "./project/scss_import/function",
+    "mixins": "./project/scss_import/mixins",
+    "variables_default": "./project/scss_import/variables_default",
+    "variables": "./project/scss_import/variables",
+    "all": ["./project/scss_import/function", "./project/scss_import/mixins", "./project/scss_import/variables_default", "./project/scss_import/variables"]
   }
 }

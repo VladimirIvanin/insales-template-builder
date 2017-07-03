@@ -10,6 +10,7 @@ gulp.task('theme:deploy', function (callback) {
               'deploy:components:styles',
               'deploy:components:scripts',
               'deploy:plugins',
+              'variables:scss',
               'bundle:css',
               'bundle:js',
               'deploy:fonts',
