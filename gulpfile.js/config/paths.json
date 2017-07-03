@@ -43,6 +43,6 @@
     "mixins": "./project/scss_import/mixins",
     "variables_default": "./project/scss_import/variables_default",
     "variables": "./project/scss_import/variables",
-    "all": ["./project/scss_import/function", "./project/scss_import/mixins", "./project/scss_import/variables_default", "./project/scss_import/variables"]
+    "all": ["./project/scss_import/function/", "./project/scss_import/mixins/", "./project/scss_import/variables_default/", "./project/scss_import/variables/"]
   }
 }

@@ -23,7 +23,6 @@ gulp.task('variables:scss', function(cb) {
 
   gulp.src(variablesScss)
       .pipe(rename(function (_path) {
-        console.log(_path);
         _path.dirname = "";
       }))
       .pipe(gulp.dest(paths.theme.media));
