@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var _ = require('lodash');
 var writeFile = require('write');
+var paths = require('../config/paths.json');
 
 var createList = [
   'quickview'
