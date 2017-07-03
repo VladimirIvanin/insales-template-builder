@@ -1,7 +1,7 @@
-@import "function";
-@import "mixins";
-@import "variables_default";
-@import "variables";
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 // image
 .image-container {
   display: inline-block;
@@ -51,10 +51,10 @@
   height: 100%;
 }
 
-@import "function";
-@import "mixins";
-@import "variables_default";
-@import "variables";
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 // Typography
 html {
   font-size: 62.5%;

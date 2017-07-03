@@ -17,27 +17,43 @@ Contents.prototype.getScriptFile = function (scriptsPaths) {
 };
 
 Contents.prototype.getStylesFile = function (stylesPaths) {
-  let _import = '@import "';
-  let content = '';
+  var _import = '@import "';
+  var content = '';
+
   _.forEach(stylesPaths, function (_style) {
-    var style = _style.split('.');
-    if (style.indexOf(path.sep) == -1) {
-      content += _import + style[0] + '";\n'
+    var _parsePath = path.parse( _style );
+    var addStyle = _style;
+
+    if (_parsePath.name) {
+      addStyle = _parsePath.name;
     }
-  })
+
+    if (_parsePath.base.indexOf('.css') == -1 || _parsePath.base.indexOf('.scss') == -1) {
+      addStyle = _parsePath.base
+    }
+
+    if (addStyle.indexOf(path.sep) == -1) {
+      content += _import + addStyle + '";\n'
+    }
+  });
+
   return content;
 };
 
-Contents.prototype.getVariables = function (stylesPaths) {
+Contents.prototype.getVariables = function () {
   var self = this;
+
   var variablesInclude = '';
-  _.forEach(paths.scss.all, function(path) {
+
+  _.forEach(paths.scss.all, function(_path) {
+    var _files = '';
     try {
-      var _files = fs.readdirSync(path, 'r');
-      variablesInclude += self.getStylesFile(_files)
+      _files = fs.readdirSync(path.normalize(_path));
     } catch (err) {
     }
+    variablesInclude += self.getStylesFile(_files)
   });
+
   return variablesInclude;
 };
 

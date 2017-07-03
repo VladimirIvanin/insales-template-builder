@@ -1,7 +1,7 @@
-@import "function";
-@import "mixins";
-@import "variables_default";
-@import "variables";
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 .star-rating-wrapper {
   *zoom: 1;
 }
@@ -180,22 +180,6 @@
 }
 
 
-/** breadcrumb */
-.breadcrumb {
-  list-style: none;
-  margin: 0;
-  padding: 0.5rem 0;
-}
-
-.breadcrumb-item {
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-.breadcrumb-item:not(:last-child):after {
-  content: '>';
-}
-
 .article_preview {
   height: 100%;
   position: relative;
@@ -225,6 +209,22 @@
     color: #000000;
     cursor: pointer;
   }
+}
+
+/** breadcrumb */
+.breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.breadcrumb-item {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.breadcrumb-item:not(:last-child):after {
+  content: '>';
 }
 
 .item-quantity-input.in-cart {
