@@ -1,5 +1,6 @@
 {
   "components": {
+    "root": "./project/components/",
     "styles": "./project/components/*/scss/*.*css",
     "scripts": "./project/components/*/*.js",
     "liquid": "./project/components/*/*.liquid"

@@ -8,7 +8,7 @@ var createList = [
 
 gulp.task('create', function () {
   _.forEach(createList, function (componentName) {
-    var componentsFolder = './components/' + componentName + '/';
+    var componentsFolder = paths.components.root + componentName + '/';
     var componentsStyle = componentsFolder + 'scss/' + componentName + '.scss';
     var componentsLiquid = componentsFolder + componentName + '.liquid';
     var componentsJs = componentsFolder + componentName + '.js';
