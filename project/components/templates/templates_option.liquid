@@ -1,7 +1,7 @@
 <script type="text/template" data-template-id="option-select">
  <div class="<%= classes.option %> is-select">
    <label class="<%= classes.label %>"><%= title %></label>
-   <select class="<%= classes.values %>">
+   <select class="<%= classes.values %>" data-option-bind="<%= option.id %>">
      <% _.forEach(values, function (value){ %>
        <option
          <%= value.controls %>
