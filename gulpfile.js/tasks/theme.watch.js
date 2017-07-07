@@ -16,6 +16,7 @@ var writeFile = require('write');
 var glob = require("glob");
 var gutil = require('gulp-util');
 var gap = require('gulp-append-prepend');
+var image = require('gulp-image');
 
 var variablesInclude = '';
 if (settings.styles === 'scss') {
@@ -215,6 +216,7 @@ gulp.task('theme:watch:media', function () {
         .pipe(rename(function (_path) {
           _path.dirname = "";
         }))
+        .pipe(image())
         .pipe(gulp.dest(paths.theme.media));
 });
 
