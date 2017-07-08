@@ -17,9 +17,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ account.url }}{{ product.url }}" />
     {% if product.first_image.thumb_url contains 'http' %}
-      <meta property="og:image" content="{{ product.first_image.large_url }}" />
+      <meta property="og:image" content="{{ product.first_image.original_url }}" />
     {% else %}
-      <meta property="og:image" content="{{ account.url }}{{ product.first_image.large_url }}" />
+      <meta property="og:image" content="{{ account.url }}{{ product.first_image.original_url }}" />
     {% endif %}
   {% elsif template contains 'index.' or template == 'index' %}
     <meta property="og:type" content="website" />
@@ -31,7 +31,7 @@
     {% endif %}
   {% elsif template contains 'article.' or template == 'article' %}
     <meta property="og:title" content="{{ article.title }}" />
-    <meta property="og:image" content="{{ article.image.compact_url }}" />
+    <meta property="og:image" content="{{ article.image.original_url }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ article.url }}" />
 {% endif %}

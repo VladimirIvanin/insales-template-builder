@@ -135,6 +135,10 @@ button {
   }
 }
 
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 // image
 .image-container {
   display: inline-block;
@@ -184,6 +188,10 @@ button {
   height: 100%;
 }
 
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 // inputs
 input:not([type]),
 [type="email"],
@@ -275,6 +283,10 @@ textarea {
   @include inpt;
 }
 
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 .notice,
 .page-feedback form #thanks:not(:empty),
 .page-feedback form small {
@@ -437,6 +449,10 @@ textarea {
   color: #060f06;
 }
 
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 @mixin select {
   font-size: 16px;
   font-weight: 500;
@@ -470,6 +486,10 @@ select {
   }
 }
 
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 html {
   color: $color-text-primary;
   font-family: $font-family-primary;
