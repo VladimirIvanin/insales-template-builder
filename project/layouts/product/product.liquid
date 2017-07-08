@@ -5,15 +5,23 @@
 <div class="container">
   <div class="row">
     <div class="cell-4">
-      <img src="{{ product.first_image.large_url }}">
+      {% include "product_gallery" %}
     </div>
     <div class="cell-8">
       {% include "product_info" %}
     </div>
     <div class="cell-12">
-      <div class="product-description">
-        {{ product.description }}
-      </div>
+      {% include "product_tabs" %}
     </div>
   </div>
 </div>
+
+{% for product in product.related_products %}
+  {% assign hide_product = false %}
+  {% include "products_slider", products_title: 'Сопутствующие товары', products_prefix: 'is-related', card_prefix: 'in-product', hide_product: hide_product  %}
+{% endfor %}
+
+{% for product in product.similar_products %}
+  {% assign hide_product = false %}
+  {% include "products_slider", products_title: 'Аналогичные товары', products_prefix: 'is-similar', card_prefix: 'in-product', hide_product: hide_product  %}
+{% endfor %}

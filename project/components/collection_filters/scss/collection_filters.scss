@@ -20,7 +20,7 @@
   position: absolute;
   border: 1px solid #3A4145;
   left: 0;
-  top: 10px;
+  top: calc(50% - 8px);
 }
 .checkbox-field + .filter-checkbox:after {
   content: '';

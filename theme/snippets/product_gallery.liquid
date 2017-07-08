@@ -1,0 +1,106 @@
+{% assign labels_list = '' %}
+{% if product.properties.stiker %}
+  {% for characteristic in product.properties.stiker.characteristics %}
+    {% assign labels_list = labels_list | append: '<div class="stiker stiker-'| append: characteristic.handle | append: '"></div>' %}
+  {% endfor %}
+{% endif %}
+
+<div class="gallery-wrapper" id="gallery-wrapper">
+  {% if labels_list != '' %}
+    <div class="stiker_list">
+      {{ labels_list }}
+    </div>
+  {% endif %}
+<div class="swiper-container gallery-top js-product-gallery-main">
+    <div class="swiper-wrapper">
+        {% for image in product.images %}
+          <div href="{{ image.original_url }}" class="swiper-slide gallery-slide MagicZoom" data-gallery="gallery">
+            <img {% if forloop.first %}itemprop="image"{% endif %} src="{{ image.original_url }}" alt="{{ product.title | escape| replace: '"', '&#34' | replace: '"', '&#34' }}">
+          </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% if product.images.size > 1 %}
+<div class="gallery-thumbs-wrap">
+  <div class="swiper-container gallery-thumbs js-gallery-thumbs">
+      <div class="swiper-wrapper">
+        {% for image in product.images %}
+          <div class="swiper-slide gallery-thumb js-gallery-trigger">
+            <div class="image-container is-square js-image-variant">
+              <img src="{{ image.compact_url }}" alt="">
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <!-- Add Arrows -->
+  </div>
+  {% if product.images.size > 3 %}
+  <div class="swiper-button-next is-gallery"></div>
+  <div class="swiper-button-prev is-gallery"></div>
+  {% endif %}
+</div>
+{% endif %}
+</div>
+<script>
+  var mzOptions = {
+    expand: 'window',
+    rightClick: 'true',
+    hint: 'off'
+  };
+  $(document).ready(function() {
+    var $galleryThumbs = $('.js-gallery-thumbs');
+    var $galleryMain = $('.js-product-gallery-main');
+    var $galleryTriggers = $galleryThumbs.find('.js-gallery-trigger');
+
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        nextButton: '.swiper-button-next.is-gallery',
+        prevButton: '.swiper-button-prev.is-gallery',
+        //width: 90,
+        spaceBetween: 10,
+        slidesPerView: 3,
+        touchRatio: 0.2,
+        //loop: true,
+        slideToClickedSlide: true,
+        onSlideChangeEnd: function (e) {
+          if ($galleryMain[0].swiper) {
+            //$galleryMain[0].swiper.slideTo(e.activeIndex);
+          }
+        }
+    });
+
+
+    var galleryTop = new Swiper('.gallery-top', {
+        nextButton: '.swiper-button-next.is-gallery',
+        prevButton: '.swiper-button-prev.is-gallery',
+        spaceBetween: 0,
+        onSlideChangeEnd: function (e) {
+          setTimeout(function () {
+          myVariants.setVariantByImage({
+            $form: $('.product-info form[data-product-id]'),
+            src: $(e.slides[e.activeIndex]).find('img').attr('src')
+          })
+          if ($galleryThumbs[0].swiper) {
+            $galleryThumbs[0].swiper.slideTo(e.activeIndex);
+            $('.js-gallery-trigger').removeClass('active');
+            $('.js-gallery-trigger').eq(e.activeIndex).addClass('active');
+          }
+        }, e.params.speed)
+        }
+    });
+
+    $('.js-gallery-trigger:first').addClass('active');
+    $(document).on('click', '.js-gallery-trigger', function(event) {
+      event.preventDefault();
+      var index = $(this).index();
+
+      if (!$(this).hasClass('active')) {
+        $(this).addClass('active');
+      }
+
+      $(this).parent('.swiper-wrapper').find('.swiper-slide').not($(this)).removeClass('active');
+      $galleryMain[0].swiper.slideTo(index);
+    });
+
+  });
+</script>

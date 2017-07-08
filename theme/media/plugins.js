@@ -1,5 +1,6 @@
 #= require plugin.collapse
 #= require plugin.validateForm
+#= require variantsModifier
 #= require alertify.min
 #= require jquery.magnific-popup.min
 #= require ion.rangeSlider.min

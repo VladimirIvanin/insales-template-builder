@@ -1,0 +1,26 @@
+.product_tabs-box {
+  padding: 1em 0px;
+}
+.product_tabs-head.tabs-head {
+  position: relative;
+  padding-right: 50px;
+  min-height: 34px;
+}
+
+.product_tabs-icon {
+  display: inline-block;
+  height: 34px;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 25px);
+  width: 41px;
+}
+.product_tabs-target {
+  display: none;
+}
+.product_tabs {
+  border-top: 1px solid #d2d2d1;
+  padding-top: 25px;
+  margin-top: 25px;
+  padding-bottom: 25px;
+}

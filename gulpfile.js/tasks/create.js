@@ -4,7 +4,7 @@ var writeFile = require('write');
 var paths = require('../config/paths.json');
 
 var createList = [
-  'quickview'
+  'product-gallery'
 ]
 
 gulp.task('create', function () {

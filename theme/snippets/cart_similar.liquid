@@ -14,32 +14,49 @@
 {% endfor %}
 
 {% if slider_show %}
-<div class="container similar_products--block in-cart">
-  <div class="page-title is-decor">
-    Не забудьте купить
-  </div>
 
-<div class="similar_products-slider swiper-container js-products-slider">
+<div class="products products-is-cart_similar">
 
-  <div class="swiper-wrapper similar_products-wrapper">
-    <!-- Slides -->
-    {% assign products_ids_list = '' %}
-    {% for item in cart.items %}
-      {% if item.product.related_products.size > 0 %}
-        {% for product in item.product.related_products %}
-        {% assign let_prod_id = product.id | append: ',' %}
-          {% unless products_ids_list contains let_prod_id %}
-            <div class="swiper-slide similar_products-slide">
-              {% include "card" %}
-            </div>
+  <div class="container">
+
+    <h3 class="products-title">
+      Вам также может понадобиться
+    </h3>
+
+    <div class="products-slider-wrapper">
+      <div class="products-slider swiper-container js-products-slider products-slider-is-cart_similar" data-slider-mod=".products-slider-is-cart_similar">
+        <div class="swiper-wrapper">
+
+          {% assign slider_show = false %}
+          {% assign products_ids_list = '' %}
+          {% for item in cart.items %}
+            {% if item.product.related_products.size > 0 %}
+              {% for product in item.product.related_products %}
+              {% assign let_prod_id = product.id | append: ',' %}
+                {% unless products_ids_list contains let_prod_id %}
+
+          <div class="swiper-slide slide-is-cart_similar">
+            {% include "card", card_prefix: 'in-cart' %}
+          </div>
+
           {% endunless %}
           {% capture products_ids_list %}{{products_ids_list}} {{product.id}},{% endcapture %}
         {% endfor %}
       {% endif %}
     {% endfor %}
+
+        </div>
+      </div>
+      <div class="products-control">
+        <div class="swiper-button-prev swiper-button-black products-control-prev">
+        </div>
+        <div class="swiper-button-next swiper-button-black products-control-next">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-</div>
+
 {% endif %}
 
 {% assign slider_show = null %}

@@ -9,12 +9,12 @@
 <form class="collection-order-wrapper row flex-middle {{ collection_order }}" action="{{ collection.url }}" method="get">
 
 
-  <div class="collection-order is-order cell-4 {{ collection_order }} {{ sort_class }}">
+  <div class="collection-order is-order cell-6 {{ collection_order }} {{ sort_class }}">
 
-    <label class="label-field hide">{{ messages.label_sort }}</label>
+    <label class="label-field">{{ messages.label_sort }}</label>
 
-    <select class="select-field js-filter-trigger" name="order">
-      {{ "" | select_option: order, messages.label_sort }}
+    <select class="select-style js-filter-trigger" name="order">
+      {{ "" | select_option: order, "Дате добавления" }}
       {{ "price"            | select_option: order, messages.sort_by_price }}
       {{ "descending_price" | select_option: order, messages.sort_by_price_desc  }}
       {{ "descending_age"   | select_option: order, messages.sort_by_createdon }}
@@ -23,11 +23,11 @@
 
   </div>
 
-  <div class="collection-order is-page-size cell-4 {{ collection_order }} {{ page_size_class }}">
+  <div class="collection-order is-page-size cell-6 {{ collection_order }} {{ page_size_class }}">
 
     <label class="label-field">{{ messages.label_limit }}</label>
 
-    <select class="select-field js-filter-trigger" name="page_size">
+    <select class="select-style js-filter-trigger" name="page_size">
       {{ "12"   | select_option: page_size, "12" }}
       {{ "24"   | select_option: page_size, "24" }}
       {{ "48"   | select_option: page_size, "48" }}

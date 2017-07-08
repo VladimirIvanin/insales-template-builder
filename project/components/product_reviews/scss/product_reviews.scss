@@ -1,0 +1,54 @@
+.form-field.text-field {
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  outline: none;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.form-field.text-field.is-textarea {
+  width: 100%;
+}
+.button.button-is-border {
+  color: #0b0b0b;
+  font-family: "SFUI Text", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  text-decoration: none;
+  border-bottom: 1px dotted #464646;
+  cursor: pointer;
+  padding: 0;
+}
+
+.reviews-form {
+  margin-bottom: 20px;
+}
+.reviews-toggle-wrapper {
+  margin-bottom: 20px;
+}
+.form-field.text-field.is-captcha {
+  margin-top: 10px;
+}
+.reviews-wrapper {
+  max-width: 600px;
+}
+.reviews-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+.reviews-empty {
+  padding: 5px;
+  background: #f9f9f9;
+}

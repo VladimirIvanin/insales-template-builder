@@ -51,6 +51,10 @@
   height: 100%;
 }
 
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
 html {
   color: $color-text-primary;
   font-family: $font-family-primary;

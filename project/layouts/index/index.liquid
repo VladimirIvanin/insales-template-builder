@@ -2,7 +2,10 @@
 
   {% include "promo" %}
 
-  {% include "products_slider", products_array: collections.frontpage.products, products_title: collections.frontpage.title, products_prefix: 'is-frontpage' %}
+  {% for product in collections.frontpage.products %}
+    {% assign hide_product = false %}
+    {% include "products_slider", products_title: collections.frontpage.title, products_prefix: 'is-frontpage', card_prefix: 'in-frontpage', hide_product: hide_product  %}
+  {% endfor %}
 
   <div class="page-content">
     {{ page.content }}

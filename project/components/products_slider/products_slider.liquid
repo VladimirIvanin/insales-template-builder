@@ -1,3 +1,17 @@
+{% comment %}
+  Все итерации должны пройти, чтобы html теги закрылись по значению forloop.
+  Чтобы скрыть товар нужно передать hide_product = true
+  {% for product in product.related_products %}
+    {% assign hide_product = false %}
+
+    {% if product.is_bundle %}
+      {% assign hide_product = true %}
+    {% endif %}
+
+    {% include "products_slider", products_title: 'Сопутствующие товары', products_prefix: 'is-related', card_prefix: 'in-product', hide_product: hide_product  %}
+  {% endfor %}
+{% endcomment %}
+
 {% unless products_prefix %}
   {% assign products_prefix = 'is-default' %}
 {% endunless %}
@@ -6,37 +20,47 @@
   {% assign card_prefix = 'is-default' %}
 {% endunless %}
 
-{% if products_array.size > 0 %}
+{% if  forloop.first %}
 <div class="products products-{{ products_prefix }}">
 
   <div class="container">
 
     {% if products_title %}
-    <h3 class="page-title">
+    <h3 class="products-title">
       {{ products_title }}
     </h3>
     {% endif %}
 
     <div class="products-slider-wrapper">
-      <div class="products-slider swiper-container js-products-slider products-slider-{{ products_prefix }}">
+      <div class="products-slider swiper-container js-products-slider products-slider-{{ products_prefix }}" data-slider-mod=".products-slider-{{ products_prefix }}">
         <div class="swiper-wrapper">
-          {% for product in products_array %}
-          <div class="swiper-slide {{ products_prefix }}">
+{% endif %}
+
+        {% unless hide_product %}
+          <div class="swiper-slide slide-{{ products_prefix }}">
             {% include "card", card_prefix: card_prefix %}
           </div>
-          {% endfor %}
+        {% endunless %}
+
+{% if forloop.last %}
         </div>
       </div>
       <div class="products-control">
-        <div class="swiper-button-prev products-control-prev">
+        <div class="swiper-button-prev swiper-button-black products-control-prev">
         </div>
-        <div class="swiper-button-next products-control-next">
+        <div class="swiper-button-next swiper-button-black products-control-next">
         </div>
       </div>
     </div>
   </div>
 </div>
 {% endif %}
+
+
 {% assign products_array = null %}
 {% assign products_prefix = null %}
-{% assign products_prefix = null %}
+{% assign card_prefix = null %}
+{% assign products_title = null %}
+{% assign hide_product = null %}
+{% assign first = null %}
+{% assign last = null %}

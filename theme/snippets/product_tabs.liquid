@@ -1,0 +1,31 @@
+<div class="product_tabs js-product_tabs" data-tabs-container>
+
+  <div class="product_tabs-head" data-tab-control="product_tabs">
+    {% if product.description %}
+    <div class="product_tabs-item" data-tab-anchor="description">
+      Описание
+    </div>
+    {% endif %}
+
+
+    <div class="product_tabs-item" data-tab-anchor="review">
+      Отзывы {% if product.reviews_count > 0 %}({{ product.reviews_count }}){% endif %}
+    </div>
+
+  </div>
+
+
+
+  <div class="product_tabs-box" data-tab-box="product_tabs">
+
+    <div class="product_tabs-target" data-tab-target="review">
+      {% include "product_reviews" %}
+    </div>
+
+    <div class="product_tabs-target editor" data-tab-target="description" itemprop="description">
+      {{ product.description }}
+    </div>
+
+  </div>
+
+</div>

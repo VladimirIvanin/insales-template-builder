@@ -1,5 +1,7 @@
 <div class="container">
   {% include "breadcrumb" %}
+  <div class="cart-top js-count-words">
+  </div>
   <div class="cart-form">
     {% if cart.items.size > 0 %}
 
@@ -29,6 +31,27 @@
                   />Применить</button>
               </div>
             </div>
+
+            {% if cart.invalid_coupon? %}
+              <div class="discounts-notice input-notice notice--danger">
+                {{ cart.coupon_error }}
+              </div>
+            {% endif %}
+            <div class="discounts-rows js-discounts">
+            {% if cart.discounts.size > 0 %}
+            {% for discount in cart.discounts %}
+            <div class="row flex-between flex-middle discounts-row">
+              <span class="cart_sidebar-total_label">{{ discount.description }}:</span> <span class="cart_sidebar-total">
+                {% if discount.percent %}
+                - {{ discount.percent | round: 0 }} %
+                {% else %}
+                - {{ discount.amount | money }}
+                {% endif %}
+              </span>
+            </div>
+            {% endfor %}
+            {% endif %}
+            </div>
           </div>
           <div class="cell-7">
             <div class="row flex-middle">
@@ -43,38 +66,6 @@
                   <button type="submit"  class="cart-submit button-arrow in-cart" data-cart-submit>ОФОРМИТЬ</button>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {% if cart.invalid_coupon? %}
-          <div class="cell-7">
-            <div class="discounts-notice input-notice notice--danger">
-              {{ cart.coupon_error }}
-            </div>
-          </div>
-          {% endif %}
-
-          <div class="cell-5 {% unless cart.invalid_coupon? %} push-7{% endunless %}">
-            <div class="cart-discount text-right">
-              {% if cart.discounts.size > 0 %}
-              {% for discount in cart.discounts %}
-                <div class="discount">
-                  <div class="discount-title">
-                    {{ discount.description }}
-                  </div>
-                      <div class="discount-prices prices">
-                        <span class="prices-current">
-                          {% if discount.percent %}
-                            - {{ discount.percent }} %
-                            {% else %}
-                            - {{ discount.amount | money }}
-                          {% endif %}
-                        </span>
-                      </div>
-
-                    </div>
-                  {% endfor %}
-                {% endif %}
             </div>
           </div>
 
