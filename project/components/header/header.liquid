@@ -4,6 +4,9 @@
       <div class="phone in-header">
         {{ account.phone }}
       </div>
+      <a href="#feedback-modal" class="js-modal">
+        Заказать звонок
+      </a>
     </div>
     <div class="cell-6 text-center">
       <a href="/" class="logotype-link">
@@ -13,7 +16,7 @@
     <div class="cell-3 text-right">
       <div class="cart-widget">
         <a href="/cart_items" class="cart-widget-link">
-          Корзина <span data-items-count>{% if cart.items_count > 0 %}({{ cart.items_count }}){% endif %}</span>  
+          Корзина <span data-items-count>{% if cart.items_count > 0 %}({{ cart.items_count }}){% endif %}</span>
         </a>
       </div>
     </div>
