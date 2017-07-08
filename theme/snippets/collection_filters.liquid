@@ -218,11 +218,8 @@
   {% endfor %}
 
 
-
-
-
   {% unless form_submit %}
-    <button type="submit" class="filter-submit button is-primary">Применить фильтр</button>
+    <button type="submit" class="filter-submit bttn-prim">Применить фильтр</button>
   {% endunless %}
 
   {% if order %}
@@ -243,7 +240,7 @@
 
 </form>
 {% if filters_active %}
-  <a href="{{ collection.url }}"  class="filters-clear button button-arrow in-filter">Сбросить фильтры</a>
+  <a href="{{ collection.url }}"  class="filters-clear bttn bttn-second in-filter">Сбросить фильтры</a>
 {% endif %}
 
 {% assign header = null %}

@@ -16,6 +16,15 @@
   </div>
 </div>
 
+{% if product.is_bundle %}
+
+  {% for bundle_component in product.bundle_components %}
+    {% assign hide_product = false %}
+    {% include "products_slider", products_title: 'Состав комплекта', products_prefix: 'is-bundle', card_prefix: 'in-bundle', hide_product: hide_product, product: bundle_component.product  %}
+  {% endfor %}
+
+{% endif %}
+
 {% for product in product.related_products %}
   {% assign hide_product = false %}
   {% include "products_slider", products_title: 'Сопутствующие товары', products_prefix: 'is-related', card_prefix: 'in-product', hide_product: hide_product  %}

@@ -1,0 +1,111 @@
+@mixin bttn-link {
+  padding: 5px 20px;
+}
+@mixin bttn {
+  font-size: $font-size-primary;
+  font-family: $font-family-second;
+  font-weight: 300;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height: 1.5;
+  text-transform: uppercase;
+  transition: background-color 0.3s, border-color 0.3s, color 0.2s;
+  box-sizing: border-box;
+  user-select: none;
+  &.is-white {
+    color: #fff;
+    border-color: #fff;
+  }
+  &:focus {
+    outline-color: transparent;
+  }
+}
+
+[type="button"],
+[type="submit"],
+[type="reset"],
+[type="file"],
+button {
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  &:focus {
+    outline-color: $color-link-secondary;
+  }
+}
+
+.bttn {
+  @include bttn;
+  @include bttn-link;
+}
+.bttn-prim {
+  @include bttn;
+  @include bttn-link;
+  background-color: $color-link-primary;
+  color: #fff;
+  border: 2px solid $color-link-primary;
+  &:hover{
+    color: #fff;
+    background-color: $color-link-primary-hover;
+    border-color: $color-link-primary-hover;
+  }
+}
+.bttn-second {
+  @include bttn;
+  @include bttn-link;
+  background-color: $color-link-secondary;
+  color: #fff;
+  border: 2px solid $color-link-secondary;
+  &:hover{
+    color: #fff;
+    background-color: $color-link-secondary-hover;
+    border-color: $color-link-secondary-hover;
+  }
+}
+.bttn-transparent {
+  @include bttn;
+  @include bttn-link;
+  background-color: transparent;
+  border: 2px solid $color-link-primary;
+  color: $color-link-primary;
+  &:hover, &.is-fill {
+    color: #fff;
+    background-color: $color-link-primary;
+  }
+}
+.bttn-transparent-second {
+  @include bttn;
+  @include bttn-link;
+  background-color: transparent;
+  border: 2px solid $color-link-secondary;
+  color: $color-link-secondary;
+  &:hover, &.is-fill {
+    color: #fff;
+    background-color: $color-link-secondary;
+  }
+}
+
+.bttn-count {
+  @include bttn;
+  width: 30px;
+  height: 30px;
+  line-height: 26px;
+  min-height: initial;
+  color: #d1d1d1;
+  border: 1px solid $color-border-primary;
+  font-family: $font-family-primary;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  background-color: transparent;
+  &:hover {
+    border-color: $color-link-primary;
+    background-color: $color-link-primary;
+    color: #fff;
+  }
+}

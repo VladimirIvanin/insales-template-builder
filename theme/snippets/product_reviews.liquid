@@ -13,7 +13,9 @@
       {% endif %}
       {% if review.errors.size > 0 %}
         <div class="notice notice-error editor js-review-notice">
-          <p>Следующие поля заполнены неправильно</p>
+          <div>
+            Следующие поля заполнены неправильно
+          </div>
           <ul>
             {% if review.errors contains 'author' %}
               <li>Имя</li>{% endif %}

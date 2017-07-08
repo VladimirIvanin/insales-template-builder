@@ -34,7 +34,9 @@
     {% if comment.errors.size > 0 %}
       <div class="notice notice-error">
 
-        <p>{{ messages.fields_are_incorrect }}:</p>
+        <div>
+          {{ messages.fields_are_incorrect }}:
+        </div>
 
         <ul>
 
@@ -78,7 +80,7 @@
             </div>
             <div class="cell-12">
               <input type="text" name="comment[author]" value="{{ comment.author }}"
-              class="form-field text-field {% if comment.errors contains 'author' %} text-danger {% endif %}"/>
+              class="form-field text-field inpt {% if comment.errors contains 'author' %} text-danger {% endif %}"/>
             </div>
           </div><!-- /.author-row -->
         </div>
@@ -91,7 +93,7 @@
             </div>
             <div class="cell-12">
               <input type="email" name="comment[email]" value="{{ comment.email }}"
-              class="form-field text-field {% if comment.errors contains 'email' %} text-danger{% endif %}"/>
+              class="form-field text-field inpt {% if comment.errors contains 'email' %} text-danger{% endif %}"/>
             </div>
           </div><!-- /.email-row -->
         </div>
@@ -102,7 +104,7 @@
               <label class="form-label">{{ messages.field_comment }} <span class="text-error">*</span></label>
             </div>
             <div class="cell-12">
-              <textarea name="comment[content]" rows="5" class="form-field text-field is-textarea">{{ comment.content }}</textarea>
+              <textarea name="comment[content]" rows="5" class="form-field text-field inpt is-textarea">{{ comment.content }}</textarea>
             </div>
           </div><!-- /.content-row -->
 
@@ -113,7 +115,7 @@
             </div>
             <div class="cell-12">
               <input type="text" name="comment[captcha_solution]"
-              class="form-field text-field {% if comment.errors contains 'captcha_solution' %} text-danger{% endif %}"/>
+              class="form-field text-field inpt {% if comment.errors contains 'captcha_solution' %} text-danger{% endif %}"/>
 
               <div id="captcha_challenge" class="captcha-image">
                 {{ comment | captcha_challenge }}
@@ -134,8 +136,8 @@
 
           <div class="form-row form-control-row row">
             <div class="cell-12">
-              <button type="submit" class="button is-primary button-buy in-product">
-                <span class="button-text">{{ messages.button_submit }}</span>
+              <button type="submit" class="bttn is-primary bttn-prim in-product">
+                <span class="bttn-text">{{ messages.button_submit }}</span>
               </button>
             </div>
           </div><!-- /.form-control-row -->

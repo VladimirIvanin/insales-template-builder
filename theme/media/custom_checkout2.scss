@@ -1,0 +1,124 @@
+@import "function.scss";
+@import "mixins.scss";
+@import "variables_default.scss";
+@import "variables.scss";
+.co-logo img {
+  max-width: 200px;
+}
+
+.co-button:focus,
+.picker-button:focus,
+.co-button:hover,
+.picker-button:hover {
+  background-color: #4989e7;
+}
+
+button#create_order,
+.co-button,
+.picker-button {
+  font-size: $font-size-primary;
+  font-family: $font-family-primary;
+  font-weight: 300;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height: 1.5;
+  text-transform: uppercase;
+  -webkit-transition: background-color 0.3s, border-color 0.3s, color 0.2s;
+  -o-transition: background-color 0.3s, border-color 0.3s, color 0.2s;
+  transition: background-color 0.3s, border-color 0.3s, color 0.2s;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: $color-link-primary;
+  color: #fff;
+  border: 2px solid $color-link-primary;
+
+  &:hover {
+    color: #fff;
+    background-color: $color-link-primary-hover;
+    border-color: $color-link-primary-hover;
+  }
+}
+
+.co-section--checkout_content {
+  color: $color-text-primary;
+  font-family: $font-family-primary;
+  font-size: $font-size-primary;
+}
+
+.co-logo {
+  font-size: 24px;
+  line-height: 1;
+  text-transform: uppercase;
+  width: 100%;
+  display: block;
+  padding-right: 10px;
+  position: relative;
+  -webkit-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+  color: #1c151b;
+}
+
+.co-logo .logo {
+  max-width: 248px;
+  text-align: center;
+}
+
+.co-logo .logo-text {
+  margin-top: 5px;
+}
+
+.co-header-phone {
+  color: #1c151b;
+}
+
+.co-button:focus,
+.picker-button:focus {
+  -webkit-box-shadow: 0px 0px 1px 1px #4989e7;
+  box-shadow: 0px 0px 1px 1px #4989e7;
+}
+
+.co-basket_item-image img {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+a:not([class]):focus,
+a:not([class]):hover,
+.link:focus,
+.link:hover {
+  color: #e5afb2;
+}
+
+a:not([class]) {
+  border-bottom: initial;
+}
+
+.co-basket_total-price,
+[class*="co-price"] {
+  color: #16171a;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+div#total_price {
+  font-size: 40px;
+}
+
+.co-basket_item-total {
+  font-size: 24px;
+}
+
+.co-basket_subtotal-bonus {
+  color: #16171a;
+  font-size: 28px;
+  font-weight: 400;
+}

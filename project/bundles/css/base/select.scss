@@ -1,0 +1,25 @@
+@mixin select {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px;
+}
+
+select {
+  @include select;
+  &:focus {
+    outline-color: $color-link-secondary;
+  }
+}
+.select-style {
+    color: $color-link-secondary;
+    padding: 0 25px 0 13px;
+    border: none;
+    appearance: none;
+    background-image: url('arr-down-prime.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 7px) center;
+    background-size: 10px;
+    &::-ms-expand {
+      display: none;
+    }
+}

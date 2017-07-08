@@ -1,6 +1,6 @@
 <div class="container">
   {% include "breadcrumb" %}
-  <div class="article-content">
+  <div class="article-content article-{{ article.url | split: '/' | last }}">
     <div class="row">
 
       <div class="article-inner cell-9 cell-12-mc">

@@ -52,11 +52,11 @@
       <input type="hidden" name="variant_id" value="{{product.variants.first.id}}" >
 
       {% if product.variants.size > 1 %}
-        <a href="{{ product.url }}" class="button button-buy">
+        <a href="{{ product.url }}" class="bttn-prim">
           Подробнее
         </a>
         {% else %}
-        <a href="{{ product.url }}" class="button button-buy" data-item-add>
+        <a href="{{ product.url }}" class="bttn-prim" data-item-add>
           в корзину
         </a>
       {% endif %}

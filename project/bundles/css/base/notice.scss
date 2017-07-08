@@ -1,0 +1,79 @@
+.notice, .page-feedback form #thanks:not(:empty), .page-feedback form small {
+	padding: 1rem 1rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	line-height: 1.2;
+}
+
+.notice:last-child, .page-feedback form #thanks:last-child:not(:empty), .page-feedback form small:last-child {
+	margin-bottom: 0;
+}
+
+.notice h2, .page-feedback form #thanks:not(:empty) h2, .page-feedback form small h2, .notice h3, .page-feedback form #thanks:not(:empty) h3, .page-feedback form small h3, .notice h4, .page-feedback form #thanks:not(:empty) h4, .page-feedback form small h4 {
+	margin-top: 0;
+	color: inherit;
+}
+
+.notice > p:last-child, .page-feedback form #thanks:not(:empty) > p:last-child, .page-feedback form small > p:last-child, .notice > ul:last-child, .page-feedback form #thanks:not(:empty) > ul:last-child, .page-feedback form small > ul:last-child {
+	margin-bottom: 0;
+}
+
+.notice > p + p, .page-feedback form #thanks:not(:empty) > p + p, .page-feedback form small > p + p {
+	margin-top: 5px;
+}
+
+.notice.is-error, .page-feedback form .is-error#thanks:not(:empty), .page-feedback form small.is-error, .notice.notice-error, .page-feedback form .notice-error#thanks:not(:empty), .page-feedback form small.notice-error {
+	background-color: rgba(255, 84, 91, 0.9);
+	border-color: #ff212a;
+	color: #540003;
+}
+
+.notice.is-error hr, .page-feedback form .is-error#thanks:not(:empty) hr, .page-feedback form small.is-error hr, .notice.notice-error hr, .page-feedback form .notice-error#thanks:not(:empty) hr, .page-feedback form small.notice-error hr {
+	border-top-color: #ff0812;
+}
+
+.notice.is-error a, .page-feedback form .is-error#thanks:not(:empty) a, .page-feedback form small.is-error a, .notice.notice-error a, .page-feedback form .notice-error#thanks:not(:empty) a, .page-feedback form small.notice-error a {
+	color: #210001;
+}
+
+.notice.is-info, .page-feedback form .is-info#thanks:not(:empty), .page-feedback form small.is-info, .notice.notice-info, .page-feedback form .notice-info#thanks:not(:empty), .page-feedback form small#thanks:not(:empty), .page-feedback form small {
+	background-color: rgba(133, 208, 231, 0.9);
+	border-color: #5bc0de;
+	color: #124a5b;
+}
+
+.notice.is-info hr, .page-feedback form .is-info#thanks:not(:empty) hr, .page-feedback form small.is-info hr, .notice.notice-info hr, .page-feedback form .notice-info#thanks:not(:empty) hr, .page-feedback form small#thanks:not(:empty) hr, .page-feedback form small hr {
+	border-top-color: #46b8da;
+}
+
+.notice.is-info a, .page-feedback form .is-info#thanks:not(:empty) a, .page-feedback form small.is-info a, .notice.notice-info a, .page-feedback form .notice-info#thanks:not(:empty) a, .page-feedback form small#thanks:not(:empty) a, .page-feedback form small a {
+	color: #0a2730;
+}
+
+.notice.is-warning, .page-feedback form .is-warning#thanks:not(:empty), .page-feedback form small.is-warning, .notice.notice-warning, .page-feedback form .notice-warning#thanks:not(:empty), .page-feedback form small.notice-warning {
+	background-color: rgba(244, 195, 125, 0.9);
+	border-color: #f0ad4e;
+	color: #694109;
+}
+
+.notice.is-warning hr, .page-feedback form .is-warning#thanks:not(:empty) hr, .page-feedback form small.is-warning hr, .notice.notice-warning hr, .page-feedback form .notice-warning#thanks:not(:empty) hr, .page-feedback form small.notice-warning hr {
+	border-top-color: #eea236;
+}
+
+.notice.is-warning a, .page-feedback form .is-warning#thanks:not(:empty) a, .page-feedback form small.is-warning a, .notice.notice-warning a, .page-feedback form .notice-warning#thanks:not(:empty) a, .page-feedback form small.notice-warning a {
+	color: #3a2405;
+}
+
+.notice.is-success, .page-feedback form .is-success#thanks:not(:empty), .page-feedback form small.is-success, .notice.notice-success, .page-feedback form #thanks:not(:empty), .page-feedback form small.notice-success {
+	background-color: rgba(128, 199, 128, 0.9);
+	border-color: #5cb85c;
+	color: #163216;
+}
+
+.notice.is-success hr, .page-feedback form .is-success#thanks:not(:empty) hr, .page-feedback form small.is-success hr, .notice.notice-success hr, .page-feedback form #thanks:not(:empty) hr, .page-feedback form small.notice-success hr {
+	border-top-color: #4cae4c;
+}
+
+.notice.is-success a, .page-feedback form .is-success#thanks:not(:empty) a, .page-feedback form small.is-success a, .notice.notice-success a, .page-feedback form #thanks:not(:empty) a, .page-feedback form small.notice-success a {
+	color: #060f06;
+}

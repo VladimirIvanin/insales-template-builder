@@ -1,22 +1,18 @@
 $(document).ready(function() {
   EventBus.subscribe('add_items:insales:cart', function (cart) {
 
-    if (cart.action.button && cart.action.button.hasClass('in-product')) {
-      $.magnificPopup.open({
-        callbacks: {
-          beforeOpen: function() {
-            this.st.mainClass = 'mfp-zoom-in';
-          }
-        },
-        removalDelay: 500, //delay removal by X to allow out-animation
-        items: {
-          src: '#cart-add',
-          type: 'inline'
+    $.magnificPopup.open({
+      callbacks: {
+        beforeOpen: function() {
+          this.st.mainClass = 'mfp-zoom-in';
         }
-      });
-    }else{
-       alertify.success('Товар добавлен в корзину');
-    }
+      },
+      removalDelay: 500, //delay removal by X to allow out-animation
+      items: {
+        src: '#cart-add',
+        type: 'inline'
+      }
+    });
   });
   $(document).on('click', '.added-close', function(event) {
     event.preventDefault();
