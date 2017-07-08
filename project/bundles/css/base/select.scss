@@ -1,7 +1,7 @@
 @mixin select {
   font-size: 16px;
   font-weight: 500;
-  padding: 15px;
+  padding: 5px;
 }
 
 select {
@@ -12,7 +12,7 @@ select {
 }
 .select-style {
     color: $color-link-secondary;
-    padding: 0 25px 0 13px;
+    padding: 5px 25px 5px 13px;
     border: none;
     appearance: none;
     background-image: url('arr-down-prime.svg');
