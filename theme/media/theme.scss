@@ -2,29 +2,6 @@
 @import "mixins.scss";
 @import "variables_default.scss";
 @import "variables.scss";
-.list-link {
-  text-decoration: none;
-}
-
-.aside-header a {
-  text-decoration: none;
-}
-
-.aside-header h2 {
-  margin-bottom: 10px;
-}
-
-.last-articles {
-  margin-bottom: 20px;
-}
-
-.list-item {
-}
-
-.articles-list .list-item {
-  margin-bottom: 10px;
-}
-
 .star-rating-wrapper {
   *zoom: 1;
 }
@@ -177,6 +154,29 @@
 
 .comment-body {
   padding: 10px 0;
+}
+
+.list-link {
+  text-decoration: none;
+}
+
+.aside-header a {
+  text-decoration: none;
+}
+
+.aside-header h2 {
+  margin-bottom: 10px;
+}
+
+.last-articles {
+  margin-bottom: 20px;
+}
+
+.list-item {
+}
+
+.articles-list .list-item {
+  margin-bottom: 10px;
 }
 
 

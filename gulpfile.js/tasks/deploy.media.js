@@ -6,6 +6,8 @@ var rename = require("gulp-rename");
 var paths = require('../config/paths.json');
 var Promise = require('promise');
 var image = require('gulp-image');
+var gulpif = require('gulp-if');
+var settings = require('../config/settings.json');
 
 gulp.task('deploy:media', function (cb) {
   return new Promise(function (resolve, reject) {
@@ -13,7 +15,7 @@ gulp.task('deploy:media', function (cb) {
       .pipe(rename(function (_path) {
         _path.dirname = "";
       }))
-      .pipe(image())
+      .pipe(gulpif(settings.imageMin, image()))
       .pipe(gulp.dest(paths.theme.media))
       .on('end', function() {
         resolve();

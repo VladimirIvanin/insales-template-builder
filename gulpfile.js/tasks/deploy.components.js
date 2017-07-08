@@ -14,6 +14,7 @@ var settings = require('../config/settings.json');
 var contents = require('../help/contents.js');
 var replace = require('gulp-replace');
 var gap = require('gulp-append-prepend');
+var gutil = require('gulp-util');
 
 var styles = [];
 var scripts = [];
@@ -45,6 +46,8 @@ gulp.task('deploy:components:styles', function (cb) {
       .pipe(postcss({
         plugins: plugins,
         options: { syntax: syntax }
+      }).on('error',  function (err) {
+        gutil.log(err.message)
       }))
       .pipe(concat('theme.scss'))
       .pipe(gap.prependText(variablesInclude))

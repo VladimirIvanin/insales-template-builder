@@ -1,5 +1,6 @@
 {
   "styles": "scss",
+  "imageMin": false,
   "build": {
     "css": {
       "theme": {

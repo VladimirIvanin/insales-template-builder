@@ -41,6 +41,8 @@ gulp.task('deploy:layouts:styles', function (cb) {
       .pipe(postcss({
         plugins: plugins,
         options: { syntax: syntax }
+      }).on('error',  function (err) {
+        gutil.log(err.message)
       }))
       .pipe(concat('layouts.scss'))
       .pipe(gap.prependText(variablesInclude))
@@ -53,6 +55,8 @@ gulp.task('deploy:layouts:styles', function (cb) {
       .pipe(postcss({
         plugins: plugins,
         options: { syntax: syntax }
+      }).on('error',  function (err) {
+        gutil.log(err.message)
       }))
       .pipe(rename(function (_path) {
         styles.push(_path.basename);

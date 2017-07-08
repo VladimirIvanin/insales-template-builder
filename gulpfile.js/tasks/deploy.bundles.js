@@ -13,6 +13,7 @@ var settings = require('../config/settings.json');
 var gap = require('gulp-append-prepend');
 var contents = require('../help/contents.js');
 var rename = require("gulp-rename");
+var gutil = require('gulp-util');
 
 gulp.task('variables:scss', function(cb) {
   var variablesScss = [];
@@ -54,6 +55,8 @@ gulp.task('bundle:css', function(cb) {
         .pipe(postcss({
           plugins: plugins,
           options: { syntax: syntax }
+        }).on('error',  function (err) {
+          gutil.log(err.message)
         }))
         .pipe(gap.prependText(variablesInclude))
         .pipe(concat(name))
