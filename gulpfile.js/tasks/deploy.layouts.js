@@ -12,6 +12,7 @@ var _ = require('lodash');
 var paths = require('../config/paths.json');
 var settings = require('../config/settings.json');
 var gap = require('gulp-append-prepend');
+var gutil = require('gulp-util');
 
 var contents = require('../help/contents.js');
 var styles = [];
