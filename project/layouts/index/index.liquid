@@ -2,7 +2,7 @@
 
   {% include "promo" %}
 
-  {% include "products_slider", products_handle: 'frontpage', products_title: collections.frontpage.title, products_prefix: 'is-frontpage' %}
+  {% include "products_slider", products_array: collections.frontpage.products, products_title: collections.frontpage.title, products_prefix: 'is-frontpage' %}
 
   <div class="page-content">
     {{ page.content }}

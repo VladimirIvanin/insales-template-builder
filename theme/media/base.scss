@@ -51,26 +51,19 @@
   height: 100%;
 }
 
-@import "function.scss";
-@import "mixins.scss";
-@import "variables_default.scss";
-@import "variables.scss";
-// Typography
 html {
-  font-size: 62.5%;
+  color: $color-text-primary;
+  font-family: $font-family-primary;
+  font-size: $font-size-primary;
+  min-width: 1200px;
+  height: 100%;
 }
 
 body {
+  font-size: 100%;
+  min-width: 1200px;
   height: 100%;
   max-height: 100%;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.6em;
-  color: #3a4145;
-}
-
-body {
-  color: $color;
 }
 
 h1,
@@ -82,45 +75,50 @@ h6 {
   text-rendering: optimizeLegibility;
   line-height: 1;
   margin-top: 0;
-  font-family: sans-serif;
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 36px;
+  font-weight: 700;
   line-height: 1.2em;
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: 24px;
+  font-weight: 700;
   line-height: 1.2em;
 }
 
 h3 {
-  font-size: 3.5rem;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 h4 {
-  font-size: 3rem;
+  font-size: 18px;
 }
 
 h5 {
-  font-size: 2.5rem;
+  font-size: 16px;
 }
 
 h6 {
-  font-size: 2rem;
+  font-size: 14px;
 }
 
 a {
-  color: #4a4a4a;
+  color: $color-link-primary;
   -webkit-transition: color ease 0.3s;
   -o-transition: color ease 0.3s;
   transition: color ease 0.3s;
+}
+
+a[class] {
   text-decoration: none;
 }
 
 a:hover {
-  color: #57a3e8;
+  color: $color-link-primary-hover;
 }
 
 h1 a,
@@ -315,4 +313,8 @@ table.plain {
   tbody > tr:nth-child(odd) > th {
     background: transparent;
   }
+}
+
+label {
+  cursor: pointer;
 }

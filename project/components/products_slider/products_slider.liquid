@@ -2,37 +2,27 @@
   {% assign products_prefix = 'is-default' %}
 {% endunless %}
 
-{% if products_handle == 'related' %}
-    {% assign products_array = product.related_products %}
-{% endif %}
-
-{% if products_handle == 'similar' %}
-    {% assign products_array = product.similar_products %}
-{% endif %}
-
-{% unless products_handle == 'related' or products_handle == 'similar' %}
-  {% assign products_array = collections[products_handle].products %}
+{% unless card_prefix %}
+  {% assign card_prefix = 'is-default' %}
 {% endunless %}
 
 {% if products_array.size > 0 %}
-<div class="products {{products_prefix}}">
+<div class="products products-{{ products_prefix }}">
 
   <div class="container">
 
     {% if products_title %}
-    <h3 class="page-title text-center">
-      <span>
-        {{ products_title }}
-      </span>
+    <h3 class="page-title">
+      {{ products_title }}
     </h3>
     {% endif %}
 
     <div class="products-slider-wrapper">
-      <div class="products-slider swiper-container js-products-slider {{products_prefix}}">
+      <div class="products-slider swiper-container js-products-slider products-slider-{{ products_prefix }}">
         <div class="swiper-wrapper">
           {% for product in products_array %}
-          <div class="swiper-slide {{products_prefix}}">
-            {% include "card", card_prefix: products_prefix %}
+          <div class="swiper-slide {{ products_prefix }}">
+            {% include "card", card_prefix: card_prefix %}
           </div>
           {% endfor %}
         </div>
@@ -49,4 +39,4 @@
 {% endif %}
 {% assign products_array = null %}
 {% assign products_prefix = null %}
-{% assign products_handle = null %}
+{% assign products_prefix = null %}

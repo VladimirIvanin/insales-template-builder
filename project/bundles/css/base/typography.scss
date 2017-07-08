@@ -1,206 +1,208 @@
-// Typography
 html {
-    font-size: 62.5%;
+  color: $color-text-primary;
+  font-family: $font-family-primary;
+  font-size: $font-size-primary;
+  min-width: 1200px;
+  height: 100%;
 }
 
 body {
-    height: 100%;
-    max-height: 100%;
-    font-family: 'PT Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.6em;
-    color: #3A4145;
+  font-size: 100%;
+  min-width: 1200px;
+  height: 100%;
+  max-height: 100%;
 }
-body {
-  color: $color;
-}
+
 h1, h2, h3,
 h4, h5, h6 {
-    text-rendering: optimizeLegibility;
-    line-height: 1;
-    margin-top: 0;
-    font-family: sans-serif;
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
 }
 
 h1 {
-    font-size: 5rem;
-    line-height: 1.2em;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2em;
 }
 
 h2 {
-    font-size: 4rem;
-    line-height: 1.2em;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2em;
 }
 
 h3 {
-    font-size: 3.5rem;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 h4 {
-    font-size: 3rem;
+  font-size: 18px;
 }
 
 h5 {
-    font-size: 2.5rem;
+  font-size: 16px;
 }
 
 h6 {
-    font-size: 2rem;
+  font-size: 14px;
 }
 
 a {
-    color: #4a4a4a;
-    transition: color ease 0.3s;
-    text-decoration: none;
+  color: $color-link-primary;
+  transition: color ease 0.3s;
 }
-
+a[class] {
+  text-decoration: none;
+}
 a:hover {
-    color: #57A3E8;
+  color: $color-link-primary-hover;
 }
 
 h1 a, h2 a, h3 a,
 h4 a, h5 a, h6 a {
-    color: #50585D;
+  color: #50585D;
 }
 
 
 p, ul, ol {
-    margin: 1.6em 0;
+  margin: 1.6em 0;
 }
 
 ol ol, ul ul,
 ul ol, ol ul {
-    margin: 0.4em 0;
+  margin: 0.4em 0;
 }
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #efefef;
-    margin: 3.2em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #efefef;
+  margin: 3.2em 0;
+  padding: 0;
 }
 
 blockquote {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 1.6em 0 1.6em -1.2em;
-    padding: 0 0 0 1.6em;
-    border-left: #4a4a4a 0.6em solid;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1.6em 0 1.6em -1.2em;
+  padding: 0 0 0 1.6em;
+  border-left: #4a4a4a 0.6em solid;
 }
 
 blockquote p {
-    margin: 0.8em 0;
-    font-style: italic;
+  margin: 0.8em 0;
+  font-style: italic;
 }
 
 blockquote small {
-    display: inline-block;
-    margin: 0.8em 0 0.8em 1.5em;;
-    font-size:0.9em;
-    color: #ccc;
+  display: inline-block;
+  margin: 0.8em 0 0.8em 1.5em;;
+  font-size:0.9em;
+  color: #ccc;
 }
 
 blockquote small:before { content: '\2014 \00A0'; }
 
 blockquote cite {
-    font-weight:bold;
+  font-weight:bold;
 }
 
 blockquote cite a { font-weight: normal; }
 
 dl {
-    margin: 1.6em 0;
+  margin: 1.6em 0;
 }
 
 dl dt {
-    float: left;
-    width: 180px;
-    overflow: hidden;
-    clear: left;
-    text-align: right;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-weight: bold;
-    margin-bottom: 1em
+  float: left;
+  width: 180px;
+  overflow: hidden;
+  clear: left;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  margin-bottom: 1em
 }
 
 dl dd {
-    margin-left: 200px;
-    margin-bottom: 1em
+  margin-left: 200px;
+  margin-bottom: 1em
 }
 
 mark {
-    background-color: #ffc336;
+  background-color: #ffc336;
 }
 
 code, tt {
-    padding: 1px 3px;
-    font-family: Inconsolata, monospace, sans-serif;
-    font-size: 0.85em;
-    white-space: pre;
-    border: 1px solid #E3EDF3;
-    background: #F7FAFB;
-    border-radius: 2px;
+  padding: 1px 3px;
+  font-family: Inconsolata, monospace, sans-serif;
+  font-size: 0.85em;
+  white-space: pre;
+  border: 1px solid #E3EDF3;
+  background: #F7FAFB;
+  border-radius: 2px;
 }
 
 pre {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 1.6em 0;
-    border: 1px solid #E3EDF3;
-    width: 100%;
-    padding: 10px;
-    font-family: Inconsolata, monospace, sans-serif;
-    font-size: 0.9em;
-    white-space: pre;
-    overflow: auto;
-    background: #F7FAFB;
-    border-radius: 3px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1.6em 0;
+  border: 1px solid #E3EDF3;
+  width: 100%;
+  padding: 10px;
+  font-family: Inconsolata, monospace, sans-serif;
+  font-size: 0.9em;
+  white-space: pre;
+  overflow: auto;
+  background: #F7FAFB;
+  border-radius: 3px;
 }
 
 pre code, tt {
-    font-size: inherit;
-    white-space: -moz-pre-wrap;
-    white-space: pre-wrap;
-    background: transparent;
-    border: none;
-    padding: 0;
+  font-size: inherit;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 kbd {
-    display: inline-block;
-    margin-bottom: 0.4em;
-    padding: 1px 8px;
-    border: #ccc 1px solid;
-    color: #666;
-    text-shadow: #fff 0 1px 0;
-    font-size: 0.9em;
-    font-weight: bold;
-    background: #f4f4f4;
-    border-radius: 4px;
-    box-shadow:
-        0 1px 0 rgba(0, 0, 0, 0.2),
-        0 1px 0 0 #fff inset;
+  display: inline-block;
+  margin-bottom: 0.4em;
+  padding: 1px 8px;
+  border: #ccc 1px solid;
+  color: #666;
+  text-shadow: #fff 0 1px 0;
+  font-size: 0.9em;
+  font-weight: bold;
+  background: #f4f4f4;
+  border-radius: 4px;
+  box-shadow:
+  0 1px 0 rgba(0, 0, 0, 0.2),
+  0 1px 0 0 #fff inset;
 }
 
 table {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 1.6em 0;
-    width:100%;
-    max-width: 100%;
-    background-color: transparent;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1.6em 0;
+  width:100%;
+  max-width: 100%;
+  background-color: transparent;
 }
 
 table th,
 table td {
-    padding: 8px;
-    line-height: 20px;
-    text-align: left;
-    vertical-align: top;
-    border-top: 1px solid #efefef;
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #efefef;
 }
 
 table th { color: #000; }
@@ -211,7 +213,7 @@ table colgroup + thead tr:first-child th,
 table colgroup + thead tr:first-child td,
 table thead:first-child tr:first-child th,
 table thead:first-child tr:first-child td {
-    border-top: 0;
+  border-top: 0;
 }
 
 table tbody + tbody { border-top: 2px solid #efefef; }
@@ -220,12 +222,15 @@ table table table { background-color: #fff; }
 
 table tbody > tr:nth-child(odd) > td,
 table tbody > tr:nth-child(odd) > th {
-    background-color: #f6f6f6;
+  background-color: #f6f6f6;
 }
 
 table.plain {
-    tbody > tr:nth-child(odd) > td,
-    tbody > tr:nth-child(odd) > th {
-        background: transparent;
-    }
+  tbody > tr:nth-child(odd) > td,
+  tbody > tr:nth-child(odd) > th {
+    background: transparent;
+  }
+}
+label {
+  cursor: pointer;
 }
