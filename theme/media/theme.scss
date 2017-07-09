@@ -229,6 +229,7 @@
 .item-quantity-input.in-cart {
   width: 50px;
   text-align: center;
+  padding: 5px;
 }
 
 .item-delete {
@@ -461,6 +462,15 @@
   color: #6fc7f2;
 }
 
+.products-slider-wrapper {
+  position: relative;
+  padding: 24px 0;
+}
+
+.products-title {
+  font-size: 24px;
+}
+
 .gallery-wrapper {
   margin: 0 15px;
 }
@@ -527,20 +537,13 @@
   width: -webkit-calc(100% - 88px);
   width: calc(100% - 88px);
   position: relative;
-}
-
-.products-slider-wrapper {
-  position: relative;
-  padding: 24px 0;
-}
-
-.products-title {
-  font-size: 24px;
+  margin: auto;
 }
 
 .product-quantity-input {
   width: 50px;
   text-align: center;
+  padding: 5px;
 }
 
 .product-buy {

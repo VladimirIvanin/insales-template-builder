@@ -112,6 +112,17 @@ function generateUUID() {
 };
 
 $(document).ready(function() {
+  var promoSlider = new Swiper('.js-promo', {
+    pagination: '.promo-slider-pagination',
+    nextButton: '.promo-slider-next',
+    prevButton: '.promo-slider-prev',
+    loop: true,
+    paginationClickable: true,
+    autoHeight: true
+  });
+});
+
+$(document).ready(function() {
 
   var activeTab = 1;
 
@@ -121,16 +132,5 @@ $(document).ready(function() {
 
   $('.js-product_tabs').dataTabs({
     activeIndex: activeTab
-  });
-});
-
-$(document).ready(function() {
-  var promoSlider = new Swiper('.js-promo', {
-    pagination: '.promo-slider-pagination',
-    nextButton: '.promo-slider-next',
-    prevButton: '.promo-slider-prev',
-    loop: true,
-    paginationClickable: true,
-    autoHeight: true
   });
 });
