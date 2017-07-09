@@ -1,12 +1,12 @@
 $(document).ready(function() {
   $('.js-products-slider').each(function(index, el) {
-    initProductInSlider($(el));
+    initProductInSlider($(el), index);
   });
 });
 
 var productSliders = {};
 
-function initProductInSlider(el) {
+function initProductInSlider(el, key) {
   var sliderLength = el.find('.swiper-slide').length;
   var showSlider = sliderLength > 0;
   var isLoop = sliderLength > 4;
@@ -17,7 +17,7 @@ function initProductInSlider(el) {
     return;
   }
 
-  productSliders[generateUUID()] = new Swiper(selector, {
+  productSliders[key] = new Swiper(selector, {
     slidesPerView: 4,
     setWrapperSize: true,
     paginationClickable: true,
@@ -29,13 +29,3 @@ function initProductInSlider(el) {
     spaceBetween: 20
   });
 }
-
-function generateUUID() {
-  var d = new Date().getTime();
-  var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = (d + Math.random()*16)%16 | 0;
-    d = Math.floor(d/16);
-    return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-  });
-  return uuid;
-};
